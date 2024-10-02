@@ -10,7 +10,7 @@ const comunidadSchema = new mongoose.Schema({
     },
     fecha_creacion: {
         type: Date,
-        required: true
+        default : Date.now
     },
     etiquetas: {
         type: [String],

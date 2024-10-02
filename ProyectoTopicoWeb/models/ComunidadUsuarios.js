@@ -12,7 +12,7 @@ const comunidadUsuariosSchema = new mongoose.Schema({
     },
     fecha_ingreso: {
         type: Date,
-        required: true
+        default : Date.now
     },
     rol: {
         type: String,

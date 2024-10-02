@@ -12,7 +12,7 @@ const comentarioSchema = new mongoose.Schema({
     },
     fecha_hora: {
         type: Date,
-        required: true
+        default : Date.now
     }
 });
 
@@ -32,6 +32,15 @@ const resenaSchema = new mongoose.Schema({
     },
     calificacion: {
         type: Number,
+        required: true
+    },
+    contenido:{
+        type: String,
+        required: true
+    },
+    comunidad: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Comunidad',
         required: true
     },
     comentarios: [comentarioSchema]
