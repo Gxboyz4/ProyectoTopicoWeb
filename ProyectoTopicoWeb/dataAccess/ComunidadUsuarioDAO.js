@@ -28,6 +28,19 @@ class ComunidadUsuarioDAO {
         }
     }
 
+    async obtenerUsuariosDeComunidad(idComunidad){
+        try {
+            const usuarios = await ComunidadUsuarios.find({comunidad: idComunidad});
+            if(!usuarios){
+                throw new Error('No hay usuarios en esa comunidad');
+            }
+            return usuarios;
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 module.exports = new ComunidadUsuarioDAO();
+
