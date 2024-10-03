@@ -24,6 +24,10 @@ class ComunidadDAO {
         }
     }
 
+    async obtenerComunidadesFiltro (limit = 10, offset = 0, filtroContenido = '') {
+        return await Comunidad.find({nombre: {$regex: filtroContenido, $options: 'i'}}).skip(offset).limit(limit);
+    }
+
 }
 
 module.exports = new ComunidadDAO();

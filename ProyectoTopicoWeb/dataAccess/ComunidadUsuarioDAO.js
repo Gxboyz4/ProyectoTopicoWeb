@@ -30,11 +30,21 @@ class ComunidadUsuarioDAO {
 
     async obtenerUsuariosDeComunidad(idComunidad){
         try {
-            const usuarios = await ComunidadUsuarios.find({comunidad: idComunidad});
-            if(!usuarios){
+            const comunidadUsuarios  = await ComunidadUsuarios.find({ comunidad: idComunidad })
+            .populate({
+                path: 'usuario',  
+                select: '-contrasena -resenas_likeadas' 
+            });
+            if(!comunidadUsuarios ){
                 throw new Error('No hay usuarios en esa comunidad');
             }
+
+            const usuarios = comunidadUsuarios.map((comunidadUsuario) => {
+                return comunidadUsuario.usuario;
+            });
+
             return usuarios;
+
         } catch (error) {
             throw error;
         }

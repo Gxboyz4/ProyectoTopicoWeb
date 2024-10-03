@@ -105,6 +105,15 @@ async function main() {
             console.log('Error al consultar resenas de pelicula');
         });
 
+         await ComunidadUsuarioDAO.obtenerUsuariosDeComunidad('66fdf6c42826cfa3e8d7d268').then((usuariosComunidad) => {
+           console.log(`Usuarios de la comunidad ${usuariosComunidad}`);
+         });
+
+         await ComunidadDAO.obtenerComunidadesFiltro(10,0,"Disney" ).then((comunidadesFiltro) => {
+                    console.log(`Comunidades consultadas con exito ${comunidadesFiltro}`);
+         });
+        
+
         await db.desconectar().then(() => {
             console.log('Desconectado con exito');
         }).catch(error => {
