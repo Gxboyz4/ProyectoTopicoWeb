@@ -3,6 +3,7 @@ const UsuarioDAO = require('./dataAccess/UsuarioDAO');
 const ResenaDAO = require('./dataAccess/ResenaDAO');
 const ComunidadDAO = require('./dataAccess/ComunidadDAO');
 const ComunidadUsuarioDAO = require('./dataAccess/ComunidadUsuarioDAO');
+const Usuario = require('./models/Usuario');
 
 async function main() {
     try {
@@ -11,7 +12,7 @@ async function main() {
         }).catch((error) => {
             console.error(error);
         });
-
+        
         usuario1 = await UsuarioDAO.crearUsuario({
             nombre: 'Usuario1',
             correo: 'pablo@gmail.com',
@@ -69,19 +70,7 @@ async function main() {
                 console.log('Error al actualizar rol');
             });
 
-        resena1 = await ResenaDAO.crearResena({
-            usuario: usuario1._id,
-            pelicula: 'ToyStory4',
-            cantidad_likes: 5,
-            calificacion: 5,
-            comunidad: comunidad1._id,
-            contenido: 'Excelente pelicula, muy recomendada'
-        }).then((resena) => {
-            console.log(`Resena creada con exito ${resena.pelicula}`);
-            return resena;
-        }).catch((error) => {
-            console.log('Error al agregar resena');
-        });
+        
 
         await ResenaDAO.obtenerResenasFiltro(10,0,'Excelente').then(
             (resenasFiltro) => {
@@ -113,6 +102,25 @@ async function main() {
                     console.log(`Comunidades consultadas con exito ${comunidadesFiltro}`);
          });
         
+
+         await ResenaDAO.obtenerResenasDeComunidad('66fdf6c42826cfa3e8d7d268').then((resenasComunidad) => 
+            {console.log(`Resenas de la comunidad ${resenasComunidad}`);});
+        
+
+         await ComunidadDAO.obtenerComunidadPorId('66fdf6c42826cfa3e8d7d268').then((comunidad) => {console.log(`Comunidad: ${comunidad}`)});
+        
+
+         await ResenaDAO.eliminarComentarioDeResena('66fdf6c42826cfa3e8d7d26d', '66fdf6c42826cfa3e8d7d271').then((comentarioEliminado) => 
+            {console.log(`Comentario eliminado: ${comentarioEliminado}`)});
+         
+
+         await ResenaDAO.eliminarResena(('66fdf6c42826cfa3e8d7d26d')).then((resenaEliminada) =>{console.log(`Resena eliminada: ${resenaEliminada}`)});
+    
+        await ResenaDAO.darLikeResena('6702e207a6fc3d5cde2a1a2f','66fdf6c42826cfa3e8d7d264').then((resenaLikeada) => {console.log(`Resena likeada: ${resenaLikeada}`)});
+
+       
+        await ResenaDAO.quitarLikeResena('6702e207a6fc3d5cde2a1a2f','66fdf6c42826cfa3e8d7d264').then((resenaLikeada) => {console.log(`Resena deslikeada: ${resenaLikeada}`)});
+         
 
         await db.desconectar().then(() => {
             console.log('Desconectado con exito');

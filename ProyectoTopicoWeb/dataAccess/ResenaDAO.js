@@ -1,4 +1,5 @@
 const Resena = require('../models/Resena');
+const Usuario = require('../models/Usuario');
 
 class ResenaDAO {
     constructor() { }
@@ -23,6 +24,19 @@ class ResenaDAO {
         }
         resena.comentarios.push(comentario);
         return await resena.save();
+    }
+
+    async eliminarComentarioDeResena(idResena, idComentario){
+        const resenaActualizada = await Resena.findOneAndUpdate(
+            { _id: idResena }, 
+            { $pull: { comentarios: { _id: idComentario } } }, 
+            { new: true } 
+        );
+        if (!resenaActualizada) {
+            throw new Error('Reseña no encontrada o comentario no existe');
+        }
+
+        return resenaActualizada;
     }
 
     async obtenerResenasDePelicula(limit = 10, offset = 0, idPelicula){
@@ -60,21 +74,32 @@ class ResenaDAO {
     }
 
 
-    async darLikeResena(idResena){
+    async darLikeResena(idResena,idUsuario){
         const resena = await Resena.findById(idResena);
         if(!resena){
             throw new Error('No existe una reseña con ese id');
         }
         resena.cantidad_likes++;
+        const usuarioLike = await Usuario.findOneAndUpdate(
+            { _id: idUsuario }, 
+            { $push: { resenas_likeadas: idResena } }, 
+            { new: true } 
+        )
+
         return await resena.save();
     }
 
-    async quitarLikeResena(idResena){
+    async quitarLikeResena(idResena,idUsuario){
         const resena = await Resena.findById(idResena);
         if(!resena){
             throw new Error('No existe una reseña con ese id');
         }
         resena.cantidad_likes--;
+        const usuarioLike = await Usuario.findOneAndUpdate(
+            { _id: idUsuario }, 
+            { $pull: { resenas_likeadas: idResena } }, 
+            { new: true } 
+        )
         return await resena.save();
     }
     
