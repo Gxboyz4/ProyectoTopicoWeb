@@ -24,7 +24,7 @@ class UsuarioDAO {
             }
             const coincideContrasena = await bcrypt.compare(usuario.contrasena, usuarioConsultado.contrasena); 
             if (!coincideContrasena) {
-                throw new Error('La contrasenia es incorrecta');
+                throw new Error('La contraseña es incorrecta');
             }
             return usuarioConsultado;
         } catch (error) {

@@ -1,5 +1,7 @@
 const UsuarioDAO = require('../dataAccess/UsuarioDAO');
 const { AppError } = require('../utils/appError');
+const jwt = require('jsonwebtoken');
+
 
 class UsuarioController {
     static async crearUsuario(req, res, next) {
@@ -25,6 +27,23 @@ class UsuarioController {
             }
             const usuarioData = { correo, contrasena };
             const usuario = await UsuarioDAO.iniciarSesion(usuarioData);
+            //Se agregó lo siguiente para el manejo de tokens.
+            if(correo === usuario.correo && contrasena === usuario.contrasena){
+                const paylod = {
+                   userid: usuario._id,
+                   username: usuario.correo,
+                   role: 'admin'
+                };
+                const token = jwt.sign(paylod, process.env.JWT_SECRET, {expiresIn: '1h'});
+                   res.json({
+                       msg: 'Login exitoso',
+                       token
+                   });
+            }else{
+                   res.status(401).json({
+                       msg: 'Credenciales incorrectas'
+                   });
+            }
             res.status(200).json(usuario);
         } catch (error) {
             next(new AppError('Error al iniciar sesion', 500));

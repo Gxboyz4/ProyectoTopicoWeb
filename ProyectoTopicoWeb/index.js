@@ -1,18 +1,43 @@
 const db = require('./config/db');
 const UsuarioDAO = require('./dataAccess/UsuarioDAO');
+const UsuarioRouter = require('./routes/usuarioRouter');
 const ResenaDAO = require('./dataAccess/ResenaDAO');
 const ComunidadDAO = require('./dataAccess/ComunidadDAO');
 const ComunidadUsuarioDAO = require('./dataAccess/ComunidadUsuarioDAO');
 const Usuario = require('./models/Usuario');
+const express = require('express');
+const app = express();
+const morgan = require('morgan');
+const {globalErrorHandler, AppError} = require('./utils/appError');
 
 async function main() {
+    
     try {
         await db.conectar().then(() => {
             console.log('Conectado a la base de datos');
         }).catch((error) => {
             console.error(error);
         });
+        app.use(express.json());
+        app.use(morgan('combined'));
+        app.use(globalErrorHandler);
+        app.use('/api/usuarios', validateJWT, UsuarioRouter);
+
+        app.all('*', (req, res, next) => {
+            const error = new AppError(`No se encontró la ruta ${req.originalUrl} en el servidor web.`, 404);
+            next(error);
+        });
+
+
+        const PORT = process.env.PORT || 3000;
+        app.listen(PORT, () => {
+            console.log(`Corriendo en el puerto ${PORT}`);
+        });
         
+    } catch (error) {
+        console.log(error);
+    }
+        /*
         usuario1 = await UsuarioDAO.crearUsuario({
             nombre: 'Usuario1',
             correo: 'pablo@gmail.com',
@@ -128,9 +153,8 @@ async function main() {
             console.log('Error al desconectar');
         });
 
-    } catch (error) {
-        console.error(error);
-    }
+    */
+
 }
 
 main()
