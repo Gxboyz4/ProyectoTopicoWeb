@@ -6,6 +6,10 @@ class UsuarioDAO {
 
     async crearUsuario(usuario) {
         try {
+            const usuarioConsultado = await Usuario.findOne({ correo: usuario.correo });
+            if (usuarioConsultado) {
+                throw new Error('Ya existe un usuario con ese correo');
+            }
             const salt = await bcrypt.genSalt(10);
             const contrasenaHasheada = await bcrypt.hash(usuario.contrasena, salt);
             usuario.contrasena = contrasenaHasheada;
@@ -22,9 +26,9 @@ class UsuarioDAO {
             if (!usuarioConsultado) {
                 throw new Error('No existe un usuario con ese correo');
             }
-            const coincideContrasena = await bcrypt.compare(usuario.contrasena, usuarioConsultado.contrasena); 
+            const coincideContrasena = await bcrypt.compare(usuario.contrasena, usuarioConsultado.contrasena);
             if (!coincideContrasena) {
-                throw new Error('La contrasenia es incorrecta');
+                throw new Error('La contraseña es incorrecta');
             }
             return usuarioConsultado;
         } catch (error) {
@@ -32,11 +36,11 @@ class UsuarioDAO {
         }
     }
 
-    async obtenerPublicacionesLikeadas(idUsuario){
-        try{
+    async obtenerPublicacionesLikeadas(idUsuario) {
+        try {
             const usuarioConsultado = await Usuario.findById(idUsuario, 'resenas_likeadas');
             return usuarioConsultado.resenas_likeadas;
-        }catch(error){
+        } catch (error) {
             throw error;
         }
     }

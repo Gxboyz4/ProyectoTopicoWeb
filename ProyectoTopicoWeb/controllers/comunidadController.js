@@ -32,7 +32,7 @@ class ComunidadController {
     
     static async obtenerComunidadesFiltro(req, res, next) {
         try {
-            const { limit, offset, filtro } = req.query;
+            let { limit, offset, filtro } = req.query;
             if(!limit){
                 limit = 10;
             }

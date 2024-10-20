@@ -1,0 +1,94 @@
+{
+	"info": {
+		"_postman_id": "a5322c49-9b96-455f-8d96-c38c90d49d24",
+		"name": "Comunidades",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38705084"
+	},
+	"item": [
+		{
+			"name": "crearComunidad",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE0OWIzYWI1MzUyNzRmMDg2YzhmNzYiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ1MTI0NSwiZXhwIjoxNzI5NDU0ODQ1fQ.wguGhZiha5CkIT5iHkzrkC13U2rsdZBYRQwvX46h7UQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombre\":\"DisneyWorld\",\r\n    \"descripcion\":\"Un mundo para la gente que le gusta Disney\",\r\n    \"etiquetas\":[\"Disney\", \"Fantasia\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/api/comunidades/",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comunidades",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtenerComunidadPorId",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/comunidades/67154ae279a6dc819f4fae84",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comunidades",
+						"67154ae279a6dc819f4fae84"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtenerComunidadesPorFiltro",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/api/comunidades/query?filtro=dis",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"comunidades",
+						"query"
+					],
+					"query": [
+						{
+							"key": "filtro",
+							"value": "dis"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
