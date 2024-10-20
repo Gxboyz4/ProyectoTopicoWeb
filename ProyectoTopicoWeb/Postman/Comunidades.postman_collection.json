@@ -9,8 +9,17 @@
 		{
 			"name": "crearComunidad",
 			"request": {
+				"auth": {
+					"type": "noauth"
+				},
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE0OWIzYWI1MzUyNzRmMDg2YzhmNzYiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ1MTI0NSwiZXhwIjoxNzI5NDU0ODQ1fQ.wguGhZiha5CkIT5iHkzrkC13U2rsdZBYRQwvX46h7UQ",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\r\n    \"nombre\":\"DisneyWorld\",\r\n    \"descripcion\":\"Un mundo para la gente que le gusta Disney\",\r\n    \"etiquetas\":[\"Disney\", \"Fantasia\"]\r\n}",

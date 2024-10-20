@@ -7,7 +7,7 @@ class UsuarioController {
     static async crearUsuario(req, res, next) {
         try {
             const { nombre, correo, contrasena, avatar } = req.body;
-            if (!nombre || !correo || !contrasena) {
+            if (!nombre || !correo || !contrasena || !avatar) {
                 return next(new AppError('Debe ingresar todos los campos', 400));
             }
             const usuarioData = { nombre, correo, contrasena, avatar };
