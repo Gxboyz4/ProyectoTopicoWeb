@@ -1,10 +1,6 @@
 const db = require('./config/db');
-const UsuarioDAO = require('./dataAccess/UsuarioDAO');
 const UsuarioRouter = require('./routes/usuarioRouter');
-const ResenaDAO = require('./dataAccess/ResenaDAO');
-const ComunidadDAO = require('./dataAccess/ComunidadDAO');
-const ComunidadUsuarioDAO = require('./dataAccess/ComunidadUsuarioDAO');
-const Usuario = require('./models/Usuario');
+const ComunidadRouter = require('./routes/comunidadRouter');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -24,6 +20,7 @@ async function main() {
         app.use(morgan('combined'));
         
         app.use('/api/usuarios', UsuarioRouter);
+        app.use('/api/comunidades', ComunidadRouter);
 
         app.all('*', (req, res, next) => {
             const error = new AppError(`No se encontró la ruta ${req.originalUrl} en el servidor web.`, 404);
