@@ -1,5 +1,5 @@
 const express = require('express');
-const ProductoController = require('../controllers/usuarioController');
+const UsuarioController = require('../controllers/usuarioController');
 const { model } = require('mongoose');
 const router = express.Router();
 

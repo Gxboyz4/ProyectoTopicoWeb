@@ -8,7 +8,8 @@ const Usuario = require('./models/Usuario');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
-const {globalErrorHandler, AppError} = require('./utils/appError');
+const {AppError, globalErrorHandler} = require('./utils/appError');
+const validateJWT = require('./utils/validateJWT');
 
 async function main() {
     
@@ -18,16 +19,16 @@ async function main() {
         }).catch((error) => {
             console.error(error);
         });
+
         app.use(express.json());
         app.use(morgan('combined'));
         app.use(globalErrorHandler);
-        app.use('/api/usuarios', validateJWT, UsuarioRouter);
+        app.use('/api/usuarios', UsuarioRouter);
 
         app.all('*', (req, res, next) => {
             const error = new AppError(`No se encontró la ruta ${req.originalUrl} en el servidor web.`, 404);
             next(error);
         });
-
 
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {

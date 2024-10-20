@@ -6,11 +6,11 @@ const jwt = require('jsonwebtoken');
 class UsuarioController {
     static async crearUsuario(req, res, next) {
         try {
-            const { nombre, correo, contrasena } = req.body;
+            const { nombre, correo, contrasena, avatar } = req.body;
             if (!nombre || !correo || !contrasena) {
                 return next(new AppError('Debe ingresar todos los campos', 400));
             }
-            const usuarioData = { nombre, correo, contrasena };
+            const usuarioData = { nombre, correo, contrasena, avatar };
             const usuario = await UsuarioDAO.crearUsuario(usuarioData);
             res.status(201).json(usuario);
         } catch (error) {
@@ -28,30 +28,22 @@ class UsuarioController {
             const usuarioData = { correo, contrasena };
             const usuario = await UsuarioDAO.iniciarSesion(usuarioData);
             //Se agregó lo siguiente para el manejo de tokens.
-            if(correo === usuario.correo && contrasena === usuario.contrasena){
-                const paylod = {
-                   userid: usuario._id,
-                   username: usuario.correo,
-                   role: 'admin'
-                };
-                const token = jwt.sign(paylod, process.env.JWT_SECRET, {expiresIn: '1h'});
-                   res.json({
-                       msg: 'Login exitoso',
-                       token
-                   });
-            }else{
-                   res.status(401).json({
-                       msg: 'Credenciales incorrectas'
-                   });
-            }
-            res.status(200).json(usuario);
+            console.log("Prueba :" + usuario);
+            const paylod = {
+                userid: usuario._id,
+                username: usuario.correo,
+                role: 'admin'
+            };
+            const token = jwt.sign(paylod, process.env.JWT_SECRET, { expiresIn: '1h' });
+            res.status(200).json({usuario, token});
         } catch (error) {
             next(new AppError('Error al iniciar sesion', 500));
         }
     }
     static async obtenerPublicacionesLikeadas(req, res, next) {
         try {
-            const idUsuario = req.params.idUsuario;
+            const idUsuario = req.params.id;
+            console.log("Prueba :" + idUsuario);
             if (!idUsuario) {
                 return next(new AppError('Error, no hay ID', 400));
             }
