@@ -22,20 +22,21 @@ async function main() {
 
         app.use(express.json());
         app.use(morgan('combined'));
-        app.use(globalErrorHandler);
+        
         app.use('/api/usuarios', UsuarioRouter);
 
         app.all('*', (req, res, next) => {
             const error = new AppError(`No se encontró la ruta ${req.originalUrl} en el servidor web.`, 404);
             next(error);
         });
-
+        app.use(globalErrorHandler);
         const PORT = process.env.PORT || 3000;
         app.listen(PORT, () => {
             console.log(`Corriendo en el puerto ${PORT}`);
         });
         
     } catch (error) {
+        console.log('Catch en main');
         console.log(error);
     }
         /*
