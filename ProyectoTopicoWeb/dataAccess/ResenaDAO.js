@@ -13,6 +13,15 @@ class ResenaDAO {
         }
     }
 
+    async obtenerResenaPorID(idResena) {
+        try {
+            const resena = await Resena.findById(idResena);
+            return resena;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
     async obtenerResenasFiltro(limit = 10, offset = 0, filtroContenido = '') {
         return await Resena.find({contenido: {$regex: filtroContenido, $options: 'i'}}).skip(offset).limit(limit);
     }
@@ -74,32 +83,28 @@ class ResenaDAO {
     }
 
 
-    async darLikeResena(idResena,idUsuario){
+    async darLikeResena(idResena) {
         const resena = await Resena.findById(idResena);
-        if(!resena){
+        if (!resena) {
             throw new Error('No existe una reseña con ese id');
         }
         resena.cantidad_likes++;
-        const usuarioLike = await Usuario.findOneAndUpdate(
-            { _id: idUsuario }, 
-            { $push: { resenas_likeadas: idResena } }, 
-            { new: true } 
-        )
-
+        
         return await resena.save();
     }
 
-    async quitarLikeResena(idResena,idUsuario){
+    async quitarLikeResena(idResena) {
         const resena = await Resena.findById(idResena);
-        if(!resena){
+        if (!resena) {
             throw new Error('No existe una reseña con ese id');
         }
-        resena.cantidad_likes--;
-        const usuarioLike = await Usuario.findOneAndUpdate(
-            { _id: idUsuario }, 
-            { $pull: { resenas_likeadas: idResena } }, 
-            { new: true } 
-        )
+        
+        if (resena.cantidad_likes > 0) {
+            resena.cantidad_likes--;
+        } else {
+            throw new Error('La cantidad de likes no puede ser menor que cero');
+        }
+    
         return await resena.save();
     }
     
