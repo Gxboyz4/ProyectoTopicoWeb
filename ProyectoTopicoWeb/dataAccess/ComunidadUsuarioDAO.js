@@ -6,11 +6,10 @@ class ComunidadUsuarioDAO {
     async agregarUsuarioAComunidad(comunidadUsuario) {
         try{
             const nuevoComunidadUsuario = new ComunidadUsuarios(comunidadUsuario);
-            // const verificacion = this.buscarUsuarioEnComunidad(comunidadUsuario.comunidad, comunidadUsuario.usuario) 
-            // if(verificacion){
-            //     console.log(verificacion)
-            //     throw new Error('Ya existe un usuario con ese id en esa comunidad');
-            // }
+            const verificacion = this.buscarUsuarioEnComunidad(comunidadUsuario.comunidad, comunidadUsuario.usuario) 
+            if(verificacion){
+                throw new Error('Ya existe un usuario con ese id en esa comunidad');
+            }
             return await nuevoComunidadUsuario.save();
         }catch(error){
             throw error;
