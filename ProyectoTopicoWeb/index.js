@@ -2,6 +2,7 @@ const db = require('./config/db');
 const UsuarioRouter = require('./routes/usuarioRouter');
 const ComunidadRouter = require('./routes/comunidadRouter');
 const ResenaRouter = require('./routes/resenaRouter');
+const ComunidadUsuarioRouter = require('./routes/comunidadUsuarioRouter');
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -22,6 +23,7 @@ async function main() {
         app.use('/api/usuarios', UsuarioRouter);
         app.use('/api/comunidades', ComunidadRouter);
         app.use('/api/resenas', ResenaRouter);
+        app.use('/api/comunidadUsuarios', ComunidadUsuarioRouter);
 
         app.all('*', (req, res, next) => {
             const error = new AppError(`No se encontró la ruta ${req.originalUrl} en el servidor web.`, 404);

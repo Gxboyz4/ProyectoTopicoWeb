@@ -2,9 +2,10 @@ const express = require('express');
 const ComunidadUsuarioController = require('../controllers/comunidadUsuarioController');
 const router = express.Router();
 const { model } = require('mongoose');
+const validateJWT = require('../utils/validateJWT');
 
-router.post  ('/comunidadUsuario/', ComunidadUsuarioController.agregarUsuarioAComunidad);
-router.put  ('/comunidadUsuario/query', ComunidadUsuarioController.cambiarRolUsuario);
-router.get   ('/comunidadUsuario/:idComunidad', ComunidadUsuarioController.obtenerUsuariosDeComunidad);
+router.post  ('/', validateJWT,ComunidadUsuarioController.agregarUsuarioAComunidad);
+router.put  ('/query', validateJWT,ComunidadUsuarioController.cambiarRolUsuario);
+router.get   ('/:idComunidad', validateJWT,ComunidadUsuarioController.obtenerUsuariosDeComunidad);
 
 module.exports = router;

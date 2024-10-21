@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9b042233-afa3-4fbf-9927-ee49fd59ae6f",
+		"_postman_id": "8e2f7523-e402-4db1-91cd-a079a8a668a8",
 		"name": "Tamazine",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31019863"
+		"_exporter_id": "31019399"
 	},
 	"item": [
 		{
@@ -406,6 +406,111 @@
 								"resenas",
 								"6715949982510b5ef2428c91",
 								"comunidad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ComunidadUsuario",
+			"item": [
+				{
+					"name": "AgregarUsuarioAComunidad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comunidad\": \"66fdf6c42826cfa3e8d7d268\",\r\n    \"usuario\": \"6715a8f570dc18069999d34b\",\r\n    \"rol\": \"Miembro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CambiarRolUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios/query?idComunidad=&idUsuario=&nuevoRol=",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios",
+								"query"
+							],
+							"query": [
+								{
+									"key": "idComunidad",
+									"value": ""
+								},
+								{
+									"key": "idUsuario",
+									"value": ""
+								},
+								{
+									"key": "nuevoRol",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerUsuariosComunidad",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios",
+								""
 							]
 						}
 					},

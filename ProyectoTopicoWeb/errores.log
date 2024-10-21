@@ -9,3 +9,17 @@
 {"level":"error","message":"No se encontro la reseña"}
 {"level":"error","message":"Error al eliminar reseña"}
 {"level":"error","message":"Faltan datos para dar like"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al obtener usuarios de comunidad"}
+{"level":"error","message":"No se encontró la ruta /api/comunidadUsuarios/ en el servidor web."}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}
+{"level":"error","message":"Error al agregar usuario a comunidad"}

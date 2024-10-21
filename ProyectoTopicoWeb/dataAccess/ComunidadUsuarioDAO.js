@@ -6,10 +6,25 @@ class ComunidadUsuarioDAO {
     async agregarUsuarioAComunidad(comunidadUsuario) {
         try{
             const nuevoComunidadUsuario = new ComunidadUsuarios(comunidadUsuario);
+            // const verificacion = this.buscarUsuarioEnComunidad(comunidadUsuario.comunidad, comunidadUsuario.usuario) 
+            // if(verificacion){
+            //     console.log(verificacion)
+            //     throw new Error('Ya existe un usuario con ese id en esa comunidad');
+            // }
             return await nuevoComunidadUsuario.save();
         }catch(error){
             throw error;
         }
+    }
+
+    async buscarUsuarioEnComunidad(idComunidad, idUsuario){
+        try{
+            const comunidadUsuarioConsultado = await ComunidadUsuarios.findOne({comunidad: idComunidad, usuario: idUsuario});
+            return comunidadUsuarioConsultado;
+        }catch(error){
+            throw error;
+        }
+        
     }
 
     async cambiarRolUsuario(idComunidad, idUsuario, nuevoRol){

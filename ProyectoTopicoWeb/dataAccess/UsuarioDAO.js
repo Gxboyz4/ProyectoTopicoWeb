@@ -45,6 +45,14 @@ class UsuarioDAO {
         }
     }
 
+    async buscarUsuarioPorId(idUsuario) {
+        try {
+            return await Usuario.findById(idUsuario);
+        } catch (error) {
+            throw error;
+        }
+    }
+
 }
 
 module.exports = new UsuarioDAO();
