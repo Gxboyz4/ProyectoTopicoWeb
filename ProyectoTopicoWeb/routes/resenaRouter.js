@@ -2,18 +2,20 @@ const express = require('express');
 const ResenaController = require('../controllers/resenaController');
 const { model } = require('mongoose');
 const router = express.Router();
+const validateJWT = require('../utils/validateJWT');
 
-router.post('/', ResenaController.crearResena);
+router.post('/',validateJWT, ResenaController.crearResena);
 router.get('/:idResena', ResenaController.obtenerResenaPorID);
 router.get('/query', ResenaController.obtenerResenaFiltro);
 router.get('/pelicula/:idPelicula', ResenaController.obtenerResenasDePelicula);
 router.get('/:idComunidad/comunidad', ResenaController.obtenerResenasDeComunidad);
-router.delete('/:idResena', ResenaController.eliminarResena);
-router.patch('/:idResena/like', ResenaController.darLikeResena);
-router.patch('/:idResena/dislike', ResenaController.quitarLikeResena);
+router.delete('/:idResena',validateJWT, ResenaController.eliminarResena);
+router.patch('/:idResena/like',validateJWT, ResenaController.darLikeResena);
+router.patch('/:idResena/dislike',validateJWT, ResenaController.quitarLikeResena);
 
-router.post('/:idResena/comentario', ResenaController.agregarComentarioAResena);
-router.delete('/:idResena/comentario/:idComentario', ResenaController.eliminarComentarioDeResena);
+router.post('/:idResena/comentario',validateJWT, ResenaController.agregarComentarioAResena);
+router.delete('/:idResena/comentario/:idComentario',validateJWT, ResenaController.eliminarComentarioDeResena);
+router.get('/:idResena/comentario', ResenaController.obtenerComentariosDeResena);
 
 
 

@@ -107,6 +107,14 @@ class ResenaDAO {
     
         return await resena.save();
     }
+
+    async obtenerComentariosDeResena(idResena) {
+        const resena = await Resena.findById(idResena);
+        if (!resena) {
+            throw new Error('No existe una reseña con ese id');
+        }
+        return resena.comentarios;
+    }
     
 }
 

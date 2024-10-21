@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "8e2f7523-e402-4db1-91cd-a079a8a668a8",
+		"_postman_id": "9294887d-d356-4053-82a5-938b5bc10e7d",
 		"name": "Tamazine",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31019399"
+		"_exporter_id": "31019863"
 	},
 	"item": [
 		{
@@ -188,10 +188,16 @@
 							"name": "crearComentario",
 							"request": {
 								"method": "POST",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"type": "text"
+									}
+								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"usuario\": \"60d0fe4f5311236168a109cc\",\r\n    \"comentario\": \"I totally agree!\"\r\n}",
+									"raw": "{\r\n    \"usuario\": \"671593c782510b5ef2428c8e\",\r\n    \"comentario\": \"I totally agree!\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -199,7 +205,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93/comentario",
+									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
 									"host": [
 										"localhost"
 									],
@@ -207,7 +213,7 @@
 									"path": [
 										"api",
 										"resenas",
-										"6715951e82510b5ef2428c93",
+										"6715c25908a83c4befecb85f",
 										"comentario"
 									]
 								}
@@ -218,7 +224,13 @@
 							"name": "eliminarComentario",
 							"request": {
 								"method": "DELETE",
-								"header": [],
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"type": "text"
+									}
+								],
 								"url": {
 									"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93/comentario/60d0fe4f5311236168a109cc",
 									"host": [
@@ -235,6 +247,27 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "obtenerComentariosResena",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"resenas",
+										"6715c25908a83c4befecb85f",
+										"comentario"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -242,10 +275,16 @@
 					"name": "crearResena",
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"usuario\": \"60d0fe4f5311236168a109ca\",\r\n    \"pelicula\": \"Inception\",\r\n    \"cantidad_likes\": 100,\r\n    \"calificacion\": 5,\r\n    \"contenido\": \"Amazing movie with a mind-bending plot!\",\r\n    \"comunidad\": \"60d0fe4f5311236168a109cb\",\r\n    \"comentarios\": [\r\n        {\r\n            \"usuario\": \"60d0fe4f5311236168a109cc\",\r\n            \"comentario\": \"I totally agree!\",\r\n            \"fecha_hora\": \"2023-10-01T12:00:00Z\"\r\n        },\r\n        {\r\n            \"usuario\": \"60d0fe4f5311236168a109cd\",\r\n            \"comentario\": \"One of the best movies ever.\",\r\n            \"fecha_hora\": \"2023-10-02T15:30:00Z\"\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"usuario\": \"60d0fe4f5311236168a109ca\",\r\n    \"pelicula\": \"GODEL\",\r\n    \"cantidad_likes\": 2,\r\n    \"calificacion\": 5,\r\n    \"contenido\": \"Amazing movie with a mind-bending plot!\",\r\n    \"comunidad\": \"60d0fe4f5311236168a109cb\",\r\n    \"comentarios\": []\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -332,7 +371,13 @@
 					"name": "eliminarResena",
 					"request": {
 						"method": "DELETE",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93",
 							"host": [
@@ -352,7 +397,13 @@
 					"name": "darLikeResena",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/like",
 							"host": [
@@ -373,7 +424,13 @@
 					"name": "darDislikeResena",
 					"request": {
 						"method": "PATCH",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
 						"url": {
 							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/dislike",
 							"host": [

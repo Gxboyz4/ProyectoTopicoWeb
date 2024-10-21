@@ -149,6 +149,19 @@ class ResenaController {
         }
     }
 
+    static async obtenerComentariosDeResena(req, res, next) {
+        try {
+            const { idResena } = req.params;
+            if (!idResena) {
+                return next(new AppError('Falta el id de la reseña', 400));
+            }
+            const resena = await ResenaDAO.obtenerComentariosDeResena(idResena);
+            res.status(200).json(resena);
+        } catch (error) {
+            next(new AppError('Error al obtener comentarios de reseña', 500));
+        }
+    }
+
 }
 
 module.exports = ResenaController;
