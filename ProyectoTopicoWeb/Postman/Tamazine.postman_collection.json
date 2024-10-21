@@ -1,0 +1,579 @@
+{
+	"info": {
+		"_postman_id": "9294887d-d356-4053-82a5-938b5bc10e7d",
+		"name": "Tamazine",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31019863"
+	},
+	"item": [
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "registrarse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"nombre\": \"Mario Diaz\",\r\n        \"correo\" : \"mario@gmail.com\",\r\n        \"contrasena\" : \"mario\",\r\n        \"avatar\" : \"avatar1.png\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iniciarsesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"correo\" : \"mario@gmail.com\",\r\n        \"contrasena\" : \"mario\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/usuarios/iniciarsesion",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuarios",
+								"iniciarsesion"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerPublicacionesLikeadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/usuarios/67149b3ab535274f086c8f76",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"usuarios",
+								"67149b3ab535274f086c8f76"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comunidades",
+			"item": [
+				{
+					"name": "crearComunidad",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE0OWIzYWI1MzUyNzRmMDg2YzhmNzYiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ1MTI0NSwiZXhwIjoxNzI5NDU0ODQ1fQ.wguGhZiha5CkIT5iHkzrkC13U2rsdZBYRQwvX46h7UQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"DisneyWorld\",\r\n    \"descripcion\":\"Un mundo para la gente que le gusta Disney\",\r\n    \"etiquetas\":[\"Disney\", \"Fantasia\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/comunidades/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidades",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerComunidadPorId",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/comunidades/67154ae279a6dc819f4fae84",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidades",
+								"67154ae279a6dc819f4fae84"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerComunidadesPorFiltro",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/comunidades/query?filtro=dis",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidades",
+								"query"
+							],
+							"query": [
+								{
+									"key": "filtro",
+									"value": "dis"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reseñas",
+			"item": [
+				{
+					"name": "Comentarios",
+					"item": [
+						{
+							"name": "crearComentario",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"usuario\": \"671593c782510b5ef2428c8e\",\r\n    \"comentario\": \"I totally agree!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"resenas",
+										"6715c25908a83c4befecb85f",
+										"comentario"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "eliminarComentario",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93/comentario/60d0fe4f5311236168a109cc",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"resenas",
+										"6715951e82510b5ef2428c93",
+										"comentario",
+										"60d0fe4f5311236168a109cc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "obtenerComentariosResena",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"api",
+										"resenas",
+										"6715c25908a83c4befecb85f",
+										"comentario"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "crearResena",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"usuario\": \"60d0fe4f5311236168a109ca\",\r\n    \"pelicula\": \"GODEL\",\r\n    \"cantidad_likes\": 2,\r\n    \"calificacion\": 5,\r\n    \"contenido\": \"Amazing movie with a mind-bending plot!\",\r\n    \"comunidad\": \"60d0fe4f5311236168a109cb\",\r\n    \"comentarios\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/resenas/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerResena",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/resenas/query",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"query"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerResenasPelicula",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/resenas/pelicula/hola",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"pelicula",
+								"hola"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerResenaPorID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/resenas/671593c782510b5ef2428c8e",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"671593c782510b5ef2428c8e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminarResena",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"6715951e82510b5ef2428c93"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "darLikeResena",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/like",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"6715a36e930cbc3f8327b71a",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "darDislikeResena",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/dislike",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"6715a36e930cbc3f8327b71a",
+								"dislike"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "obtenerResenasComunidad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/api/resenas/6715949982510b5ef2428c91/comunidad",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"resenas",
+								"6715949982510b5ef2428c91",
+								"comunidad"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ComunidadUsuario",
+			"item": [
+				{
+					"name": "AgregarUsuarioAComunidad",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"comunidad\": \"66fdf6c42826cfa3e8d7d268\",\r\n    \"usuario\": \"6715a8f570dc18069999d34b\",\r\n    \"rol\": \"Miembro\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CambiarRolUsuario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios/query?idComunidad=&idUsuario=&nuevoRol=",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios",
+								"query"
+							],
+							"query": [
+								{
+									"key": "idComunidad",
+									"value": ""
+								},
+								{
+									"key": "idUsuario",
+									"value": ""
+								},
+								{
+									"key": "nuevoRol",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ObtenerUsuariosComunidad",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/api/comunidadUsuarios/",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"comunidadUsuarios",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
