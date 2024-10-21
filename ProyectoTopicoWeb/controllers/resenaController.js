@@ -125,11 +125,11 @@ class ResenaController {
 
     static async darLikeResena(req, res, next) {
         try {
-            const { idResena } = req.params;
-            if (!idResena) {
-                return next(new AppError('Falta el id de la reseña para dar like', 400));
+            const { idResena , idUsuario} = req.params;
+            if (!idResena || !idUsuario) {
+                return next(new AppError('Es necesario el id de la reseña y usuario para dar like', 400));
             }
-            const resena = await ResenaDAO.darLikeResena(idResena); 
+            const resena = await ResenaDAO.darLikeResena(idResena, idUsuario); 
             res.status(200).json(resena);
         } catch (error) {
             next(new AppError('Error al dar like', 500));
@@ -138,13 +138,14 @@ class ResenaController {
     
     static async quitarLikeResena(req, res, next) {
         try {
-            const { idResena } = req.params; 
-            if (!idResena) {
-                return next(new AppError('Falta el id de la reseña para quitar like', 400));
+            const { idResena , idUsuario} = req.params;
+            if (!idResena || !idUsuario) {
+                return next(new AppError('Es necesario el id de la reseña y usuario para quitar like', 400));
             }
-            const resena = await ResenaDAO.quitarLikeResena(idResena); 
+            const resena = await ResenaDAO.quitarLikeResena(idResena, idUsuario); 
             res.status(200).json(resena);
         } catch (error) {
+            console.log(error);
             next(new AppError('Error al quitar like', 500));
         }
     }

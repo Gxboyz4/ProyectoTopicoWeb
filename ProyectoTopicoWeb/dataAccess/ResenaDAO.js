@@ -83,24 +83,32 @@ class ResenaDAO {
     }
 
 
-    async darLikeResena(idResena) {
+    async darLikeResena(idResena, idUsuario) {
         const resena = await Resena.findById(idResena);
         if (!resena) {
             throw new Error('No existe una reseña con ese id');
         }
         resena.cantidad_likes++;
-        
+        const usuarioLike = await Usuario.findOneAndUpdate(
+            { _id: idUsuario }, 
+            { $push: { resenas_likeadas: idResena } }, 
+            { new: true } 
+        )
         return await resena.save();
     }
 
-    async quitarLikeResena(idResena) {
+    async quitarLikeResena(idResena, idUsuario) {
         const resena = await Resena.findById(idResena);
         if (!resena) {
             throw new Error('No existe una reseña con ese id');
         }
-        
         if (resena.cantidad_likes > 0) {
             resena.cantidad_likes--;
+            const usuarioLike = await Usuario.findOneAndUpdate(
+                { _id: idUsuario }, 
+                { $pull: { resenas_likeadas: idResena } }, 
+                { new: true } 
+            )
         } else {
             throw new Error('La cantidad de likes no puede ser menor que cero');
         }

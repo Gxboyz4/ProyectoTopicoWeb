@@ -28,7 +28,6 @@ class UsuarioController {
             const usuarioData = { correo, contrasena };
             const usuario = await UsuarioDAO.iniciarSesion(usuarioData);
             //Se agregó lo siguiente para el manejo de tokens.
-            console.log("Prueba :" + usuario);
             const paylod = {
                 userid: usuario._id,
                 username: usuario.correo,

@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "9294887d-d356-4053-82a5-938b5bc10e7d",
+		"_postman_id": "6a64a284-9d02-4742-8364-40ab25bba3e9",
 		"name": "Tamazine",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "31019863"
+		"_exporter_id": "38705084"
 	},
 	"item": [
 		{
@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"nombre\": \"Mario Diaz\",\r\n        \"correo\" : \"mario@gmail.com\",\r\n        \"contrasena\" : \"mario\",\r\n        \"avatar\" : \"avatar1.png\"\r\n}",
+							"raw": "{\r\n        \"nombre\": \"Mario Diaz\",\r\n        \"correo\" : \"mario5@gmail.com\",\r\n        \"contrasena\" : \"mario\",\r\n        \"avatar\" : \"avatar1.png\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -45,7 +45,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"correo\" : \"mario@gmail.com\",\r\n        \"contrasena\" : \"mario\"\r\n}",
+							"raw": "{\r\n        \"correo\" : \"mario5@gmail.com\",\r\n        \"contrasena\" : \"mario\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -71,9 +71,15 @@
 					"name": "obtenerPublicacionesLikeadas",
 					"request": {
 						"method": "GET",
-						"header": [],
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
+								"type": "text"
+							}
+						],
 						"url": {
-							"raw": "localhost:3000/api/usuarios/67149b3ab535274f086c8f76",
+							"raw": "localhost:3000/api/usuarios/6715c8a512e3c25b9b0b2977",
 							"host": [
 								"localhost"
 							],
@@ -81,7 +87,7 @@
 							"path": [
 								"api",
 								"usuarios",
-								"67149b3ab535274f086c8f76"
+								"6715c8a512e3c25b9b0b2977"
 							]
 						}
 					},
@@ -102,7 +108,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE0OWIzYWI1MzUyNzRmMDg2YzhmNzYiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ1MTI0NSwiZXhwIjoxNzI5NDU0ODQ1fQ.wguGhZiha5CkIT5iHkzrkC13U2rsdZBYRQwvX46h7UQ",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE0OWIzYWI1MzUyNzRmMDg2YzhmNzYiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3OTc3NiwiZXhwIjoxNzI5NDgzMzc2fQ.D2L5Nn4URh133QdtyjJObzuY48LOgOJc_MQpG0Z5LdI",
 								"type": "text"
 							}
 						],
@@ -136,7 +142,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/comunidades/67154ae279a6dc819f4fae84",
+							"raw": "localhost:3000/api/comunidades/6715c48c8aa9f0e95332b849",
 							"host": [
 								"localhost"
 							],
@@ -144,7 +150,7 @@
 							"path": [
 								"api",
 								"comunidades",
-								"67154ae279a6dc819f4fae84"
+								"6715c48c8aa9f0e95332b849"
 							]
 						}
 					},
@@ -156,7 +162,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/comunidades/query?filtro=dis",
+							"raw": "localhost:3000/api/comunidades/query?filtro=d",
 							"host": [
 								"localhost"
 							],
@@ -169,7 +175,7 @@
 							"query": [
 								{
 									"key": "filtro",
-									"value": "dis"
+									"value": "d"
 								}
 							]
 						}
@@ -191,13 +197,13 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 										"type": "text"
 									}
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n    \"usuario\": \"671593c782510b5ef2428c8e\",\r\n    \"comentario\": \"I totally agree!\"\r\n}",
+									"raw": "{\r\n    \"usuario\": \"6715c8a512e3c25b9b0b2977\",\r\n    \"comentario\": \"I!\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -205,7 +211,7 @@
 									}
 								},
 								"url": {
-									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
+									"raw": "localhost:3000/api/resenas/6715cd0e22dcf02e06277078/comentario",
 									"host": [
 										"localhost"
 									],
@@ -213,7 +219,7 @@
 									"path": [
 										"api",
 										"resenas",
-										"6715c25908a83c4befecb85f",
+										"6715cd0e22dcf02e06277078",
 										"comentario"
 									]
 								}
@@ -227,12 +233,12 @@
 								"header": [
 									{
 										"key": "Authorization",
-										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+										"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 										"type": "text"
 									}
 								],
 								"url": {
-									"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93/comentario/60d0fe4f5311236168a109cc",
+									"raw": "localhost:3000/api/resenas/6715cd0e22dcf02e06277078/comentario/6715d0a586fdefebfb84a9c0",
 									"host": [
 										"localhost"
 									],
@@ -240,9 +246,9 @@
 									"path": [
 										"api",
 										"resenas",
-										"6715951e82510b5ef2428c93",
+										"6715cd0e22dcf02e06277078",
 										"comentario",
-										"60d0fe4f5311236168a109cc"
+										"6715d0a586fdefebfb84a9c0"
 									]
 								}
 							},
@@ -254,7 +260,7 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "localhost:3000/api/resenas/6715c25908a83c4befecb85f/comentario",
+									"raw": "localhost:3000/api/resenas/6715cd0e22dcf02e06277078/comentario",
 									"host": [
 										"localhost"
 									],
@@ -262,7 +268,7 @@
 									"path": [
 										"api",
 										"resenas",
-										"6715c25908a83c4befecb85f",
+										"6715cd0e22dcf02e06277078",
 										"comentario"
 									]
 								}
@@ -278,13 +284,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"usuario\": \"60d0fe4f5311236168a109ca\",\r\n    \"pelicula\": \"GODEL\",\r\n    \"cantidad_likes\": 2,\r\n    \"calificacion\": 5,\r\n    \"contenido\": \"Amazing movie with a mind-bending plot!\",\r\n    \"comunidad\": \"60d0fe4f5311236168a109cb\",\r\n    \"comentarios\": []\r\n}",
+							"raw": "{\r\n    \"usuario\": \"6715c8a512e3c25b9b0b2977\",\r\n    \"pelicula\": \"Toy Story\",\r\n    \"cantidad_likes\": 100,\r\n    \"calificacion\": 5,\r\n    \"contenido\": \"Amazing movie with a mind-bending plot!\",\r\n    \"comunidad\": \"60d0fe4f5311236168a109cb\",\r\n    \"comentarios\": [\r\n        {\r\n            \"usuario\": \"60d0fe4f5311236168a109cc\",\r\n            \"comentario\": \"I totally agree!\",\r\n            \"fecha_hora\": \"2023-10-01T12:00:00Z\"\r\n        },\r\n        {\r\n            \"usuario\": \"60d0fe4f5311236168a109cd\",\r\n            \"comentario\": \"One of the best movies ever.\",\r\n            \"fecha_hora\": \"2023-10-02T15:30:00Z\"\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -307,12 +313,12 @@
 					"response": []
 				},
 				{
-					"name": "obtenerResena",
+					"name": "obtenerResenaPorFiltro",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/resenas/query",
+							"raw": "localhost:3000/api/resenas/query?filtroContenido=amazing",
 							"host": [
 								"localhost"
 							],
@@ -321,6 +327,12 @@
 								"api",
 								"resenas",
 								"query"
+							],
+							"query": [
+								{
+									"key": "filtroContenido",
+									"value": "amazing"
+								}
 							]
 						}
 					},
@@ -332,7 +344,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/resenas/pelicula/hola",
+							"raw": "localhost:3000/api/resenas/pelicula/Toy Story",
 							"host": [
 								"localhost"
 							],
@@ -341,7 +353,7 @@
 								"api",
 								"resenas",
 								"pelicula",
-								"hola"
+								"Toy Story"
 							]
 						}
 					},
@@ -353,7 +365,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/resenas/671593c782510b5ef2428c8e",
+							"raw": "localhost:3000/api/resenas/6715d0e886fdefebfb84a9c6",
 							"host": [
 								"localhost"
 							],
@@ -361,7 +373,7 @@
 							"path": [
 								"api",
 								"resenas",
-								"671593c782510b5ef2428c8e"
+								"6715d0e886fdefebfb84a9c6"
 							]
 						}
 					},
@@ -374,12 +386,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/resenas/6715951e82510b5ef2428c93",
+							"raw": "localhost:3000/api/resenas/6715d0e886fdefebfb84a9c6",
 							"host": [
 								"localhost"
 							],
@@ -387,7 +399,7 @@
 							"path": [
 								"api",
 								"resenas",
-								"6715951e82510b5ef2428c93"
+								"6715d0e886fdefebfb84a9c6"
 							]
 						}
 					},
@@ -400,12 +412,21 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/like",
+							"raw": "localhost:3000/api/resenas/6715cd0e22dcf02e06277078/like/6715c8a512e3c25b9b0b2977",
 							"host": [
 								"localhost"
 							],
@@ -413,8 +434,9 @@
 							"path": [
 								"api",
 								"resenas",
-								"6715a36e930cbc3f8327b71a",
-								"like"
+								"6715cd0e22dcf02e06277078",
+								"like",
+								"6715c8a512e3c25b9b0b2977"
 							]
 						}
 					},
@@ -427,12 +449,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1OTNjNzgyNTEwYjVlZjI0MjhjOGUiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3ODg3MCwiZXhwIjoxNzI5NDgyNDcwfQ.3SMkxP7RP1oJUqUcny-qAPI23QG8xESGxYeVHn2Uxy4",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/resenas/6715a36e930cbc3f8327b71a/dislike",
+							"raw": "localhost:3000/api/resenas/6715cd0e22dcf02e06277078/dislike/6715c8a512e3c25b9b0b2977",
 							"host": [
 								"localhost"
 							],
@@ -440,8 +462,9 @@
 							"path": [
 								"api",
 								"resenas",
-								"6715a36e930cbc3f8327b71a",
-								"dislike"
+								"6715cd0e22dcf02e06277078",
+								"dislike",
+								"6715c8a512e3c25b9b0b2977"
 							]
 						}
 					},
@@ -453,7 +476,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:3000/api/resenas/6715949982510b5ef2428c91/comunidad",
+							"raw": "localhost:3000/api/resenas/60d0fe4f5311236168a109cb/comunidad",
 							"host": [
 								"localhost"
 							],
@@ -461,7 +484,7 @@
 							"path": [
 								"api",
 								"resenas",
-								"6715949982510b5ef2428c91",
+								"60d0fe4f5311236168a109cb",
 								"comunidad"
 							]
 						}
@@ -480,13 +503,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"comunidad\": \"66fdf6c42826cfa3e8d7d268\",\r\n    \"usuario\": \"6715a8f570dc18069999d34b\",\r\n    \"rol\": \"Miembro\"\r\n}",
+							"raw": "{\r\n    \"comunidad\": \"6715c85212e3c25b9b0b2968\",\r\n    \"usuario\": \"6715c8a512e3c25b9b0b2977\",\r\n    \"rol\": \"Miembro\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -514,12 +537,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/comunidadUsuarios/query?idComunidad=&idUsuario=&nuevoRol=",
+							"raw": "localhost:3000/api/comunidadUsuarios/query?idComunidad=6715c85212e3c25b9b0b2968&idUsuario=6715c8a512e3c25b9b0b2977&nuevoRol=Administrador",
 							"host": [
 								"localhost"
 							],
@@ -532,15 +555,15 @@
 							"query": [
 								{
 									"key": "idComunidad",
-									"value": ""
+									"value": "6715c85212e3c25b9b0b2968"
 								},
 								{
 									"key": "idUsuario",
-									"value": ""
+									"value": "6715c8a512e3c25b9b0b2977"
 								},
 								{
 									"key": "nuevoRol",
-									"value": ""
+									"value": "Administrador"
 								}
 							]
 						}
@@ -554,12 +577,12 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YThmNTcwZGMxODA2OTk5OWQzNGIiLCJ1c2VybmFtZSI6Im1hcmlvQGdtYWlsLmNvbSIsInJvbGUiOiJhZG1pbiIsImlhdCI6MTcyOTQ3Mjc4MywiZXhwIjoxNzI5NDc2MzgzfQ.8LByFipybpkm18N9IhFe_0LX4QMp6jnvT7xryqkZxhU",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2NzE1YzhhNTEyZTNjMjViOWIwYjI5NzciLCJ1c2VybmFtZSI6Im1hcmlvNUBnbWFpbC5jb20iLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3Mjk0ODA4NzMsImV4cCI6MTcyOTQ4NDQ3M30.C89NX0HvoBNT7U-WozLp3dGqILJGAkyPnBcXUPw3nNM",
 								"type": "text"
 							}
 						],
 						"url": {
-							"raw": "localhost:3000/api/comunidadUsuarios/",
+							"raw": "localhost:3000/api/comunidadUsuarios/6715c85212e3c25b9b0b2968",
 							"host": [
 								"localhost"
 							],
@@ -567,7 +590,7 @@
 							"path": [
 								"api",
 								"comunidadUsuarios",
-								""
+								"6715c85212e3c25b9b0b2968"
 							]
 						}
 					},

@@ -16,6 +16,16 @@ class ComunidadUsuarioDAO {
         }
     }
 
+    async buscarUsuarioEnComunidad(idComunidad, idUsuario){
+        try{
+            const comunidadUsuarioConsultado = await ComunidadUsuarios.findOne({comunidad: idComunidad, usuario: idUsuario});
+            return comunidadUsuarioConsultado;
+        }catch(error){
+            throw error;
+        }
+        
+    }
+
     async cambiarRolUsuario(idComunidad, idUsuario, nuevoRol){
         try{
             const comunidadUsuarioConsultado = await ComunidadUsuarios.findOneAndUpdate(
