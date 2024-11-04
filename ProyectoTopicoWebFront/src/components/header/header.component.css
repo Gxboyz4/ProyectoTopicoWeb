@@ -1,0 +1,76 @@
+/* Fuente general */
+* {
+    font-family: 'Raleway';
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #0e1113;
+    border-bottom: 1px solid #444;
+}
+
+/* Div para el logo y la barra */
+.left-section {
+    display: flex;
+    align-items: center;
+}
+
+/* Logo y nombre del sitio */
+.logo {
+    display: flex;
+    align-items: center;
+    margin-right: 40px; /* Espacio entre logo y barra de búsqueda */
+}
+
+.logo-image {
+    width: 40px; 
+    height: auto;
+    margin-right: 8px;
+}
+
+.site-name {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+/* Div de la barra de búsqueda */
+.search-bar input {
+    width: 300px;
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #555;
+    background-color: #1B1E1C;
+    color: #ffffff;
+}
+
+.search-bar input::placeholder {
+    color: #aaa;
+}
+
+/* Div de info del usuario */
+.user-info {
+    display: flex;
+    align-items: center;
+}
+
+.user-image {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.username {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('../../assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+}
