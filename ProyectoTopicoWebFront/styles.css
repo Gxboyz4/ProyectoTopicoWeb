@@ -1,6 +1,42 @@
-body{
-    background-color: #0e0e0e;
+body {
+    background-color: var(--primary-color);
     font-family: 'Raleway', sans-serif;
     margin: 0;
     padding: 0;
+}
+
+@font-face {
+    font-family: 'Raleway';
+    src: url('/src/assets/fonts/raleway/Raleway-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Raleway-Bold';
+    src: url('/src/assets/fonts/raleway/Raleway-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #0e1113;
+    --secondary-color: #1b1e1c;
+    --background-color: #0e1113;
+    --black-color: #000000;
+    --white-color: #ffffff;
+    --border-color: #ccc;
+    --boton-hover-color: #1e1e1e;
+    --boton-active-color: #424242;
+    --boton-color-blue: #2500bb;
+    --boton-color-blue-hover: #1a00a3;
+    --font-main: 'Raleway', sans-serif;
+    --font-main-bold: 'Raleway-Bold', sans-serif;
+    --font-title: 'Poppins', sans-serif;
+    --text-color: #ffffff;
+    --post-color: #161616;
+}
+
+* {
+    font-family: var(--font-main);
 }
