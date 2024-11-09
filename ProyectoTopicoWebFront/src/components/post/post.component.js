@@ -3,11 +3,12 @@ import { UsuarioService } from '../../services/usuario.service.js';
 import { ComunidadService } from '../../services/comunidad.service.js';
 import { ComentarioService } from '../../services/comentario.service.js';
 import { Post } from '../../models/post.js';
+import { PeliculaService } from '../../services/pelicula.service.js';
 
 export class PostComponent extends HTMLElement {
     constructor() {
         super();
-        
+
         this.comentarioAbierto = false;
         this.menuAbierto = false;
         this.usuarioLikeo = false;
@@ -18,15 +19,19 @@ export class PostComponent extends HTMLElement {
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
         const post = this.#crearObjetoPost();
-        
+
         this.usuario = UsuarioService.getUsuarioById(post.idUsuario);
-        
+
         this.comunidad = ComunidadService.getComunidadById(post.idComunidad);
         this.contadorLikes = post.cantidadLikes;
-
-        this.#addStyles(shadow);
-        this.#render(shadow, post);
-        this.#attachEvents(shadow, post.comentarios);
+        PeliculaService.getPeliculaPorId(post.idPelicula)
+        .then(pelicula => {
+                this.pelicula = pelicula;
+                this.#addStyles(shadow);
+                this.#render(shadow, post);
+                this.#attachEvents(shadow, post.comentarios);
+            }
+        );
     }
 
     #crearObjetoPost() {
@@ -67,7 +72,7 @@ export class PostComponent extends HTMLElement {
                     <div class="content">
                         <h3>${post.calificacion} / 10 | PELICULA</h3>
                         <p class="description">${post.contenido}</p>
-                        <img src="https://picsum.photos/200" alt="imgpublicacion">
+                        <img src=${this.pelicula.Poster} alt="imgpublicacion">
                     </div>
                     
                     <div class="info">
@@ -87,7 +92,7 @@ export class PostComponent extends HTMLElement {
                 </div>
             </div>
         `;
-        
+
     }
 
     #addStyles(shadow) {
@@ -118,7 +123,7 @@ export class PostComponent extends HTMLElement {
     #toggleComentarios(shadow, comentarios) {
         this.comentarioAbierto = !this.comentarioAbierto;
         shadow.querySelector('.commentsSpace').style.display = this.comentarioAbierto ? 'block' : 'none';
-        
+
         this.#showComments(shadow, comentarios);
     }
 

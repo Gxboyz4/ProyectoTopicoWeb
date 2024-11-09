@@ -1,6 +1,6 @@
 
 
-export class HomePage extends HTMLElement {
+export class ComunidadPage extends HTMLElement {
     constructor() {
         super();
     }
@@ -26,8 +26,8 @@ export class HomePage extends HTMLElement {
                         <div style="flex: 2;" class="app-leftbar">
                             <app-leftbar></app-leftbar>
                         </div>
-                        <div style="flex: 6;" class="app-principal">
-                            <app-principal></app-principal>
+                        <div style="flex: 6;" class="app-comunidad">
+                            <p>En Desarrollo</p>
                         </div>
                         <div style="flex: 3;" class="app-rightbar">
                             <app-rightbar></app-rightbar>
