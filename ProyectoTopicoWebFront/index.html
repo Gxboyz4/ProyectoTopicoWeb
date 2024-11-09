@@ -7,7 +7,16 @@
     <script src="https://unpkg.com/page/page.js"></script>
 </head>
 <body>
-    <app-header></app-header>
-    <main id="content"></main>
+        <app-header></app-header>
+        <div class="content">
+            <div style="flex: 6; display: flex;">
+                <div style="flex: 1">
+                    <app-leftbar></app-leftbar>
+                </div>
+                <div style="flex:5">
+                    <main id="content"></main>
+                </div>
+            </div>
+        </div>
 </body>
 </html>

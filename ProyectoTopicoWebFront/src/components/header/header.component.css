@@ -38,7 +38,7 @@
 }
 
 .center-section {
-    margin-right: 15vw;;
+    margin-right: 17vw;
 }
 
 .center-section .search-bar {
@@ -54,7 +54,7 @@
 }
 
 .center-section .search-bar input {
-    width: 250px;
+    width: 500px;
     
     padding: 5px;
     border: none;

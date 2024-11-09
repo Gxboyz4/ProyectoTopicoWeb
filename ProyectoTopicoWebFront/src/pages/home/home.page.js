@@ -1,5 +1,3 @@
-
-
 export class HomePage extends HTMLElement {
     constructor() {
         super();
@@ -22,10 +20,7 @@ export class HomePage extends HTMLElement {
         shadow.innerHTML += `
             <div class="layout">
                 <div class="content" style="display: flex;">
-                    <div style="flex: 11; display: flex;" class="main-content">
-                        <div style="flex: 2;" class="app-leftbar">
-                            <app-leftbar></app-leftbar>
-                        </div>
+                    <div style="flex: 9; display: flex;" class="main-content">
                         <div style="flex: 6;" class="app-principal">
                             <app-principal></app-principal>
                         </div>
