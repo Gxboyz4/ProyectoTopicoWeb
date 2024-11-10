@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
     page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
-    page('*', () => showContent('app-home'));
+    page('/comunidadtopics', () => showContent('app-comunidadtopics'));
+    page('*', () => showContent('app-comunidadtopics'));
     //Inicializar nuestro router
     page();
 });
@@ -30,7 +31,10 @@ window.customElements.define('app-posts', PostsComponent);
 window.customElements.define('app-post', PostComponent);
 window.customElements.define('app-comment', CommentComponent);
 window.customElements.define('app-principal', PrincipalComponent);
+window.customElements.define('app-cardcommunity', CardCommunityComponent);
+window.customElements.define('app-comunity', ComunityComponent);
 
 //pages
 window.customElements.define('app-home', HomePage);
 window.customElements.define('app-comunidad', ComunidadPage);
+window.customElements.define('app-comunidadtopics', ComunidadTopics);
