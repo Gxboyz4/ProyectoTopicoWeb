@@ -1,4 +1,4 @@
-export class ComunidadTopics extends HTMLElement {
+export class CommunityTopics extends HTMLElement {
     constructor() {
         super();
     }
