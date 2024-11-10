@@ -7,6 +7,7 @@ import { CommentComponent } from "./src/components/comment/comment.component.js"
 import { PrincipalComponent } from "./src/components/principal/principal.component.js";
 import { RightbarComponent } from "./src/components/rightbar/rightbar.component.js";
 import { ComunidadPage } from "./src/pages/community/community.page.js";
+import { CardCommunityComponent } from "./src/components/cardcommunity/cardcommunity.component.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
@@ -30,6 +31,7 @@ window.customElements.define('app-posts', PostsComponent);
 window.customElements.define('app-post', PostComponent);
 window.customElements.define('app-comment', CommentComponent);
 window.customElements.define('app-principal', PrincipalComponent);
+window.customElements.define('app-cardcommunity', CardCommunityComponent);
 
 //pages
 window.customElements.define('app-home', HomePage);
