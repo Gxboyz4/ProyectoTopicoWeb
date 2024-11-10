@@ -11,6 +11,9 @@ import { LoginComponent } from "./src/components/login/login.component.js";
 import { LoginPage } from "./src/pages/login/login.page.js";
 import { RegisterComponent } from "./src/components/register/register.component.js";
 import { RegisterPage } from "./src/pages/register/register.page.js";
+import { CardCommunityComponent } from "./src/components/cardcommunity/cardcommunity.component.js";
+import { ComunityComponent } from "./src/components/community/community.component.js";
+import { CommunityTopics } from "./src/pages/communitytopics/communitytopics.page.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
@@ -19,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
     page('*', () => showContent('app-home'));
     //Para entrar aquí tienes que poner en el navegador: http://localhost:5000/login
     page('/login', () => showContent('app-login'));
+    page('/comunidadtopics', () => showContent('app-comunidadtopics'));
+    page('*', () => showContent('app-comunidadtopics'));
     //Inicializar nuestro router
     page();
 });
@@ -38,8 +43,17 @@ window.customElements.define('app-comment', CommentComponent);
 window.customElements.define('app-principal', PrincipalComponent);
 window.customElements.define('app-logincomp', LoginComponent);
 window.customElements.define('app-registercomp', RegisterComponent);
+window.customElements.define('app-comunity', ComunityComponent);
+window.customElements.define('app-cardcommunity', CardCommunityComponent);
+
 //pages
 window.customElements.define('app-home', HomePage);
 window.customElements.define('app-comunidad', ComunidadPage);
 window.customElements.define('app-login', LoginPage);
 window.customElements.define('app-register', RegisterPage);
+
+
+//pages
+window.customElements.define('app-home', HomePage);
+window.customElements.define('app-comunidad', ComunidadPage);
+window.customElements.define('app-comunidadtopics', CommunityTopics);

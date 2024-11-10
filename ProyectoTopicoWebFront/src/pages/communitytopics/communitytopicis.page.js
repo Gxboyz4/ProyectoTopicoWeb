@@ -1,6 +1,4 @@
-
-
-export class ComunidadPage extends HTMLElement {
+export class ComunidadTopics extends HTMLElement {
     constructor() {
         super();
     }
@@ -14,7 +12,7 @@ export class ComunidadPage extends HTMLElement {
     #addStyles(shadow) {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
-        link.setAttribute("href", "../src/pages/home/home.page.css");
+        link.setAttribute("href", "../src/pages/communitytopics/communitytopicis.page.css");
         shadow.appendChild(link);
     }
 
@@ -23,8 +21,14 @@ export class ComunidadPage extends HTMLElement {
             <div class="layout">
                 <div class="content" style="display: flex;">
                     <div style="flex: 11; display: flex;" class="main-content">
+                    
                         <div style="flex: 6;" class="app-comunidad">
-                        <app-comunity></app-comunity>
+                        <h2>Comunidad de ...(proximamente)</h2>
+                        <app-cardcommunity id=1></app-cardcommunity>
+                        <app-cardcommunity id=2></app-cardcommunity>
+                        <app-cardcommunity id=3></app-cardcommunity>
+                        <app-cardcommunity id=4></app-cardcommunity>
+                         
                         </div>
                         <div style="flex: 3;" class="app-rightbar">
                             <app-rightbar></app-rightbar>
