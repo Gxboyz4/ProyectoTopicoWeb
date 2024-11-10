@@ -1,0 +1,177 @@
+/* Contenedor principal del registro */
+.register-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    font-family: var(--font-main);
+}
+
+.register-box {
+    position: relative;  
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Botón de cerrar */
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: var(--white-color);
+    cursor: pointer;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: var(--boton-color-blue);
+}
+
+.logo-image {
+    width: 60px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.register-title {
+    font-family: var(--font-title);
+    color: var(--white-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+.input-wrapper input, .input-wrapper select {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--white-color);
+    width: 100%;
+    padding: 8px;
+}
+
+.input-wrapper input::placeholder {
+    color: #aaa;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--white-color);
+}
+
+.select-avatar {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+.select-avatar option {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.register-button {
+    background-color: var(--boton-color-blue);
+    color: var(--white-color);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.register-button:hover {
+    background-color: var(--boton-color-blue-hover);
+}
+.toggle-password {
+    cursor: pointer;
+    color: var(--text-color);
+    margin-left: 5px;
+    width: 20px;  
+    height: 20px;
+    object-fit: contain; 
+}
+
+/* Estilos de los avatares */
+
+.avatar-title{
+    font-family: var(--font-title);
+    color: var(--white-color);
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+.avatar-selection {
+    text-align: center;
+}
+
+.avatar-options {
+    display: flex;
+    justify-content: space-around;
+    gap: 16px;
+}
+
+.avatar-option img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.avatar-option:hover img {
+    transform: scale(1.1);
+}
+
+.selected img {
+    border: 3px solid var(--boton-color-blue); 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.avatar-selection p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+}
+
+
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .register-box {
+        width: 90%;
+    }
+}
