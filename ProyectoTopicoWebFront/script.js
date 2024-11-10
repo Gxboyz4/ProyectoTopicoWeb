@@ -7,6 +7,7 @@ import { CommentComponent } from "./src/components/comment/comment.component.js"
 import { PrincipalComponent } from "./src/components/principal/principal.component.js";
 import { RightbarComponent } from "./src/components/rightbar/rightbar.component.js";
 import { ComunidadPage } from "./src/pages/community/community.page.js";
+import { CardCommunityComponent } from "./src/components/cardcommunity/cardcommunity.component.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
