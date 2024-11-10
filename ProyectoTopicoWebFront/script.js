@@ -20,8 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
     page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
     page('*', () => showContent('app-home'));
-    //Para entrar aquí tienes que poner en el navegador: http://localhost:5000/login
     page('/login', () => showContent('app-login'));
+    page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
     page('*', () => showContent('app-comunidadtopics'));
     //Inicializar nuestro router
