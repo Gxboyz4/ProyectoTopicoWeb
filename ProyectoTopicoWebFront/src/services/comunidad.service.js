@@ -1,8 +1,10 @@
 import { comunidadData } from '../data/comunidadData.js';
+const API_URL = 'http://localhost:3000/';
+const URL_COMUNIDADES = 'api/comunidades/';
+
 export class ComunidadService {
-    #API_URL = 'http://localhost:3000/';
-    #URL_COMUNIDADES = 'api/comunidades/'; 
-    /*Los primeros métodos son para datos de prueba */
+
+    /*Los primeros métodos son para datos de prueba*/
     static getComunidades(){
         
         // HACER PETICION A LA API
@@ -23,9 +25,10 @@ export class ComunidadService {
         return comunidadData.find(comunidad => comunidad.id === Number(comunidadId));
     }
 
-    /*Métodos del servicio */
+
+    /*Métodos del servicio*/
     static crearComunidad(comunidad, token) {
-        return fetch(`${this.API_URL}${this.URL_COMUNIDADES}`, {
+        return fetch(`${API_URL}${URL_COMUNIDADES}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -37,14 +40,14 @@ export class ComunidadService {
     }
 
     static obtenerComunidadPorId(comunidadId) {
-        return fetch(`${this.API_URL}${this.URL_COMUNIDADES}${comunidadId}`, {
+        return fetch(`${API_URL}${URL_COMUNIDADES}${comunidadId}`, {
             method: 'GET'
         }).then(response => response.json())
           .then(data => data);
     }
 
     static obtenerComunidadesFiltro(filtro) {
-        return fetch(`${this.API_URL}${this.URL_COMUNIDADES}query?filtro=${filtro}`, {
+        return fetch(`${API_URL}${URL_COMUNIDADES}query?filtro=${filtro}`, {
             method: 'GET'
         }).then(response => response.json())
           .then(data => data);
