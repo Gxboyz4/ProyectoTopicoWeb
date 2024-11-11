@@ -18,12 +18,13 @@ import { PostformComponent } from "./src/components/postform/postform.component.
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
-    page('/', () => showContent('app-login'));
+    page('/', () => showContent('app-comunidad'));
+    //page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
     page('/login', () => showContent('app-login'));
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
-    page('*', () => showContent('app-home'));
+    page('*', () => showContent('app-login'));
     //Inicializar nuestro router
     page();
 });

@@ -32,7 +32,7 @@ export class LoginComponent extends HTMLElement {
                         </div>
                     </div>
                     
-                    <button class="login-button">Entrar</button>
+                    <button class="login-button" id="login-button">Entrar</button>
                 </div>
             </div>
         `;
@@ -48,7 +48,7 @@ export class LoginComponent extends HTMLElement {
     #addEventListeners(shadow) {
         const passwordInput = shadow.querySelector(".password-input");
         const togglePassword = shadow.querySelector(".toggle-password");
-
+        
         togglePassword.addEventListener("click", () => {
             this.showPassword = !this.showPassword;
             passwordInput.type = this.showPassword ? "text" : "password";
@@ -58,8 +58,14 @@ export class LoginComponent extends HTMLElement {
         });
 
         const closeButton = shadow.querySelector("#close-login");
+
         closeButton.addEventListener("click", () => {
         window.location.href = '/'; //URL
-    });
+        });
+
+        const loginButton = shadow.querySelector("#login-button");
+        loginButton.addEventListener("click", () => {
+            window.location.href = '/'; 
+            });
     }
 }
