@@ -106,6 +106,13 @@ export class PostComponent extends HTMLElement {
         shadow.querySelector('.likeItem').addEventListener('click', () => this.#toggleLike(shadow));
         shadow.querySelector('.menuIcon').addEventListener('click', () => this.#toggleMenu(shadow));
         shadow.querySelector('.commentItem').addEventListener('click', () => this.#toggleComentarios(shadow, comentarios));
+        const groupName = shadow.querySelector('.groupName');
+        groupName.addEventListener('click', (event) => {
+            event.preventDefault();
+            page(`/comunidad`);
+
+            //page(`/comunidades/${this.comunidad.id}`);
+        });
     }
 
     #toggleLike(shadow) {

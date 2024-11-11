@@ -17,23 +17,32 @@ import { CommunityTopics } from "./src/pages/communitytopics/communitytopics.pag
 import { PostformComponent } from "./src/components/postform/postform.component.js";
 import { SettingsComponent } from "./src/components/settings/settings.component.js";
 import { SettingsPage } from "./src/pages/settings/settings.page.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
-    page('/', () => showContent('app-comunidad'));
+    page('/', () => showContent('app-home'));
     //page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
     page('/login', () => showContent('app-login'));
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
-    page('*', () => showContent('app-login'));
     page('/settings', () => showContent('app-settings'));
+    page('/genero/:genero', (context) => {
+        const genero = context.params.genero;
+        showContent(`app-comunidadtopics genero="${genero}"`);
+    });
+    page('*', () => {
+        showContent('app-login');
+    });
     //Inicializar nuestro router
     page();
 });
 
 function showContent(contentId){
     const contentContainer = document.getElementById('content');
+    contentContainer.innerHTML = '';
     contentContainer.innerHTML = `<${contentId}></${contentId}>`;
+    window.scrollTo(0, 0);
 }
 
 //components

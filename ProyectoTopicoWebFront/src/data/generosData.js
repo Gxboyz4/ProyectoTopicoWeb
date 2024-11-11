@@ -4,15 +4,15 @@ export const generosData = [
     "Aventura",
     "Animación",
     "Biografía",
+    "Ciencia Ficción",
     "Comedia",
     "Crimen",
     "Documental",
     "Drama",
     "Fantasía",
     "Historia",
-    "Horror/Terror",
-    "Ciencia Ficción",
+    "Terror",
     "Romance",
-    "Suspenso/Thriller",
+    "Suspenso",
     "Western"
 ];

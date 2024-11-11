@@ -53,7 +53,10 @@ export class ComunidadService {
           .then(data => data);
     }
 
-
+    static getComunidadesByGenero(genero){
+        // HACER PETICION A LA API
+        return comunidadData.filter(comunidad => comunidad.genero === genero);
+    }
 
 
 

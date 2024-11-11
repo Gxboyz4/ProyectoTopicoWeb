@@ -1,9 +1,6 @@
 
 import { generosData } from '../../data/generosData.js';
 export class LeftbarComponent extends HTMLElement {
-    
-    
-    
     constructor() {
         super();
     }
@@ -57,7 +54,7 @@ export class LeftbarComponent extends HTMLElement {
 
     #renderGeneros() {
         return generosData.map(genero => `
-            <div class="item">
+            <div class="item genero-item" data-genero="${genero}">
                 <span>${genero}</span>
             </div>
         `).join('');
@@ -66,36 +63,34 @@ export class LeftbarComponent extends HTMLElement {
 
     //CAMBIAR ESTO CUANDO YA MANEJEMOS LAS RUTAS
     #attachEvents(shadow) {
-        const popularItem = shadow.querySelector("#popularItem");
-        const popularIcon = shadow.querySelector("#popularIcon");
+
+        const generoItems = shadow.querySelectorAll(".genero-item");
+        generoItems.forEach(item => {
+            item.addEventListener("click", () => {
+                const genero = item.getAttribute("data-genero");
+                item.classList.add("active");
+                this.#navigateToGenero(genero);
+            });
+        });
 
         const homeItem = shadow.querySelector("#homeItem");
-        homeItem.classList.add('active')
-        const homeIcon = shadow.querySelector("#homeIcon");
-        homeIcon.src = "/src/assets/icons/HomeIconSelected.svg";
+        homeItem.addEventListener("click", () => {
+            homeItem.classList.add("active");
+            page("/");
+        });
 
-        this.#addClickEvent(popularItem, popularIcon, "/src/assets/icons/PopularIconSelected.svg");
-        this.#addClickEvent(homeItem, homeIcon, "/src/assets/icons/HomeIconSelected.svg");
-    }
-
-    //CAMBIAR ESTO CUANDO YA MANEJEMOS LAS RUTAS
-    #addClickEvent(item, icon, selectedIconSrc) {
-        item.addEventListener("click", () => {
-            this.#resetItems();
-            item.classList.add("active");
-            icon.src = selectedIconSrc;
+        const popularItem = shadow.querySelector("#popularItem");
+        popularItem.addEventListener("click", () => {
+            popularItem.classList.add("active");
+            page("/");
         });
     }
 
-    //CAMBIAR ESTO CUANDO YA MANEJEMOS LAS RUTAS
-    #resetItems() {
-        const allItems = this.shadowRoot.querySelectorAll(".item");
-        allItems.forEach(item => {
-            item.classList.remove("active");
-        });
 
-        this.shadowRoot.querySelector("#homeIcon").src = "/src/assets/icons/HomeIcon.svg";
-        this.shadowRoot.querySelector("#popularIcon").src = "/src/assets/icons/PopularIcon.svg";
+    #navigateToGenero(genero) {
+        const generoRuta = `/genero/${encodeURIComponent(genero.toLowerCase())}`;
+        page(generoRuta);
     }
+
 }
 

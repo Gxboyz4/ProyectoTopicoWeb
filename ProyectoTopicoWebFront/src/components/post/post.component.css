@@ -42,6 +42,13 @@
   .post .user .userInfo .details .groupName {
     font-weight: 500;
   }
+
+  .post .user .userInfo .details .groupName:hover {
+    font-weight: 500;
+    color: var(--boton-color-blue);
+    cursor: pointer;
+    
+  }
   
   .post .user .userInfo .details .userName {
     font-size: 12px;

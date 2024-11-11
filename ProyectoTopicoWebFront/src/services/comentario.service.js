@@ -19,4 +19,6 @@ export class ComentarioService {
         const post = postsData.find(post => post.id === postId);
         return post ? post.comentarios : [];
     }
+
+    
 }

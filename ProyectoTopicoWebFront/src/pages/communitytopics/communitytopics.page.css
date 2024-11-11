@@ -1,10 +1,4 @@
-.layout .main-content .app-comunidad{
-    justify-content: center;
-    
-}
-.layout .main-content {
-    gap: calc(60px + (100vw - 1280px) / 10);
-}
+
 
 .app-comunidad{
     flex-direction: column;

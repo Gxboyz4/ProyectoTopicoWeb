@@ -107,13 +107,15 @@ export class RegisterComponent extends HTMLElement {
 
         //Botón de cerrar
         const closeButton = shadow.querySelector("#close-register");
-        closeButton.addEventListener("click", () => {
-            window.location.href = '/login';
+        closeButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/login");
         });
         //Botón de registrar
         const registerButton = shadow.querySelector(".register-button");
-        registerButton.addEventListener("click", () => {
-            window.location.href = '/login';
+        registerButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/login");
         });
     }
 

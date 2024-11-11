@@ -1,7 +1,7 @@
 export class LoginComponent extends HTMLElement {
     constructor() {
         super();
-        this.showPassword = false; 
+        this.showPassword = false;
     }
 
     connectedCallback() {
@@ -50,24 +50,26 @@ export class LoginComponent extends HTMLElement {
     #addEventListeners(shadow) {
         const passwordInput = shadow.querySelector(".password-input");
         const togglePassword = shadow.querySelector(".toggle-password");
-        
+
         togglePassword.addEventListener("click", () => {
             this.showPassword = !this.showPassword;
             passwordInput.type = this.showPassword ? "text" : "password";
-            togglePassword.src = this.showPassword 
+            togglePassword.src = this.showPassword
                 ? "/src/assets/icons/HidePasswordIcon.svg"
                 : "/src/assets/icons/ShowPassWordIcon.svg";
         });
 
         const closeButton = shadow.querySelector("#close-login");
-        closeButton.addEventListener("click", () => {
-        window.location.href = '/'; //URL
+        closeButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/");
         });
 
 
         const loginButton = shadow.querySelector("#login-button");
-        loginButton.addEventListener("click", () => {
-            window.location.href = '/'; 
-            });
+        loginButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/");
+        });
     }
 }

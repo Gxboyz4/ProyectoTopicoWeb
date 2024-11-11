@@ -50,16 +50,28 @@ export class HeaderComponent extends HTMLElement {
     #addEventListeners(shadow) {
         const userInfo = shadow.querySelector('.user-info');
         const dropdownMenu = shadow.querySelector('.dropdown-menu');
-
+        const settingsLink = shadow.querySelector('a[href="/settings"]');
+        const loginLink = shadow.querySelector('a[href="/login"]');
+    
         userInfo.addEventListener('click', (event) => {
             event.stopPropagation();
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
         });
-
+    
         document.addEventListener('click', (event) => {
             if (!shadow.contains(event.target)) {
                 dropdownMenu.style.display = 'none';
             }
+        });
+    
+        settingsLink.addEventListener('click', (event) => {
+            event.preventDefault();  
+            page('/settings');  
+        });
+    
+        loginLink.addEventListener('click', (event) => {
+            event.preventDefault();  
+            page('/login');  
         });
     }
 }

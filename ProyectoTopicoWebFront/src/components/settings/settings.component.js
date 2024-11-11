@@ -1,3 +1,5 @@
+
+
 export class SettingsComponent extends HTMLElement {
     constructor() {
         super();
@@ -104,15 +106,16 @@ export class SettingsComponent extends HTMLElement {
 
         // Botón de cerrar
         const closeButton = shadow.querySelector("#close-settings");
-        closeButton.addEventListener("click", () => {
-            window.location.href = '/';
+        closeButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/");
         });
 
         // Botón de guardar cambios
         const settingsButton = shadow.querySelector(".settings-button");
-        settingsButton.addEventListener("click", () => {
-            //Aquí podríamos poner un mensaje en pantalla para confirmar que los cambios se han guardado
-            console.log("Cambios guardados");
+        settingsButton.addEventListener("click", (event) => {
+            event.preventDefault();
+            page("/");
         });
     }
 }

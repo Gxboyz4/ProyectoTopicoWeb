@@ -5,6 +5,7 @@ export class CommunityTopics extends HTMLElement {
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.genero = this.getAttribute("genero");
         this.#addStyles(shadow);
         this.#render(shadow);
     }
@@ -12,7 +13,7 @@ export class CommunityTopics extends HTMLElement {
     #addStyles(shadow) {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
-        link.setAttribute("href", "../src/pages/communitytopics/communitytopicis.page.css");
+        link.setAttribute("href", "../src/pages/communitytopics/communitytopics.page.css");
         shadow.appendChild(link);
     }
 
@@ -27,11 +28,11 @@ export class CommunityTopics extends HTMLElement {
                         </div>
                     
                         <div style="flex: 6;" class="app-comunidad">
-                        <h2>Comunidad de ...(proximamente)</h2>
-                        <app-cardcommunity id=1></app-cardcommunity>
-                        <app-cardcommunity id=2></app-cardcommunity>
-                        <app-cardcommunity id=3></app-cardcommunity>
-                        <app-cardcommunity id=4></app-cardcommunity>
+                        <h2>Comunidades sobre ${this.genero}</h2>
+                            <app-cardcommunity id=1></app-cardcommunity>
+                            <app-cardcommunity id=2></app-cardcommunity>
+                            <app-cardcommunity id=3></app-cardcommunity>
+                            <app-cardcommunity id=4></app-cardcommunity>
                          
                         </div>
                         <div style="flex: 3;" class="app-rightbar">
