@@ -1,0 +1,13 @@
+.settings-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.settings-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1;
+    background-color: var(--background-color);
+}

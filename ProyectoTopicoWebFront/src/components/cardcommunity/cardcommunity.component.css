@@ -1,13 +1,10 @@
 .infocommunity {
-    border: 1px solid var(--border-color);
-    border-radius: 10px;
-    width: 80%;
-    background-color: var(--post-color);
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
     color: #dbeeff;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
 }
-
 .infocommunity .container {
     padding: 20px;
 }

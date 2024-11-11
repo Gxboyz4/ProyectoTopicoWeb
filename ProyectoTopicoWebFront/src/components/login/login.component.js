@@ -31,7 +31,9 @@ export class LoginComponent extends HTMLElement {
                             <img src="/src/assets/icons/ShowPassWordIcon.svg" alt="Mostrar contraseña" class="toggle-password" />
                         </div>
                     </div>
-                    
+                    <div class="register-link">
+                        <a href="/register">¿No tienes cuenta? Regístrate</a>
+                    </div>
                     <button class="login-button" id="login-button">Entrar</button>
                 </div>
             </div>
@@ -58,10 +60,10 @@ export class LoginComponent extends HTMLElement {
         });
 
         const closeButton = shadow.querySelector("#close-login");
-
         closeButton.addEventListener("click", () => {
         window.location.href = '/'; //URL
         });
+
 
         const loginButton = shadow.querySelector("#login-button");
         loginButton.addEventListener("click", () => {
