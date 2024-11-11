@@ -15,6 +15,10 @@ const comunidadSchema = new mongoose.Schema({
     etiquetas: {
         type: [String],
         required: true
+    },
+    imagen: {
+        type: String,
+        required: true
     }
 });
 
