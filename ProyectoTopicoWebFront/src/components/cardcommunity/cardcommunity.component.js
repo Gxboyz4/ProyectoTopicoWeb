@@ -23,6 +23,7 @@ export class CardCommunityComponent extends HTMLElement {
                             <img src="https://picsum.photos/200" alt="imagen-comunidad">
                             <div class="details">
                                 <span class="groupName">${this.comunidad.nombre} </span>
+                                <span class="groupName">${this.comunidad.descripcion} </span>
                             </div>
                         </div>
                         <div class="buttons">

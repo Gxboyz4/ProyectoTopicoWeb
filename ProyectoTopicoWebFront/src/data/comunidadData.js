@@ -4,7 +4,7 @@ export const comunidadData = [
     {
         id: 1,
         nombre: 'DisneyWorld',
-        descripcion: 'Descripcion de la comunidad 1',
+        descripcion: 'Esta comunidad es para fanaticos de Disney que quieren compartir sus opiniones con demas personas e interactuar con ellos',
         fechaCreacion: '2021-01-01',
         etiquetas: ['Acción', 'Aventura']
     },
@@ -12,7 +12,7 @@ export const comunidadData = [
     {
         id: 2,
         nombre: 'Comunidad 2',
-        descripcion: 'Descripcion de la comunidad 2',
+        descripcion: 'Descripcion de la comunidad 2 ',
         fechaCreacion: '2021-02-02',
         etiquetas: ['Comedia', 'Drama']
     },

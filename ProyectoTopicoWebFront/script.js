@@ -17,6 +17,7 @@ import { CommunityTopics } from "./src/pages/communitytopics/communitytopics.pag
 import { PostformComponent } from "./src/components/postform/postform.component.js";
 import { SettingsComponent } from "./src/components/settings/settings.component.js";
 import { SettingsPage } from "./src/pages/settings/settings.page.js";
+import { ModalCommunityComponent } from "./src/components/modalcommunity/modalcommunity.component.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
@@ -59,6 +60,7 @@ window.customElements.define('app-comunity', ComunityComponent);
 window.customElements.define('app-cardcommunity', CardCommunityComponent);
 window.customElements.define('app-postform', PostformComponent);
 window.customElements.define('app-settingscomp', SettingsComponent);
+window.customElements.define('app-modalcommunity', ModalCommunityComponent);
 
 
 //pages

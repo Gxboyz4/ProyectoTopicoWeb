@@ -21,6 +21,7 @@
 .infocommunity .community .communityInfo {
     display: flex;
     gap: 20px;
+    width: 80%;
 }
 
 .infocommunity .community .communityInfo img {

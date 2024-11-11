@@ -41,6 +41,8 @@ export class HeaderComponent extends HTMLElement {
                     </div>
                 </div>
             </header>
+
+            <app-modalcommunity></app-modalcommunity>
         `;
     }
 
@@ -71,7 +73,14 @@ export class HeaderComponent extends HTMLElement {
         const dropdownMenu = shadow.querySelector('.dropdown-menu');
         const settingsLink = shadow.querySelector('a[href="/settings"]');
         const loginLink = shadow.querySelector('a[href="/login"]');
-    
+        
+        const crearComunidad = shadow.querySelector('.crear-comunidad');
+
+        crearComunidad.addEventListener('click', () => {
+            const modal = shadow.querySelector('app-modalcommunity');
+            modal.dispatchEvent(new CustomEvent('open-modal'));
+        });
+
         userInfo.addEventListener('click', (event) => {
             event.stopPropagation();
             dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
