@@ -21,6 +21,7 @@ export class LoginPage extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/pages/login/login.page.css");
+        
         shadow.appendChild(link);
     }
 }

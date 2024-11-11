@@ -15,7 +15,7 @@ export class PostformComponent extends HTMLElement {
             <div class="postform">
                 <div class="container">
                     <div class="post">
-                        <h3>Comparte tu crítica</h3>
+                        <h3 class="titulo">Comparte tu crítica</h3>
                         <div class="critica">
                             <textarea id="critica" placeholder="Escribe tu crítica aquí"></textarea>
                         </div>
@@ -23,7 +23,7 @@ export class PostformComponent extends HTMLElement {
                             <input type="text" id="pelicula" placeholder="Añadir película">
                         </div>
                         <div class="publicar">
-                            <img src="src/assets/icons/LikeIcon.svg" alt="icono-calificacion">
+                            <img src="src/assets/icons/EstrellaIcon.svg" alt="icono-calificacion">
                             <div class="details">
                                 <label for="calificacion">Califica la película</label>
                                 <input type="number" id="calificacion" name="calificacion" min="0" max="10" placeholder="0-10">

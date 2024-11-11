@@ -1,3 +1,4 @@
+
 export class SettingsPage extends HTMLElement {
     constructor() {
         super();
@@ -24,6 +25,7 @@ export class SettingsPage extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/pages/settings/settings.page.css");
+
         shadow.appendChild(link);
     }
 }

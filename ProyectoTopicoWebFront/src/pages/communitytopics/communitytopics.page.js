@@ -14,6 +14,7 @@ export class CommunityTopics extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/pages/communitytopics/communitytopics.page.css");
+        
         shadow.appendChild(link);
     }
 

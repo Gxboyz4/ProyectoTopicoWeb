@@ -15,6 +15,7 @@ export class ComunidadPage extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/pages/home/home.page.css");
+        
         shadow.appendChild(link);
     }
 

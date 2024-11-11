@@ -67,6 +67,41 @@
     color: #aaa;
 }
 
+.right-section {
+    display: flex;
+    align-items: center;
+    gap:20px
+}
+
+.right-section .crear-comunidad{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-top: 7px;
+    padding-bottom: 7px;
+    padding-left: 19px;
+    padding-right: 19px;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+}
+
+.right-section .crear-comunidad:hover {
+    background-color: #262626;
+    cursor: pointer;
+}
+
+.right-section .crear-comunidad img {
+    width: 25px;
+    height: 25px;
+    margin-right: 8px;
+}
+
+.right-section .crear-comunidad span {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
 .right-section .user-info {
     display: flex;
     align-items: center;

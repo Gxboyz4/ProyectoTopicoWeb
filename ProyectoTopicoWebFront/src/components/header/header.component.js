@@ -26,6 +26,11 @@ export class HeaderComponent extends HTMLElement {
                     </div>
                 </div>
                 <div class="right-section">
+                    <div class="crear-comunidad">
+                        <img src="/src/assets/icons/CrearIcon.svg" alt="communityicon">
+                        <span>Crear comunidad</span>
+                    </div>
+                    
                     <div class="user-info">
                         <img src="https://picsum.photos/200" alt="Usuario" class="user-image" />
                         <span class="username">???</span>
@@ -43,6 +48,7 @@ export class HeaderComponent extends HTMLElement {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/components/header/header.component.css");
+        
         shadow.appendChild(link);
     }
 
