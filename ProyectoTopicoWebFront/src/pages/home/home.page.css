@@ -4,11 +4,17 @@
     
 }
 
+.layout .main-content {
+    gap: calc(60px + (100vw - 1280px) / 10);
+}
+
 @media (max-width: 1280px) {
     .layout .main-content {
         gap: 0px;
     }
-
+    .layout .content .app-leftbar {
+        display: none;
+    }
     .layout .content .app-rightbar {
         display: none;
     }
@@ -21,16 +27,13 @@
     .layout .main-content {
         gap: 0px;
     }
+    .layout .content .app-leftbar {
+        display: none;
+    }
     .layout .content .app-rightbar {
         display: none;
     }
     .layout .content .app-principal {
         flex: 1; 
-    }
-    .content app-leftbar {
-        display: none;
-    }
-    .content app-principal {
-        flex: 1;
     }
 }

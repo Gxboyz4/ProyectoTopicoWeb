@@ -11,7 +11,9 @@
     .layout .main-content {
         gap: 0px;
     }
-
+    .layout .content .app-leftbar {
+        display: none;
+    }
     .layout .content .app-rightbar {
         display: none;
     }

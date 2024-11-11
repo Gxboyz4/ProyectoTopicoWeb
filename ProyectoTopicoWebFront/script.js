@@ -14,16 +14,16 @@ import { RegisterPage } from "./src/pages/register/register.page.js";
 import { CardCommunityComponent } from "./src/components/cardcommunity/cardcommunity.component.js";
 import { ComunityComponent } from "./src/components/community/community.component.js";
 import { CommunityTopics } from "./src/pages/communitytopics/communitytopics.page.js";
+import { PostformComponent } from "./src/components/postform/postform.component.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
-    page('/', () => showContent('app-home'));
+    page('/', () => showContent('app-login'));
     page('/comunidad', () => showContent('app-comunidad'));
-    page('*', () => showContent('app-home'));
     page('/login', () => showContent('app-login'));
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
-    page('*', () => showContent('app-comunidadtopics'));
+    page('*', () => showContent('app-home'));
     //Inicializar nuestro router
     page();
 });
@@ -45,15 +45,11 @@ window.customElements.define('app-logincomp', LoginComponent);
 window.customElements.define('app-registercomp', RegisterComponent);
 window.customElements.define('app-comunity', ComunityComponent);
 window.customElements.define('app-cardcommunity', CardCommunityComponent);
+window.customElements.define('app-postform', PostformComponent);
 
 //pages
 window.customElements.define('app-home', HomePage);
 window.customElements.define('app-comunidad', ComunidadPage);
 window.customElements.define('app-login', LoginPage);
 window.customElements.define('app-register', RegisterPage);
-
-
-//pages
-window.customElements.define('app-home', HomePage);
-window.customElements.define('app-comunidad', ComunidadPage);
 window.customElements.define('app-comunidadtopics', CommunityTopics);

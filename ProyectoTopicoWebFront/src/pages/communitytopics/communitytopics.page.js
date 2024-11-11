@@ -19,8 +19,12 @@ export class CommunityTopics extends HTMLElement {
     #render(shadow) {
         shadow.innerHTML += `
             <div class="layout">
+                <app-header></app-header>
                 <div class="content" style="display: flex;">
-                    <div style="flex: 11; display: flex;" class="main-content">
+                     <div style="flex: 11; display: flex;" class="main-content">
+                        <div style="flex: 2;" class="app-leftbar">
+                            <app-leftbar></app-leftbar>
+                        </div>
                     
                         <div style="flex: 6;" class="app-comunidad">
                         <h2>Comunidad de ...(proximamente)</h2>

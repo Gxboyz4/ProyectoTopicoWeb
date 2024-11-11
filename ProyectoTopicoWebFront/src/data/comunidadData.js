@@ -3,7 +3,7 @@
 export const comunidadData = [
     {
         id: 1,
-        nombre: 'Comunidad 1',
+        nombre: 'DisneyWorld',
         descripcion: 'Descripcion de la comunidad 1',
         fechaCreacion: '2021-01-01',
         etiquetas: ['Acción', 'Aventura']

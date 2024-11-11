@@ -55,7 +55,7 @@ export class PostComponent extends HTMLElement {
                         <div class="userInfo">
                             <img src="${this.usuario.avatar}" alt="imagen-usuario">
                             <div class="details">
-                                <span class="groupName">${this.comunidad.nombre} ° ${post.fechaCreacion} </span>
+                                <span class="groupName">${this.comunidad.nombre} ° </span>
                                 <span class="userName">${this.usuario.nombre}</span>
                             </div>
                         </div>
