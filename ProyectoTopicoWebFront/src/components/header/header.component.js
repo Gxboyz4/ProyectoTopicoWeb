@@ -45,9 +45,22 @@ export class HeaderComponent extends HTMLElement {
     }
 
     #addStyles(shadow) {
+        // Estilo por defecto mientras se carga el CSS
+        const style = document.createElement("style");
+        style.textContent = `
+            .header {
+                display: none; /* Ocultar la cabecera hasta que se cargue el CSS */
+            }
+        `;
+        shadow.appendChild(style);
+    
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/components/header/header.component.css");
+        
+        link.onload = () => {
+            shadow.querySelector('.header').style.display = 'block'; // Mostrar la cabecera cuando se cargue el CSS
+        };
         
         shadow.appendChild(link);
     }
