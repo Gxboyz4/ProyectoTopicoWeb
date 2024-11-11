@@ -1,4 +1,3 @@
-
 export class HeaderComponent extends HTMLElement {
     constructor() {
         super();
@@ -8,6 +7,7 @@ export class HeaderComponent extends HTMLElement {
         const shadow = this.attachShadow({ mode: 'open' });
         this.#addStyles(shadow);
         this.#render(shadow);
+        this.#addEventListeners(shadow);
     }
 
     #render(shadow) {
@@ -29,9 +29,12 @@ export class HeaderComponent extends HTMLElement {
                     <div class="user-info">
                         <img src="https://picsum.photos/200" alt="Usuario" class="user-image" />
                         <span class="username">???</span>
+                        <div class="dropdown-menu">
+                            <a href="/settings">Configuración</a>
+                            <a href="/login">Salir</a>
+                        </div>
                     </div>
                 </div>
-                
             </header>
         `;
     }
@@ -41,5 +44,22 @@ export class HeaderComponent extends HTMLElement {
         link.setAttribute("rel", "stylesheet");
         link.setAttribute("href", "../src/components/header/header.component.css");
         shadow.appendChild(link);
+    }
+
+    
+    #addEventListeners(shadow) {
+        const userInfo = shadow.querySelector('.user-info');
+        const dropdownMenu = shadow.querySelector('.dropdown-menu');
+
+        userInfo.addEventListener('click', (event) => {
+            event.stopPropagation();
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!shadow.contains(event.target)) {
+                dropdownMenu.style.display = 'none';
+            }
+        });
     }
 }
