@@ -2,7 +2,7 @@
 
 import {usuariosData} from '../data/usuarioData.js';
 
-const API_URL = 'http://localhost:3000/';
+const API_URL = 'http://localhost:3000/api/usuarios';
 
 export class UsuarioService {
     static getUsuarios(){
@@ -20,7 +20,7 @@ export class UsuarioService {
     }
 
     static registrarUsuario(usuario){
-        return fetch(`${API_URL}/api/usuarios`, {
+        return fetch(`${API_URL}`, {
             method: 'POST',
             body: JSON.stringify(usuario),
             headers: {
@@ -31,7 +31,7 @@ export class UsuarioService {
     }
 
     static iniciarSesion(usuario){
-        return fetch(`${API_URL}/api/usuarios/iniciarSesion`, {
+        return fetch(`${API_URL}/iniciarSesion`, {
             method: 'POST',
             body: JSON.stringify(usuario),
             headers: {
@@ -41,11 +41,11 @@ export class UsuarioService {
         .then(data => data);
     }
 
-    static getLikes(usuarioId, token){
-        return fetch(`${API_URL}/api/usuarios/${usuarioId}`, {
+    static getLikes(idUsuario, token){
+        return fetch(`${API_URL}/${idUsuario}`, {
             method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `${token}`
             }
         }).then(response => response.json())
         .then(data => data);
