@@ -1,0 +1,96 @@
+
+.leftBar {
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow-y: scroll; 
+    background-color: var(--background-color);
+    color: rgb(216, 255, 250); 
+    border-right: 1px solid var(--secondary-color); 
+  }
+  
+  
+  .leftBar::-webkit-scrollbar {
+    display: none; 
+  }
+  
+  
+  .leftBar .container {
+    padding: 20px; 
+  }
+  
+  
+  .leftBar .container hr {
+    margin: 20px 0;
+    border: none;
+    height: 0.5px;
+    background-color: #444; 
+  }
+  
+  
+  .leftBar .container .menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; 
+  }
+  
+  
+  .leftBar .container .menu span {
+    font-size: 12px; 
+  }
+  
+  
+  .leftBar .container .menu .user {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+  }
+  
+  
+  .leftBar .container .menu .user img {
+    width: 30px; 
+    height: 30px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+  }
+  
+  
+  .leftBar .container .menu .user span {
+    font-size: 14px; 
+  }
+  
+  
+  .leftBar .container .menu .item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 8px; 
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+
+.leftBar .container .menu .item:hover{
+    background-color: var(--boton-hover-color); 
+    color: var(--text-color); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+.leftBar .container .menu .item.active { 
+    background-color: var(--boton-active-color); 
+    color: var(--text-color); 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3); 
+}
+
+  
+  .leftBar .container .menu .item img {
+    height: 20px;
+    width: 20px;
+  }
+  
+  
+  .leftBar .container .menu .item span {
+    font-size: 14px; 
+  }
+  

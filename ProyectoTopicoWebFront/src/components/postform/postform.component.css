@@ -1,0 +1,124 @@
+.postform {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.postform .container {
+
+}
+
+
+.postform .post {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    width: 89%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+}
+
+.postform .post h3 {
+    font-weight: 500;
+    font-size: 16px;
+    margin: 0;
+}
+
+.postform .post .publicar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.postform .post .publicar img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.postform .post .publicar .details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.postform .post .publicar .details label {
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.postform .post .publicar .details input[type="number"] {
+    width: 60px;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    text-align: center;
+}
+
+.postform .post .publicar .details button {
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background-color: var(--boton-color-blue);
+    color: var(--text-color);
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+.postform .post .publicar .details button:hover {
+    background-color: var(--boton-color-blue-hover);
+}
+
+.postform .post .publicar .details button:active {
+    background-color: var(--boton-active-color);
+}
+
+.postform .pelicula,
+.postform .critica {
+    width: 100%;
+}
+
+.postform .pelicula input[type="number"],
+.postform .pelicula input[type="text"],
+.postform .critica textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 16px;
+    resize: none;
+    box-sizing: border-box;
+    margin-top: 10px;
+}
+
+.postform .critica textarea {
+    height: 80px;
+}
+
+@media (max-width: 768px) {
+    .postform {
+        border: none;
+    }
+}
+
+.postform input[type="number"],
+.postform input[type="text"],
+.postform textarea,
+.postform label {
+    font-size: 16px;
+    color: var(--text-color);
+}
+
+.postform h3 {
+    font-size: 16px;
+    color: var(--text-color);
+}

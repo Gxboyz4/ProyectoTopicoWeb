@@ -1,0 +1,113 @@
+.infocommunity {
+    border-bottom: 1px solid var(--border-color);
+    width: 100%;
+    color: #dbeeff;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+.infocommunity .container {
+    padding: 20px;
+}
+
+.infocommunity .community {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 89%;
+    margin: 0 auto;
+}
+
+.infocommunity .community .communityInfo {
+    display: flex;
+    gap: 20px;
+    width: 80%;
+}
+
+.infocommunity .community .communityInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.infocommunity .community .communityInfo .details {
+    display: flex;
+    flex-direction: column;
+}
+
+.infocommunity .community .communityInfo .details .groupName {
+    font-weight: 500;
+}
+
+.infocommunity .community .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infocommunity .community img[alt="Menu"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.infocommunity .community .buttons .menuIconContainer {
+    display: inline-flex;
+    width: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.infocommunity .community .buttons .menuIconContainer:hover {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: var(--boton-hover-color);
+}
+
+.infocommunity .community .buttons .buttonUnirse {
+    border: none;
+    background-color: var(--boton-color-blue);
+    cursor: pointer;
+    color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+}
+
+.infocommunity .content {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.infocommunity .content h3 {
+    color: #c544a9;
+    font-style: bold;
+    font-size: 20px;
+}
+
+.infocommunity .content .description {
+    white-space: pre-wrap;
+    color: var(--white-color);
+}
+
+.infocommunity .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .infocommunity {
+        border: none;
+    }
+
+}

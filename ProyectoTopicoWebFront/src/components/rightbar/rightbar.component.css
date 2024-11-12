@@ -1,0 +1,96 @@
+
+
+.rightBar {
+    flex: 3;
+    position: sticky;
+    top: 70px;
+    height: calc(100vh - 70px);
+    overflow: scroll;
+    align-items: center;
+    background-color: var(--background-color); 
+    border-left: 1px solid   var(--secondary-color); 
+}
+
+.rightBar::-webkit-scrollbar {
+    display: none;
+}
+
+.rightBar .container {
+    padding: 20px;
+}
+
+.rightBar .container .item {
+    -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: var(--black-color); 
+}
+
+.rightBar .container .item span {
+    color: rgb(255, 255, 255);
+}
+
+.rightBar .container .item .comunidad {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0px;
+}
+
+.rightBar .container .item .comunidad .comunidadInfo {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    position: relative;
+}
+
+.rightBar .container .item .comunidad .comunidadInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.rightBar .container .item .comunidad .comunidadInfo .online {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: limegreen;
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+
+.rightBar .container .item .comunidad .comunidadInfo p {
+    color: rgb(208, 239, 255);
+}
+
+.rightBar .container .item .comunidad .comunidadInfo span {
+    font-weight: 500;
+    color: rgb(144, 218, 255);
+
+}
+
+.rightBar .container .item .comunidad .buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rightBar .container .item .comunidad .buttons button {
+    border: none;
+    padding: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.rightBar .container .item .comunidad .buttons button:first-child {
+    background-color: #5271ff;
+}
+
+.rightBar .container .item .comunidad .buttons button:last-child {
+    background-color: #f0544f;
+}
+

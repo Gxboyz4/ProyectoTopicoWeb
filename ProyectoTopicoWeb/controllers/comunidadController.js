@@ -5,11 +5,11 @@ class ComunidadController {
 
     static async crearComunidad(req, res, next) {
         try {
-            const { nombre, descripcion, etiquetas } = req.body;
-            if (!nombre || !descripcion || !etiquetas) {
+            const { nombre, descripcion, etiquetas, imagen} = req.body;
+            if (!nombre || !descripcion || !etiquetas || !imagen) {
                 return next(new AppError('Debe ingresar todos los campos', 400));
             }
-            const comunidadData = { nombre, descripcion, etiquetas };
+            const comunidadData = { nombre, descripcion, etiquetas, imagen};
             const comunidad = await ComunidadDAO.crearComunidad(comunidadData);
             res.status(201).json(comunidad);
         } catch (error) {

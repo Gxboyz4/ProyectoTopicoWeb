@@ -30,6 +30,10 @@ const resenaSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
+    fecha_hora: {
+        type: Date,
+        default : Date.now
+    },
     calificacion: {
         type: Number,
         required: true

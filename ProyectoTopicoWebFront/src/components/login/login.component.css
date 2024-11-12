@@ -1,0 +1,136 @@
+/* Contenedor principal del login */
+.login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--background-color);
+    font-family: var(--font-main);
+}
+
+.login-box {
+    position: relative;  
+    background-color: var(--primary-color);
+    border: 1px solid var(--border-color);
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Botón de cerrar */
+.close-button {
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    font-size: 1.5rem;
+    color: var(--white-color);
+    cursor: pointer;
+    font-weight: bold;
+    background-color: transparent;
+    border: none;
+    transition: color 0.3s;
+}
+
+.close-button:hover {
+    color: var(--boton-color-blue);
+}
+
+.logo-image {
+    width: 60px;
+    height: auto;
+    margin-bottom: 10px;
+}
+
+.login-title {
+    font-family: var(--font-title);
+    color: var(--white-color);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 20px; 
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 0.9rem;
+    color: var(--text-color);
+}
+
+.input-wrapper {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid var(--border-color); 
+    border-radius: 4px;
+    padding: 8px;
+    margin-bottom: 10px; 
+}
+
+.input-wrapper input {
+    background-color: transparent; 
+    border: none;
+    outline: none;
+    color: var(--white-color);
+    width: 100%;
+    padding: 8px;
+}
+
+.input-wrapper input::placeholder {
+    color: #aaa;
+}
+
+.input-wrapper input:focus {
+    border-color: var(--white-color); 
+}
+
+.toggle-password {
+    cursor: pointer;
+    color: var(--text-color);
+    margin-left: 5px;
+    width: 20px;  
+    height: 20px; 
+    object-fit: contain; 
+}
+.register-link {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin-top: 10px;
+    
+}
+.register-link a{
+    color: var(--white-color);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+.register-link a:hover {
+    color: var(--boton-color-blue);
+}
+.login-button {
+    background-color: var(--boton-color-blue);
+    color: var(--white-color);
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: var(--boton-color-blue-hover);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+    .login-box {
+        width: 90%;
+    }
+}

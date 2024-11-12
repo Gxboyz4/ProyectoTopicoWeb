@@ -1,0 +1,201 @@
+
+.post {
+    
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    width: 80%;
+    background-color: var(--post-color);
+    color: #dbeeff;
+    margin: 0 auto;
+  }
+  
+  .post .container {
+    padding: 20px;
+  }
+  
+  .post .user {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: 89%;
+    margin: 0 auto;
+  }
+  
+  .post .user .userInfo {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .post .user .userInfo img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .post .user .userInfo .details {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .post .user .userInfo .details .groupName {
+    font-weight: 500;
+  }
+
+  .post .user .userInfo .details .groupName:hover {
+    font-weight: 500;
+    color: var(--boton-color-blue);
+    cursor: pointer;
+    
+  }
+  
+  .post .user .userInfo .details .userName {
+    font-size: 12px;
+  }
+  
+  .post .user .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+  }
+  
+  .post .user img[alt="Menu"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .post .user .buttons .menuIconContainer {
+    display: inline-flex; 
+    width: 30px; 
+    height: 30px; 
+    align-items: center;
+    justify-content: center;
+    background-color: transparent; 
+    border-radius: 50%;
+    transition: all 0.3s ease; 
+}
+
+  .post .user .buttons .menuIconContainer:hover {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    background-color: var(--boton-hover-color);
+  } 
+
+  
+  .post .user .buttons .buttonDelete {
+    position: absolute;
+    top: 32px;
+    right: 0;
+    border: none;
+    background-color: #f0544f;
+    padding: 5px;
+    cursor: pointer;
+    color: white;
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    display: none;
+  }
+  
+  .post .user .buttons .buttonUnirse {
+    border: none;
+    background-color: var(--boton-color-blue);
+    cursor: pointer;
+    color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  
+  .post .content{
+    width: 90%;
+    margin: 0 auto;
+  }
+
+  .post .content h3{
+    color: #c544a9;
+    font-style: bold;
+    font-size: 20px;
+  }
+
+  .post .content .description{
+    white-space: pre-wrap;
+    color: var(--white-color);
+  }
+
+  .post .content img {
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    margin: 20px auto;
+    display: block;
+  }
+  
+  .post .info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: 90%;
+    margin: 0 auto;
+  }
+  
+  .post .info .likeItem,
+  .post .info .commentItem,
+  .post .info .shareItem {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    font-family: var(--font-main-bold);
+  }
+  
+  
+  .post .info .likeItem img,
+  .post .info .commentItem img,
+  .post .info .shareItem img{
+    width: 20px;
+    height: 20px;
+  }
+
+  .post .container .commentsSpace {
+    display: none;
+  }
+
+  .post .container .commentsSpace .write {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin: 20px 0px;
+  }
+  
+  .post .container .commentsSpace .write input {
+    flex: 5;
+    padding: 10px;
+    border: 1px solid var(--secondary-color); 
+    background-color: transparent;
+    color: #333; 
+    border-radius: 20px;
+  }
+  
+  .post .container .commentsSpace .write button {
+    border: none;
+    background-color: var(--boton-color-blue);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .post{
+      border: none;
+    }
+    
+  }
