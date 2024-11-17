@@ -33,7 +33,7 @@ export class HeaderComponent extends HTMLElement {
                     
                     <div class="user-info">
                         <img src="https://picsum.photos/200" alt="Usuario" class="user-image" />
-                        <span class="username">???</span>
+                        <span class="username">godablo26</span>
                         <div class="dropdown-menu">
                             <a href="/settings">Configuración</a>
                             <a href="/login">Salir</a>
