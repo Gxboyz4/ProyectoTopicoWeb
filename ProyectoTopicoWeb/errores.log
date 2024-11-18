@@ -39,3 +39,11 @@
 {"level":"error","message":"No se encontro la reseña"}
 {"level":"error","message":"Error al quitar like"}
 {"level":"error","message":"Error al quitar like"}
+{"level":"error","message":"Debe ingresar todos los campos"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"No se encontró la ruta / en el servidor web."}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}

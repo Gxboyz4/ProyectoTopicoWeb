@@ -33,7 +33,7 @@ class UsuarioController {
                 username: usuario.correo,
                 role: 'admin'
             };
-            const token = jwt.sign(paylod, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign(paylod, process.env.JWT_SECRET, { expiresIn: '4h' });
             res.status(200).json({usuario, token});
         } catch (error) {
             next(new AppError('Error al iniciar sesion', 500));

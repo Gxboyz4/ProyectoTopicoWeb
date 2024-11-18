@@ -107,6 +107,25 @@
     font-size: 1rem;
 }
 
+.right-section .login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 19px;
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+}
+
+.right-section .login:hover {
+    background-color: #262626;
+    cursor: pointer;
+}
+
+.right-section .login span {
+    color: #ffffff;
+    font-size: 1rem;
+}
+
 .right-section .user-info {
     display: flex;
     align-items: center;

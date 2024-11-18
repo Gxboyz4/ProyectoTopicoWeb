@@ -47,6 +47,16 @@ class ComunidadUsuarioController {
         }
     }
 
+    static async obtenerComunidadesPorUsuario(req, res, next) {
+        try {
+            const { idUsuario } = req.params;
+            const comunidades = await ComunidadUsuario.obtenerComunidadesPorUsuario(idUsuario);
+            res.status(200).json(comunidades);
+        } catch (error) {
+            next(new AppError('Error al obtener comunidades de usuario', 500));
+        }
+    }
+
 }
 
 module.exports = ComunidadUsuarioController;

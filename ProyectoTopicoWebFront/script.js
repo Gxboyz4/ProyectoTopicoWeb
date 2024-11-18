@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showContent(`app-comunidadtopics genero="${genero}"`);
     });
     page('*', () => {
-        showContent('app-login');
+        showContent('app-home');
     });
     //Inicializar nuestro router
     page();

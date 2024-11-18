@@ -1,3 +1,5 @@
+import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+
 export class HeaderComponent extends HTMLElement {
     constructor() {
         super();
@@ -5,8 +7,10 @@ export class HeaderComponent extends HTMLElement {
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.session = SessionStorageService.getItem('session');
         this.#addStyles(shadow);
         this.#render(shadow);
+        this.#renderSession(shadow);
         this.#addEventListeners(shadow);
     }
 
@@ -30,10 +34,10 @@ export class HeaderComponent extends HTMLElement {
                         <img src="/src/assets/icons/CrearIcon.svg" alt="communityicon">
                         <span>Crear comunidad</span>
                     </div>
+
+                    <div class="login"></div>
                     
                     <div class="user-info">
-                        <img src="https://picsum.photos/200" alt="Usuario" class="user-image" />
-                        <span class="username">godablo26</span>
                         <div class="dropdown-menu">
                             <a href="/settings">Configuración</a>
                             <a href="/login">Salir</a>
@@ -67,7 +71,26 @@ export class HeaderComponent extends HTMLElement {
         shadow.appendChild(link);
     }
 
-    
+    #renderSession(shadow){
+        const login = shadow.querySelector('.login');
+        login.innerHTML = `<span>${this.session ? "Cerrar sesión" : "Iniciar sesión"}</span>`;
+        const userInfo = shadow.querySelector('.user-info');
+
+        if (this.session) {
+            userInfo.innerHTML = `
+            <img src="../src/assets/profileimages/${this.session.usuario.avatar}.png" alt="Usuario" class="user-image" />
+            <span class="username">${this.session.usuario.nombre}</span>
+            ` + userInfo.innerHTML;
+        } else {
+            userInfo.innerHTML = `
+            <div class="dropdown-menu">
+                <a href="/settings">Configuración</a>
+                <a href="/login">Salir</a>
+            </div>
+            `;
+        }
+    }
+
     #addEventListeners(shadow) {
         const userInfo = shadow.querySelector('.user-info');
         const dropdownMenu = shadow.querySelector('.dropdown-menu');
@@ -75,10 +98,21 @@ export class HeaderComponent extends HTMLElement {
         const loginLink = shadow.querySelector('a[href="/login"]');
         
         const crearComunidad = shadow.querySelector('.crear-comunidad');
+        const login = shadow.querySelector('.login');
 
         crearComunidad.addEventListener('click', () => {
             const modal = shadow.querySelector('app-modalcommunity');
             modal.dispatchEvent(new CustomEvent('open-modal'));
+        });
+
+        login.addEventListener('click', () => {
+            if(this.session){
+                SessionStorageService.setItem('session', null);
+                this.session = null;
+                this.#renderSession(shadow);
+            }else{
+                page('/login');
+            }
         });
 
         userInfo.addEventListener('click', (event) => {

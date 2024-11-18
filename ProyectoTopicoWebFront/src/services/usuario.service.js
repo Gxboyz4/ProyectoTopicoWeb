@@ -26,8 +26,7 @@ export class UsuarioService {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => response.json())
-        .then(data => data);
+        }).then(response => response.status === 200 ? response.json() : null);
     }
 
     static iniciarSesion(usuario){
@@ -37,8 +36,7 @@ export class UsuarioService {
             headers: {
                 'Content-Type': 'application/json'
             }
-        }).then(response => response.json())
-        .then(data => data);
+        }).then(response => response.status === 200 ? response.json() : null);
     }
 
     static getLikes(idUsuario, token){

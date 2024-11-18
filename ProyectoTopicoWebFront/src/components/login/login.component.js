@@ -1,3 +1,8 @@
+import { UsuarioService } from "../../services/usuario.service.js";
+import Validador from "../../utils/validador.js";
+import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+import { Usuario } from "../../models/usuario.js";
+
 export class LoginComponent extends HTMLElement {
     constructor() {
         super();
@@ -65,11 +70,31 @@ export class LoginComponent extends HTMLElement {
             page("/");
         });
 
-
         const loginButton = shadow.querySelector("#login-button");
         loginButton.addEventListener("click", (event) => {
             event.preventDefault();
-            page("/");
+            this.#iniciarSesion(shadow);
         });
+    }
+
+    #iniciarSesion(shadow) {
+        const correo = shadow.querySelector("#email").value;
+        const contrasena = shadow.querySelector("#password").value;
+
+        const usuario = new Usuario("", correo, contrasena, "", []);
+        if (Validador.validarDatosLogin(usuario)) {
+            UsuarioService.iniciarSesion(usuario).then((session) => {
+                if (session) {
+                    SessionStorageService.setItem("session", session);
+                    page("/");
+                } else {
+                    alert("Credenciales incorrectas");
+                }
+            }).catch((error) => {
+                alert("Credenciales incorrectas");
+            });
+        } else {
+            alert("Ingrese todos los campos");
+        }
     }
 }
