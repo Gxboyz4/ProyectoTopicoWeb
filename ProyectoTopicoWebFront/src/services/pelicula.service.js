@@ -22,6 +22,18 @@ export class PeliculaService {
             .then(data => data);
     }
 
+    static getIdPeliculaPorNombre(nombre){
+        return fetch(`${API_URL}/?s=${nombre}&page=1&apikey=${config.API_KEY}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.Response === 'True'){
+                    return data.Search[0].imdbID;
+                }else{
+                    return null;
+                }
+            });
+    }
+
 }
 
 //CONSULTA POR ID
