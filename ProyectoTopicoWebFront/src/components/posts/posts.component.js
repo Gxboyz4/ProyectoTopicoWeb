@@ -45,7 +45,7 @@ export class PostsComponent extends HTMLElement {
     #render(shadow) {
         shadow.innerHTML += `
             <div class="posts">
-                ${this.postsCargados ? this.postsCargados.map(post => this.#renderPost(post)).join('') : ``}
+                ${this.postsCargados.map(post => this.#renderPost(post)).join('')}
             </div>
         `;
     }
@@ -53,11 +53,11 @@ export class PostsComponent extends HTMLElement {
     #renderPost(post){
         return `
             <app-post 
-                id="${post.id}"
-                idComunidad="${post.idComunidad}"
-                idUsuario="${post.idUsuario}"
-                idPelicula="${post.idPelicula}"
-                cantidadLikes="${post.cantidadLikes}"
+                id="${post._id}"
+                idComunidad="${post.comunidad}"
+                idUsuario="${post.usuario}"
+                idPelicula="${post.pelicula}"
+                cantidadLikes="${post.cantidad_likes}"
                 calificacion="${post.calificacion}"
                 contenido="${post.contenido}"
                 comentarios='${JSON.stringify(post.comentarios)}'

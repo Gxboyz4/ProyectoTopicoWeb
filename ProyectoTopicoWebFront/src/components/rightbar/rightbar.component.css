@@ -32,6 +32,10 @@
     color: rgb(255, 255, 255);
 }
 
+.rightBar .container .item p {
+    color: rgb(255, 255, 255);
+}
+
 .rightBar .container .item .comunidad {
     display: flex;
     align-items: center;

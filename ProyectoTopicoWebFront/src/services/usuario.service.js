@@ -39,6 +39,14 @@ export class UsuarioService {
         }).then(response => response.status === 200 ? response.json() : null);
     }
 
+    static obtenerUsuarioPorId(idUsuario){
+        return fetch(`${API_URL}/info/${idUsuario}`, {
+            method: 'GET'
+        }).then(response => {
+            return response.ok ? response.json() : null;
+        });
+    }
+
     static getLikes(idUsuario, token){
         return fetch(`${API_URL}/${idUsuario}`, {
             method: 'GET',

@@ -8,28 +8,26 @@ import { PeliculaService } from '../../services/pelicula.service.js';
 export class PostComponent extends HTMLElement {
     constructor() {
         super();
-
         this.comentarioAbierto = false;
         this.menuAbierto = false;
         this.usuarioLikeo = false;
-        this.contadorLikes = 0;
-
     }
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
-        const post = this.#crearObjetoPost();
-
-        this.usuario = UsuarioService.getUsuarioById(post.idUsuario);
-
-        this.comunidad = ComunidadService.getComunidadById(post.idComunidad);
-        this.contadorLikes = post.cantidadLikes;
-        PeliculaService.getPeliculaPorId(post.idPelicula)
+        this.post = this.#crearObjetoPost();
+        PeliculaService.getPeliculaPorId(this.post.idPelicula)
         .then(pelicula => {
                 this.pelicula = pelicula;
-                this.#addStyles(shadow);
-                this.#render(shadow, post);
-                this.#attachEvents(shadow, post.comentarios);
+                UsuarioService.obtenerUsuarioPorId(this.post.idUsuario).then(usuario => {
+                    this.usuario = usuario;
+                    ComunidadService.obtenerComunidadPorId(this.post.idComunidad).then(comunidad => {
+                        this.comunidad = comunidad;
+                        this.#addStyles(shadow);
+                        this.#render(shadow);
+                        this.#attachEvents(shadow, this.post.comentarios);
+                    });
+                });
             }
         );
     }
@@ -39,21 +37,20 @@ export class PostComponent extends HTMLElement {
         const idComunidad = this.getAttribute('idComunidad');
         const idUsuario = this.getAttribute('idUsuario');
         const idPelicula = this.getAttribute('idPelicula');
-        const cantidadLikes = parseInt(this.getAttribute('cantidadLikes'));
+        const cantidadLikes = this.getAttribute('cantidadLikes');
         const calificacion = this.getAttribute('calificacion');
         const contenido = this.getAttribute('contenido');
         const comentarios = this.hasAttribute('comentarios') ? JSON.parse(this.getAttribute('comentarios')) : [];
         return new Post(id, idComunidad, idUsuario, idPelicula, cantidadLikes, calificacion, contenido, comentarios);
     }
 
-    #render(shadow, post) {
+    #render(shadow) {
         shadow.innerHTML += `
             <div class="post">
                 <div class="container">
-
                     <div class="user">
                         <div class="userInfo">
-                            <img src="${this.usuario.avatar}" alt="imagen-usuario">
+                            <img src="../src/assets/profileimages/${this.usuario.avatar}.png" alt="imagen-usuario">
                             <div class="details">
                                 <span class="groupName">${this.comunidad.nombre} ° </span>
                                 <span class="userName">${this.usuario.nombre}</span>
@@ -70,21 +67,20 @@ export class PostComponent extends HTMLElement {
                     </div>
 
                     <div class="content">
-                        <h3>${post.calificacion} / 10 | PELICULA</h3>
-                        <p class="description">${post.contenido}</p>
+                        <h3>${this.post.calificacion} / 10 | ${this.pelicula.Title}</h3>
+                        <p class="description">${this.post.contenido}</p>
                         <img src=${this.pelicula.Poster} alt="imgpublicacion">
                     </div>
                     
                     <div class="info">
                         <div class="likeItem">
                             <img src="src/assets/icons/LikeIcon.svg" alt="Not liked">
-                            <span class="likeCount">${this.contadorLikes} Me gusta</span>
+                            <span class="likeCount">${this.post.cantidadLikes} Me gusta</span>
                         </div>
                         <div class="commentItem">
                             <img src="src/assets/icons/CommentIcon.svg" alt="Comentario">
-                            ${post.comentarios.length} Comentarios 
+                            ${this.post.comentarios.length} Comentarios 
                         </div>
-                        
                     </div>
                     <div class="commentsSpace">
                         <!-- AQUI SE RENDERIZAN LOS COMENTARIOS -->
@@ -117,8 +113,8 @@ export class PostComponent extends HTMLElement {
 
     #toggleLike(shadow) {
         this.usuarioLikeo = !this.usuarioLikeo;
-        this.contadorLikes += this.usuarioLikeo ? 1 : -1;
-        shadow.querySelector('.likeCount').textContent = `${this.contadorLikes} Likes`;
+        this.post.cantidadLikes += this.usuarioLikeo ? 1 : -1;
+        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me Gusta`;
         shadow.querySelector('.likeItem').style.color = this.usuarioLikeo ? 'blue' : 'inherit';
     }
 

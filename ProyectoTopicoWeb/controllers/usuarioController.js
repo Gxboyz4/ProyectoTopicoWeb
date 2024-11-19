@@ -52,6 +52,22 @@ class UsuarioController {
             next(new AppError('Error al obtener publicaciones likeadas', 500));
         }
     }
+
+    static async obtenerUsuarioPorId(req, res, next) {
+        try {
+            const idUsuario = req.params.id;
+            if (!idUsuario) {
+                return next(new AppError('Error, no hay ID', 400));
+            }
+            const usuario = await UsuarioDAO.buscarUsuarioPorId(idUsuario);
+            if (!usuario) {
+                return next(new AppError('Usuario no encontrado', 404));
+            }
+            res.status(200).json(usuario);
+        } catch (error) {
+            next(new AppError('Error al obtener el usuario', 500));
+        }
+    }
 }
 
 module.exports = UsuarioController;

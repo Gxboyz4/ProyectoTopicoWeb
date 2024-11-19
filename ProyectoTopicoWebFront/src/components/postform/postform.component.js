@@ -11,6 +11,7 @@ export class PostformComponent extends HTMLElement {
     
     async connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.idComunidad = this.getAttribute('idComunidad');
         this.#addStyles(shadow);
         this.#render(shadow);
          this.#addEventListeners(shadow);
@@ -67,7 +68,6 @@ export class PostformComponent extends HTMLElement {
         const pelicula = this.shadowRoot.querySelector("#pelicula").value;
         const calificacion = this.shadowRoot.querySelector("#calificacion").value;
         const idUsuario = SessionStorageService.getItem('session').usuario._id;
-        const idComunidad = SessionStorageService.getItem('comunidadSeleccionada')._id;
         if(Validador.validarDatosPost(critica,calificacion,pelicula)){
         PeliculaService.getIdPeliculaPorNombre(pelicula).then((idPelicula) => {
             if (idPelicula) {
@@ -77,7 +77,7 @@ export class PostformComponent extends HTMLElement {
                     cantidad_likes: parseInt(0), 
                     calificacion: calificacion,
                     contenido: critica,
-                    comunidad: idComunidad,
+                    comunidad: this.idComunidad,
                     comentarios: []  
                 };
                 console.log(post);

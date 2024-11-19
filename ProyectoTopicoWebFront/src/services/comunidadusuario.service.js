@@ -46,7 +46,8 @@ export class ComunidadUsuarioService {
             headers: {
                 'Authorization': `${token}`
             }
-        }).then(response => response.json())
-        .then(data => data);
+        }).then(response => {
+            return response.ok ? response.json() : null;
+        });
     }
 }

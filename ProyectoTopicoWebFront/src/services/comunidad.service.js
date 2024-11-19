@@ -42,8 +42,9 @@ export class ComunidadService {
     static obtenerComunidadPorId(comunidadId) {
         return fetch(`${API_URL}${URL_COMUNIDADES}${comunidadId}`, {
             method: 'GET'
-        }).then(response => response.json())
-          .then(data => data);
+        }).then(response => {
+            return response.ok ? response.json() : null;
+        });
     }
 
     static obtenerComunidadesFiltro(filtro) {

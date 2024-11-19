@@ -30,7 +30,7 @@ export class RightbarComponent extends HTMLElement {
         <div class="rightBar">
             <div class="container">
               <div class="item">
-                <span>${this.session ? "Mis Comunidades" : "Comunidades Recomendadas"}</span>
+                <span>Mis Comunidades</span>
                 ${this.#renderComunidades(comunidades)}
               </div>
               <div class="item">
@@ -93,26 +93,21 @@ export class RightbarComponent extends HTMLElement {
             }
           });
       } else {
-        const comunidadesRecomendadas = ComunidadService.getComunidadesRecomendadas();
-        if (comunidadesRecomendadas === null || comunidadesRecomendadas.length === 0) {
-          reject([]);
-        } else {
-          resolve(comunidadesRecomendadas);
-        }
+        resolve([]);
       }
     });
   }
   
   #renderComunidades(comunidades) {
-    if (comunidades.length === 0) return '<p>No hay ninguna comunidad</p>';
+    if (!comunidades) return '<p>No hay ninguna comunidad</p>';
     return `
-        ${comunidades.map(comunidad => `
+        ${comunidades ? comunidades.map(comunidad => `
             <div class="comunidad">
                 <div class="comunidadInfo">
                     <img src="${comunidad.imagen}" alt="Imagen comunidad"/>
                     <span class="comunidad-nombre" data-id="${comunidad._id}">${comunidad.nombre}</span>
                 </div>
-            </div>`).join('')}
+            </div>` ).join('') : ''}
     `;
 }
 

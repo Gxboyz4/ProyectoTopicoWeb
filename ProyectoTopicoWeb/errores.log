@@ -92,3 +92,28 @@
 {"level":"error","message":"Falta llenar datos de la reseña"}
 {"level":"error","message":"Falta llenar datos de la reseña"}
 {"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}

@@ -26,7 +26,7 @@ export class ComunityComponent extends HTMLElement {
             shadow.innerHTML += `
             <div class="home">
                 <app-cardcommunity nombre=${this.comunidad.nombre} descripcion=${this.comunidad.descripcion} imagen=${this.comunidad.imagen}"></app-cardcommunity>
-                <app-postform></app-postform>
+                <app-postform idComunidad=${this.comunidad._id}></app-postform>
                 <app-posts idComunidad=${this.comunidad._id}></app-posts>
             </div>
         `;}, 5); 
