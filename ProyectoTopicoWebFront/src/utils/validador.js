@@ -13,4 +13,15 @@ export default class Validador {
         const {correo, contrasena} = usuario;
         return !(!correo.trim() || !contrasena.trim());
     }
+
+    static validarDatosPost(contenido, calificacion, pelicula) {
+        if (!contenido.trim() || !pelicula.trim() || !calificacion.trim()) {
+            return false;
+        }
+        const calificacionNumero = Number(calificacion);
+        if (isNaN(calificacionNumero) || calificacionNumero < 0 || calificacionNumero > 10) {
+            return false;
+        }
+        return true;
+    }
 }

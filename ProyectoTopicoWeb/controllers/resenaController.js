@@ -9,7 +9,8 @@ class ResenaController {
         try{
             //LA CANTIDAD DE CALIDAD SIEMPRE VA A SER 0, PERO POR CUESTIONES DE ESCALABILIDAD, SE DEJA ASI
             const {usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad} = req.body;
-            if(!usuario || !pelicula || !cantidad_likes || !calificacion || !contenido || !comunidad){
+            if(!usuario || !pelicula || cantidad_likes<0 || !calificacion || !contenido || !comunidad){
+                console.log(req.body);
                 return next(new AppError('Falta llenar datos de la reseña',400));
             }
             const resenaData = {usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad};
