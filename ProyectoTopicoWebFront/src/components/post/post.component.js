@@ -4,20 +4,27 @@ import { ComunidadService } from '../../services/comunidad.service.js';
 import { ComentarioService } from '../../services/comentario.service.js';
 import { Post } from '../../models/post.js';
 import { PeliculaService } from '../../services/pelicula.service.js';
+import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+import { PostService } from '../../services/post.service.js';
 
 export class PostComponent extends HTMLElement {
     constructor() {
         super();
-        this.comentarioAbierto = false;
-        this.menuAbierto = false;
-        this.usuarioLikeo = false;
+
     }
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.session = SessionStorageService.getItem('session');
         this.post = this.#crearObjetoPost();
+        this.comentarioAbierto = false;
+        this.menuAbierto = false;
+        this.#verificarLike(this.post).then(usuarioLikeo => {
+            this.usuarioLikeo = usuarioLikeo;
+            console.log(this.usuarioLikeo, 'usuario likeo ' + this.post.id);
+        });
         PeliculaService.getPeliculaPorId(this.post.idPelicula)
-        .then(pelicula => {
+            .then(pelicula => {
                 this.pelicula = pelicula;
                 UsuarioService.obtenerUsuarioPorId(this.post.idUsuario).then(usuario => {
                     this.usuario = usuario;
@@ -29,7 +36,7 @@ export class PostComponent extends HTMLElement {
                     });
                 });
             }
-        );
+            );
     }
 
     #crearObjetoPost() {
@@ -37,7 +44,7 @@ export class PostComponent extends HTMLElement {
         const idComunidad = this.getAttribute('idComunidad');
         const idUsuario = this.getAttribute('idUsuario');
         const idPelicula = this.getAttribute('idPelicula');
-        const cantidadLikes = this.getAttribute('cantidadLikes');
+        const cantidadLikes = parseInt(this.getAttribute('cantidadLikes'));
         const calificacion = this.getAttribute('calificacion');
         const contenido = this.getAttribute('contenido');
         const comentarios = this.hasAttribute('comentarios') ? JSON.parse(this.getAttribute('comentarios')) : [];
@@ -112,9 +119,16 @@ export class PostComponent extends HTMLElement {
     }
 
     #toggleLike(shadow) {
-        this.usuarioLikeo = !this.usuarioLikeo;
-        this.post.cantidadLikes += this.usuarioLikeo ? 1 : -1;
-        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me Gusta`;
+        if (this.usuarioLikeo) {
+            this.#quitarLike();
+        } else {
+            this.#darLike();
+        }
+        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+        this.#colorearLike(shadow);
+    }
+
+    #colorearLike(shadow) {
         shadow.querySelector('.likeItem').style.color = this.usuarioLikeo ? 'blue' : 'inherit';
     }
 
@@ -153,6 +167,34 @@ export class PostComponent extends HTMLElement {
             >
             </app-comment>
         `;
+    }
 
+    async #verificarLike(post) {
+        if (!this.session) return false;
+        try {
+            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
+            console.log("LE HA DADO LIKE A " + likes);
+            return likes.includes(post.id);
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+    
+
+    #darLike() {
+        if (!this.session) return;
+        PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
+            this.usuarioLikeo = true;
+            this.post.cantidadLikes++;
+        });
+    }
+
+    #quitarLike() {
+        if (!this.session) return;
+        PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
+            this.usuarioLikeo = false;
+            this.post.cantidadLikes--;
+        });
     }
 }

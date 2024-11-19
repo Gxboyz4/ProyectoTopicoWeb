@@ -20,6 +20,8 @@ export class ComunidadService {
         return comunidadesRandom.slice(0, cantidad);
     }
 
+
+
     static getComunidadById(comunidadId){
         // HACER PETICION A LA API
         return comunidadData.find(comunidad => comunidad.id === Number(comunidadId));
@@ -52,6 +54,17 @@ export class ComunidadService {
             method: 'GET'
         }).then(response => response.json())
           .then(data => data);
+    }
+
+    static getComunidadesPorBusqueda(busqueda) {
+        return fetch(`${API_URL}${URL_COMUNIDADES}search?busqueda=${busqueda}`, {
+            method: 'GET'
+        }).then(response => response.json())
+          .then(data => data)
+          .catch(error => {
+              console.log(error);
+              return [];
+          });
     }
 
     static getComunidadesByGenero(genero){

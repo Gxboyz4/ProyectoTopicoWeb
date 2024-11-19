@@ -1,4 +1,6 @@
 import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+import { ComunidadService } from "../../services/comunidad.service.js";
+import { Crypto } from "../../utils/Crypto.js";
 
 export class HeaderComponent extends HTMLElement {
     constructor() {
@@ -8,6 +10,7 @@ export class HeaderComponent extends HTMLElement {
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
         this.session = SessionStorageService.getItem('session');
+        
         this.#addStyles(shadow);
         this.#render(shadow);
         this.#renderSession(shadow);
@@ -26,8 +29,9 @@ export class HeaderComponent extends HTMLElement {
                 <div class="center-section">
                     <div class="search-bar">
                         <img src="/src/assets/icons/SearchIcon.svg" alt="searchicon">
-                        <input type="text" placeholder="Buscar..." />
+                        <input id='search-input' type="text" placeholder="Buscar comunidades..." />
                     </div>
+                    <ul class="search-results" id="search-results"></ul>
                 </div>
                 <div class="right-section">
                     <div class="crear-comunidad">
@@ -91,18 +95,82 @@ export class HeaderComponent extends HTMLElement {
         }
     }
 
+    #cargarComunidadesporBusqueda(busqueda){
+        return new Promise((resolve, reject) => {
+            ComunidadService.getComunidadesPorBusqueda(busqueda)
+            .then(comunidades => {
+                resolve(comunidades);
+            }).catch(error => {
+                reject([]);
+            });
+        });
+    }
+
+    #renderSearchResults(comunidades = [], shadow) {
+            const searchResults = shadow.querySelector("#search-results");
+            const limitedResults = comunidades.slice(0, 5);
+    
+        searchResults.innerHTML = limitedResults
+            .map(comunidad => `<li data-id="${comunidad._id}">${comunidad.nombre}</li>`)
+            .join("");
+    
+        const items = searchResults.querySelectorAll("li");
+        items.forEach(item => {
+            item.addEventListener("click", () => {
+                ComunidadService.obtenerComunidadPorId(item.getAttribute('data-id'))
+                    .then(comunidad => {
+                        if (comunidad) {
+                        console.log("entró...")
+                        page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
+                        } else {
+                        alert('No se ha encontrado la comunidad');
+                        }
+                  }).catch((error) => {
+                    alert('No se ha encontrado la comunidad');
+                  });
+            });
+        });
+    }
+
     #addEventListeners(shadow) {
         const userInfo = shadow.querySelector('.user-info');
         const dropdownMenu = shadow.querySelector('.dropdown-menu');
         const settingsLink = shadow.querySelector('a[href="/settings"]');
         const loginLink = shadow.querySelector('a[href="/login"]');
-        
+        const searchInput = shadow.querySelector("#search-input");
+        const searchResults = shadow.querySelector("#search-results");
         const crearComunidad = shadow.querySelector('.crear-comunidad');
         const login = shadow.querySelector('.login');
 
         crearComunidad.addEventListener('click', () => {
             const modal = shadow.querySelector('app-modalcommunity');
             modal.dispatchEvent(new CustomEvent('open-modal'));
+        });
+
+        searchInput.addEventListener("input", (event) => {
+            const query = event.target.value.trim().toLowerCase();
+            if (query.length > 0) {
+                this.#cargarComunidadesporBusqueda(query)
+                .then(comunidades => {
+                    if(comunidades.length === 0){
+                        searchResults.innerHTML = "";
+                        searchResults.style.display = "none";
+                        return;
+                    }
+                    searchResults.innerHTML = "";
+                    searchResults.style.display = "block";
+                    this.#renderSearchResults(comunidades, shadow);
+                })
+                .catch(error => {
+                    console.log(error);
+                    searchResults.innerHTML = "";
+                    searchResults.style.display = "none";
+                });
+
+            } else {
+                searchResults.innerHTML = "";
+                searchResults.style.display = "none";
+            }
         });
 
         login.addEventListener('click', () => {
@@ -137,4 +205,5 @@ export class HeaderComponent extends HTMLElement {
             page('/login');  
         });
     }
+    
 }

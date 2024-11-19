@@ -24,6 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
     page('/', () => showContent('app-home'));
     //page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
+    page('/comunidad/:id', (context) => {
+        const id = context.params.id;
+        showContent(`app-comunity id="${id}"`);
+    });
     page('/login', () => showContent('app-login'));
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));

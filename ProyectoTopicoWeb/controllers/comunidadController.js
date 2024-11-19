@@ -48,6 +48,21 @@ class ComunidadController {
             next(new AppError('Error al obtener comunidades por filtro', 500));
         }
     }
+
+    static async obtenerComunidadesPorBusqueda(req, res, next) {
+        try {
+            const { busqueda } = req.query;
+            if (!busqueda) {
+                return next(new AppError('Error, no hay busqueda',400));
+            }
+            const comunidades = await ComunidadDAO.obtenerComunidadesPorBusqueda(busqueda);
+            res.status(200).json(comunidades);
+        } catch (error) {
+            console.log(error);
+            next(new AppError('Error al obtener comunidades por busqueda', 500));
+            
+        }
+    }
 }
 
 module.exports = ComunidadController;

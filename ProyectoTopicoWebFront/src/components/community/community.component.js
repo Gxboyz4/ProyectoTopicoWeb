@@ -32,4 +32,5 @@ export class ComunityComponent extends HTMLElement {
         `;}, 5); 
     }
 
+
 }

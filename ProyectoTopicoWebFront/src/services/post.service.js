@@ -1,12 +1,12 @@
 
 import { postsData } from '../data/postsData.js';
 const API_URL = 'http://localhost:3000/';
-const URL_COMUNIDADES = 'api/resenas/';
+const URL_RESENAS = 'api/resenas/';
 
 export class PostService {
 
     static crearPost(post, token) {
-        return fetch(`${API_URL}${URL_COMUNIDADES}`, {
+        return fetch(`${API_URL}${URL_RESENAS}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -18,14 +18,14 @@ export class PostService {
     }
 
     static obtenerPostPorId(postId) {
-        return fetch(`${API_URL}${URL_COMUNIDADES}${postId}`, {
+        return fetch(`${API_URL}${URL_RESENAS}${postId}`, {
             method: 'GET'
         }).then(response => response.json())
             .then(data => data);
     }
 
     static obtenerPostsFiltro(limit = 10, offset = 0, filtro = '') {
-        return fetch(`${API_URL}${URL_COMUNIDADES}query?filtroContenido=${filtro}&limit=${limit}&offset=${offset}`, {
+        return fetch(`${API_URL}${URL_RESENAS}query?filtroContenido=${filtro}&limit=${limit}&offset=${offset}`, {
             method: 'GET'
         }).then(response => {
             return response.ok ? response.json() : [];
@@ -33,7 +33,7 @@ export class PostService {
     }
 
     static obtenerDePelicula(idPelicula, limit, offset) {
-        return fetch(`${API_URL}${URL_COMUNIDADES}/idPelicula=${idPelicula}/query?limit=${limit}&offset=${offset}`, {
+        return fetch(`${API_URL}${URL_RESENAS}/idPelicula=${idPelicula}/query?limit=${limit}&offset=${offset}`, {
             method: 'GET'
         }).then(response => response.json())
             .then(data => data);
@@ -41,7 +41,7 @@ export class PostService {
     }
 
     static eliminarResena(idResena, token) {
-        return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}`, {
+        return fetch(`${API_URL}${URL_RESENAS}${idResena}`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `${token}`
@@ -51,30 +51,33 @@ export class PostService {
     }
 
     static obtenerResenasComunidad(idComunidad, limit = 10, offset = 0, sortBy = 'fecha_creacion', sortOrder = 'desc') {
-        return fetch(`${API_URL}${URL_COMUNIDADES}${idComunidad}/comunidad/query?limit=${limit}&offset=${offset}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+        return fetch(`${API_URL}${URL_RESENAS}${idComunidad}/comunidad?limit=${limit}&offset=${offset}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
             method: 'GET'
         }).then(response => {
             return response.ok ? response.json() : [];
         });
     }
 
-    static likeResena(idResena, idUsuario) {
+    static likeResena(idResena, idUsuario, token) {
 
-        return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}/like/${idUsuario}`, {
+        return fetch(`${API_URL}${URL_RESENAS}${idResena}/like/${idUsuario}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
         }).then(response => response.json())
             .then(data => data);
     }
-    static dislikeResena(idResena, idUsuario) {
+    
+    static dislikeResena(idResena, idUsuario, token) {
 
-        return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}/dislike/${idUsuario}`, {
+        return fetch(`${API_URL}${URL_RESENAS}${idResena}/dislike/${idUsuario}`, {
             method: 'PATCH',
             headers: {
-                'Content-Type': 'application/json'
-            }
+                'Content-Type': 'application/json',
+                'Authorization': `${token}`
+            },
         }).then(response => response.json())
             .then(data => data);
     }

@@ -47,6 +47,7 @@
     flex-grow: 1;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .center-section .search-bar {
@@ -61,6 +62,7 @@
     background-color: #1B1E1C;
     color: #ffffff;
     flex-grow: 1;
+    position: relative;
 }
 
 .center-section .search-bar input {
@@ -74,6 +76,31 @@
 
 .center-section .search-bar input::placeholder {
     color: #aaa;
+}
+
+.search-results {
+    position: absolute;
+    top: calc(100%);
+    display: none;
+    background-color: #1B1E1C;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    z-index: 10;
+    color: white;
+}
+
+.center-section .search-results li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.center-section .search-results li:hover {
+    background-color: #262626;
 }
 
 .right-section {

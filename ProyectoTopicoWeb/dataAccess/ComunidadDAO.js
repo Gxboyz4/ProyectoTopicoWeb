@@ -28,6 +28,15 @@ class ComunidadDAO {
         return await Comunidad.find({nombre: {$regex: filtroContenido, $options: 'i'}}).skip(offset).limit(limit);
     }
 
+    async obtenerComunidadesPorBusqueda(busqueda){
+        try {
+            return await Comunidad.find({ nombre: { $regex: busqueda, $options: 'i' } });
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error al realizar la búsqueda de comunidades');
+        }
+    }
+
 }
 
 module.exports = new ComunidadDAO();
