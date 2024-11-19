@@ -10,4 +10,6 @@ export class Post{
         this.contenido = contenido;
         this.comentarios = comentarios;
     }
+
+    
 }
