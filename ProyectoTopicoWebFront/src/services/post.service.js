@@ -14,28 +14,29 @@ export class PostService {
             },
             body: JSON.stringify(post)
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
     }
 
     static obtenerPostPorId(postId) {
         return fetch(`${API_URL}${URL_COMUNIDADES}${postId}`, {
             method: 'GET'
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
     }
 
-    static obtenerPostsFiltro(filtro, limit, offset) {
+    static obtenerPostsFiltro(limit = 10, offset = 0, filtro = '') {
         return fetch(`${API_URL}${URL_COMUNIDADES}query?filtroContenido=${filtro}&limit=${limit}&offset=${offset}`, {
             method: 'GET'
-        }).then(response => response.json())
-          .then(data => data);
+        }).then(response => {
+            return response.ok ? response.json() : [];
+        });
     }
 
     static obtenerDePelicula(idPelicula, limit, offset) {
         return fetch(`${API_URL}${URL_COMUNIDADES}/idPelicula=${idPelicula}/query?limit=${limit}&offset=${offset}`, {
             method: 'GET'
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
 
     }
 
@@ -46,17 +47,18 @@ export class PostService {
                 'Authorization': `${token}`
             }
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
     }
 
-    static obtenerResenasComunidad(idComunidad, limit, offset,sortBy, sortOrder){
+    static obtenerResenasComunidad(idComunidad, limit, offset, sortBy, sortOrder) {
         return fetch(`${API_URL}${URL_COMUNIDADES}idComunidad=${idComunidad}/comunidad/query?limit=${limit}&offset=${offset}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
             method: 'GET'
-        }).then(response => response.json())
-          .then(data => data);
+        }).then(response => {
+            return response.ok ? response.json() : [];
+        });
     }
 
-    static likeResena(idResena, idUsuario){
+    static likeResena(idResena, idUsuario) {
 
         return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}/like/${idUsuario}`, {
             method: 'PATCH',
@@ -64,9 +66,9 @@ export class PostService {
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
     }
-    static dislikeResena(idResena, idUsuario){
+    static dislikeResena(idResena, idUsuario) {
 
         return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}/dislike/${idUsuario}`, {
             method: 'PATCH',
@@ -74,14 +76,14 @@ export class PostService {
                 'Content-Type': 'application/json'
             }
         }).then(response => response.json())
-          .then(data => data);
+            .then(data => data);
     }
 
     static getPosts() {
         return Array.isArray(postsData) ? postsData : [];
     }
 
-    static getPostById(postId){
+    static getPostById(postId) {
         // HACER PETICION A LA API
         return postsData.find(post => post.id === postId);
     }

@@ -5,15 +5,43 @@ export class PostsComponent extends HTMLElement {
 
     constructor() {
         super();
-        this.postsCargados = PostService.getPosts();
     }
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
         this.#addStyles(shadow);
-        this.#render(shadow);
+        this.#cargarPosts().then(posts => {
+            this.postsCargados = posts;
+            this.#render(shadow);
+        });
     }
 
+    #cargarPosts() {
+        return new Promise((resolve, reject) => {
+            const idComunidad = this.getAttribute('idComunidad');
+            if (idComunidad) {
+                /*
+                PostService.obtenerResenasComunidad(idComunidad).then(posts => {
+                    resolve(posts.length === 0 ? [] : posts);
+                }).catch(error => {
+                    reject([]);
+                });
+                */
+                PostService.obtenerPostsFiltro().then(posts => {
+                    resolve(posts.length === 0 ? [] : posts);
+                }).catch(error => {
+                    reject([]);
+                });
+            } else {
+                PostService.obtenerPostsFiltro().then(posts => {
+                    resolve(posts.length === 0 ? [] : posts);
+                }).catch(error => {
+                    reject([]);
+                });
+            }
+        });
+    }
+    
     #addStyles(shadow) {
         let link = document.createElement("link");
         link.setAttribute("rel", "stylesheet");
@@ -24,7 +52,7 @@ export class PostsComponent extends HTMLElement {
     #render(shadow) {
         shadow.innerHTML += `
             <div class="posts">
-                ${this.postsCargados.map(post => this.#renderPost(post)).join('')}
+                ${this.postsCargados ? this.postsCargados.map(post => this.#renderPost(post)).join('') : ``}
             </div>
         `;
     }
