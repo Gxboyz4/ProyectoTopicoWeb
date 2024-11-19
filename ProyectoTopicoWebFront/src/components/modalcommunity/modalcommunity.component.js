@@ -74,7 +74,7 @@ export class ModalCommunityComponent extends HTMLElement {
         });
     }
 
-    #crearComunidad(){
+    #crearComunidad() {
         const modal = this.shadowRoot.querySelector('.modal');
         if (this.session) {
             const name = this.shadowRoot.querySelector('#name').value;
@@ -98,6 +98,11 @@ export class ModalCommunityComponent extends HTMLElement {
                         if (comunidadUsuarioData) {
                             //Mandar evento para que se actualicen las comunidades del usuario
                             alert('Comunidad creada correctamente');
+                            document.dispatchEvent(new CustomEvent('actualizar-comunidades', {
+                                bubbles: true,
+                                composed: true
+                            }));
+                            console.log('Evento actualizar-comunidades despachado');
                         } else {
                             alert('Ha ocurrido un error al crear la comunidad');
                         }

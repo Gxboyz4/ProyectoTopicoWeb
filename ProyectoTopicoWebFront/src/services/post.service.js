@@ -50,8 +50,8 @@ export class PostService {
             .then(data => data);
     }
 
-    static obtenerResenasComunidad(idComunidad, limit, offset, sortBy, sortOrder) {
-        return fetch(`${API_URL}${URL_COMUNIDADES}idComunidad=${idComunidad}/comunidad/query?limit=${limit}&offset=${offset}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
+    static obtenerResenasComunidad(idComunidad, limit = 10, offset = 0, sortBy = 'fecha_creacion', sortOrder = 'desc') {
+        return fetch(`${API_URL}${URL_COMUNIDADES}${idComunidad}/comunidad/query?limit=${limit}&offset=${offset}&sortBy=${sortBy}&sortOrder=${sortOrder}`, {
             method: 'GET'
         }).then(response => {
             return response.ok ? response.json() : [];

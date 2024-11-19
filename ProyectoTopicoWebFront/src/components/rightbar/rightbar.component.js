@@ -15,6 +15,7 @@ export class RightbarComponent extends HTMLElement {
     this.session = SessionStorageService.getItem('session');
     this.#addStyles(shadow);
     this.#render(shadow);
+    this.#addEventListeners(shadow);
   }
 
   #addStyles(shadow) {
@@ -26,7 +27,7 @@ export class RightbarComponent extends HTMLElement {
 
   #render(shadow) {
     this.#cargarComunidades().then(comunidades => {
-    shadow.innerHTML += `
+      shadow.innerHTML += `
         <div class="rightBar">
             <div class="container">
               <div class="item">
@@ -37,32 +38,7 @@ export class RightbarComponent extends HTMLElement {
                 <span>Actividad Reciente</span>
                 <div class="comunidad">
                   <div class="comunidadInfo">
-                    <img
-                      src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt=""
-                    />
-                    <p>Nueva publicación en <span>TerrorGodel</span></p>
-                  </div>
-                  <span>1 min ago</span>
-                </div>
-                <div class="comunidad">
-                  <div class="comunidadInfo">
-                    <img
-                      src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt=""
-                    />
-                    <p>
-                      Nueva publicación en <span>Risa</span>
-                    </p>
-                  </div>
-                  <span>9 min ago</span>
-                </div>
-                <div class="comunidad">
-                  <div class="comunidadInfo">
-                    <img
-                      src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600"
-                      alt=""
-                    />
+                    <img src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
                     <p>Nueva publicación en <span>AcciónLovers</span></p>
                   </div>
                   <span>56 min ago</span>
@@ -73,8 +49,8 @@ export class RightbarComponent extends HTMLElement {
             </div>
           </div>
         `;
-        this.#addEventListeners(shadow);
-      });
+      this.#addEventListeners(shadow);
+    });
   }
 
   #cargarComunidades() {
@@ -97,9 +73,18 @@ export class RightbarComponent extends HTMLElement {
       }
     });
   }
-  
+
   #renderComunidades(comunidades) {
-    if (!comunidades) return '<p>No hay ninguna comunidad</p>';
+    
+    if (!comunidades) return `
+      <p>Unete a una comunidad</p>
+    `;
+
+    if(!this.session){
+      return `
+        <p>Inicia sesión para ver tus comunidades</p>`
+      ;
+    }
     return `
         ${comunidades ? comunidades.map(comunidad => `
             <div class="comunidad">
@@ -109,25 +94,46 @@ export class RightbarComponent extends HTMLElement {
                 </div>
             </div>` ).join('') : ''}
     `;
-}
+  }
 
-#addEventListeners(shadow) {
+  #addEventListeners(shadow) {
     const comunidadNombres = this.shadowRoot.querySelectorAll('.comunidad-nombre');
     comunidadNombres.forEach(nombre => {
-        nombre.addEventListener('click', (event) => {
-            const comunidadId = event.target.getAttribute('data-id');
-            ComunidadService.obtenerComunidadPorId(comunidadId).then(comunidad => {
-              if(comunidad){  
-                console.log("entró...")
-              page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
-              }else{
-                alert('No se ha encontrado la comunidad');
-              }
-            }).catch((error) =>{
-              alert('No se ha encontrado la comunidad');
-            });
+      nombre.addEventListener('click', (event) => {
+        const comunidadId = event.target.getAttribute('data-id');
+        ComunidadService.obtenerComunidadPorId(comunidadId).then(comunidad => {
+          if (comunidad) {
+            console.log("entró...")
+            page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
+          } else {
+            alert('No se ha encontrado la comunidad');
+          }
+        }).catch((error) => {
+          alert('No se ha encontrado la comunidad');
         });
+      });
     });
-}
+
+      addEventListener('actualizar-comunidades', () => {
+        this.#cargarComunidades().then(comunidades => {
+          const comunidadesContainer = shadow.querySelector('.item');
+          comunidadesContainer.innerHTML = `
+            <span>Mis Comunidades</span>
+            ${this.#renderComunidades(comunidades)}
+          `;
+          this.#addEventListeners(shadow);
+        });
+      });
+
+      addEventListener('cerrar-sesion', () => {
+
+        const comunidadesContainer = shadow.querySelector('.item');
+        comunidadesContainer.innerHTML = `
+          <span>Mis Comunidades</span>
+          <p>Inicia sesión para ver tus comunidades</p>
+        `;
+      
+      });
+  }
 
 }

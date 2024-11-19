@@ -110,6 +110,7 @@ export class HeaderComponent extends HTMLElement {
                 SessionStorageService.setItem('session', null);
                 this.session = null;
                 this.#renderSession(shadow);
+                document.dispatchEvent(new CustomEvent('cerrar-sesion', { bubbles: true, composed: true }));
             }else{
                 page('/login');
             }
