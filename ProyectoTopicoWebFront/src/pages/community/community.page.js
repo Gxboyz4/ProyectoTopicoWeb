@@ -1,5 +1,4 @@
 
-
 export class ComunidadPage extends HTMLElement {
     constructor() {
         super();

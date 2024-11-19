@@ -1,3 +1,4 @@
+
 export class ComunityComponent extends HTMLElement {
 
     constructor() {
@@ -18,9 +19,11 @@ export class ComunityComponent extends HTMLElement {
     }
 
     #render(shadow) {
+        const urlParams = new URLSearchParams(window.location.search);
+        const comunidadId = urlParams.get('id');
         shadow.innerHTML += `
             <div class="home">
-                <app-cardcommunity id=1></app-cardcommunity>
+                <app-cardcommunity id="${comunidadId}"></app-cardcommunity>
                 <app-postform></app-postform>
                 <app-posts></app-posts>
             </div>

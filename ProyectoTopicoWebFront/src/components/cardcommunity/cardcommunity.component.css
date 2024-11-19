@@ -105,6 +105,9 @@
     margin: 0 auto;
 }
 
+.cargando{
+    color: var(--white-color);
+}
 @media (max-width: 768px) {
     .infocommunity {
         border: none;

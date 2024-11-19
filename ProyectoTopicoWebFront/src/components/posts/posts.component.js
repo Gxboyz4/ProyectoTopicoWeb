@@ -28,7 +28,7 @@ export class PostsComponent extends HTMLElement {
             </div>
         `;
     }
-
+    
     #renderPost(post){
         return `
             <app-post 

@@ -1,4 +1,6 @@
 
+import { PeliculaService } from '../../services/pelicula.service.js';
+import { PostService } from '../../services/post.service.js';
 export class PostformComponent extends HTMLElement {
     constructor() {
         super();
@@ -8,6 +10,8 @@ export class PostformComponent extends HTMLElement {
         const shadow = this.attachShadow({ mode: 'open' });
         this.#addStyles(shadow);
         this.#render(shadow);
+      //  this.#addEventListeners(shadow);
+
     }
 
     #render(shadow) {
@@ -42,5 +46,9 @@ export class PostformComponent extends HTMLElement {
         link.setAttribute("href", "../src/components/postform/postform.component.css");
         shadow.appendChild(link);
     }
+
+
+
+   
 
 }

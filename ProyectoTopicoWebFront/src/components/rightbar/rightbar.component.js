@@ -1,3 +1,4 @@
+
 import { Comunidad } from "../../models/comunidad.js";
 import { ComunidadService } from "../../services/comunidad.service.js";
 import { ComunidadUsuarioService } from "../../services/comunidadusuario.service.js";
@@ -71,6 +72,7 @@ export class RightbarComponent extends HTMLElement {
             </div>
           </div>
         `;
+        this.#addEventListeners(shadow);
       });
   }
 
@@ -99,19 +101,38 @@ export class RightbarComponent extends HTMLElement {
       }
     });
   }
-
+  
   #renderComunidades(comunidades) {
     if (comunidades.length === 0) return '<p>No hay ninguna comunidad</p>';
     return `
         ${comunidades.map(comunidad => `
-          <div class="comunidad">
-            <div class="comunidadInfo">
-              <img src="${comunidad.imagen}" alt="Imagen comunidad"/>
-              <span>${comunidad.nombre}</span>
-            </div>
-          </div>`).join('')}
-      `;
+            <div class="comunidad">
+                <div class="comunidadInfo">
+                    <img src="${comunidad.imagen}" alt="Imagen comunidad"/>
+                    <span class="comunidad-nombre" data-id="${comunidad._id}">${comunidad.nombre}</span>
+                </div>
+            </div>`).join('')}
+    `;
+}
 
-  }
+#addEventListeners(shadow) {
+    const comunidadNombres = this.shadowRoot.querySelectorAll('.comunidad-nombre');
+    comunidadNombres.forEach(nombre => {
+        nombre.addEventListener('click', (event) => {
+            const comunidadId = event.target.getAttribute('data-id');
+            ComunidadService.obtenerComunidadPorId(comunidadId).then(comunidad => {
+              if(comunidad){  
+                console.log("entró...")
+              SessionStorageService.setItem('comunidadSeleccionada', comunidad);
+              page(`/comunidad?nombre=${comunidad.nombre}`);
+              }else{
+                alert('No se ha encontrado la comunidad');
+              }
+            }).catch((error) =>{
+              alert('No se ha encontrado la comunidad');
+            });
+        });
+    });
+}
 
 }
