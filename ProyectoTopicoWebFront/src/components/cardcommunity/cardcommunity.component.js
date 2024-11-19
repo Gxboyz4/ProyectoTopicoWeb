@@ -1,6 +1,4 @@
 
-import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
-
 export class CardCommunityComponent extends HTMLElement {
     constructor() {
         super();
@@ -9,11 +7,9 @@ export class CardCommunityComponent extends HTMLElement {
     
     async connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
-        this.comunidad = SessionStorageService.getItem('comunidadSeleccionada');
-        console.log("comunidad seleccionada: "+ this.comunidad.nombre);
-        //const id = this.getAttribute('id');
-        //this.comunidad = await ComunidadService.obtenerComunidadPorId(id);
-        //console.log(this.comunidad);
+        this.nombre = this.getAttribute('nombre');
+        this.descripcion = this.getAttribute('descripcion');
+        this.imagen = this.getAttribute('imagen');
         this.#addStyles(shadow);
         this.#render(shadow);
     }
@@ -24,10 +20,10 @@ export class CardCommunityComponent extends HTMLElement {
                 <div class="container">
                     <div class="community">
                         <div class="communityInfo">
-                            <img src=${this.comunidad.imagen} alt="imagen-comunidad">
+                            <img src=${this.imagen} alt="imagen-comunidad">
                             <div class="details">
-                                <span class="groupName">${this.comunidad.nombre} </span>
-                                <span class="groupName">${this.comunidad.descripcion} </span>
+                                <span class="groupName">${this.nombre} </span>
+                                <span class="groupName">${this.descripcion} </span>
                             </div>
                         </div>
                         <div class="buttons">
