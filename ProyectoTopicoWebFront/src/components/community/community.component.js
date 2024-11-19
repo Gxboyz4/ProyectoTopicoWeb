@@ -25,7 +25,7 @@ export class ComunityComponent extends HTMLElement {
             this.comunidad = Crypto.decryptData(urlParams.get('comunidad'));
             shadow.innerHTML += `
             <div class="home">
-                <app-cardcommunity nombre=${this.comunidad.nombre} descripcion=${this.comunidad.descripcion} imagen=${this.comunidad.imagen}"></app-cardcommunity>
+                <app-cardcommunity nombre="${this.comunidad.nombre}" descripcion="${this.comunidad.descripcion}" imagen=${this.comunidad.imagen}"></app-cardcommunity>
                 <app-postform idComunidad=${this.comunidad._id}></app-postform>
                 <app-posts idComunidad=${this.comunidad._id}></app-posts>
             </div>

@@ -38,6 +38,7 @@
 
 .infocommunity .community .communityInfo .details .groupName {
     font-weight: 500;
+    white-space: pre-wrap;
 }
 
 .infocommunity .community .buttons {

@@ -12,6 +12,7 @@ export class CardCommunityComponent extends HTMLElement {
         this.imagen = this.getAttribute('imagen');
         this.#addStyles(shadow);
         this.#render(shadow);
+        console.log(this.descripcion)
     }
 
     #render(shadow) {

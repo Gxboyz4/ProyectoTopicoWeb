@@ -20,7 +20,7 @@ export class PostsComponent extends HTMLElement {
     #cargarPosts() {
         return new Promise((resolve, reject) => {
             if (this.idComunidad) {
-                PostService.obtenerResenasComunidad(this.idComunidad).then(posts => {
+                PostService.obtenerResenasComunidad(this.idComunidad,10,0,"fecha_creacion","desc").then(posts => {
                     resolve(posts.length === 0 ? [] : posts);
                 }).catch(error => {
                     reject([]);
