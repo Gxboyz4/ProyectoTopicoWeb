@@ -3,6 +3,7 @@ import { Comunidad } from "../../models/comunidad.js";
 import { ComunidadService } from "../../services/comunidad.service.js";
 import { ComunidadUsuarioService } from "../../services/comunidadusuario.service.js";
 import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+import { Crypto } from "../../utils/Crypto.js";
 
 export class RightbarComponent extends HTMLElement {
   constructor() {
@@ -123,8 +124,7 @@ export class RightbarComponent extends HTMLElement {
             ComunidadService.obtenerComunidadPorId(comunidadId).then(comunidad => {
               if(comunidad){  
                 console.log("entró...")
-              SessionStorageService.setItem('comunidadSeleccionada', comunidad);
-              page(`/comunidad?nombre=${comunidad.nombre}`);
+              page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
               }else{
                 alert('No se ha encontrado la comunidad');
               }

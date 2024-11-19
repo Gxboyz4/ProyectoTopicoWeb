@@ -1,3 +1,4 @@
+import { Crypto } from "../../utils/Crypto.js";
 
 export class ComunityComponent extends HTMLElement {
 
@@ -19,15 +20,16 @@ export class ComunityComponent extends HTMLElement {
     }
 
     #render(shadow) {
-        const urlParams = new URLSearchParams(window.location.search);
-        const comunidadId = urlParams.get('id');
-        shadow.innerHTML += `
+        setTimeout(() => {
+            const urlParams = new URLSearchParams(window.location.search);
+            this.comunidad = Crypto.decryptData(urlParams.get('comunidad'));
+            shadow.innerHTML += `
             <div class="home">
-                <app-cardcommunity id="${comunidadId}"></app-cardcommunity>
+                <app-cardcommunity nombre=${this.comunidad.nombre} descripcion=${this.comunidad.descripcion} imagen=${this.comunidad.imagen}"></app-cardcommunity>
                 <app-postform></app-postform>
-                <app-posts></app-posts>
+                <app-posts idComunidad=${this.comunidad._id}></app-posts>
             </div>
-        `;
+        `;}, 5); 
     }
 
 }

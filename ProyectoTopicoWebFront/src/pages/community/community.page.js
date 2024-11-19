@@ -1,3 +1,4 @@
+import { Crypto } from "../../utils/Crypto.js";
 
 export class ComunidadPage extends HTMLElement {
     constructor() {

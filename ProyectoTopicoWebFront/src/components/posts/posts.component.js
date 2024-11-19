@@ -9,6 +9,7 @@ export class PostsComponent extends HTMLElement {
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.idComunidad = this.getAttribute('idComunidad');
         this.#addStyles(shadow);
         this.#cargarPosts().then(posts => {
             this.postsCargados = posts;
@@ -18,16 +19,8 @@ export class PostsComponent extends HTMLElement {
 
     #cargarPosts() {
         return new Promise((resolve, reject) => {
-            const idComunidad = this.getAttribute('idComunidad');
-            if (idComunidad) {
-                /*
-                PostService.obtenerResenasComunidad(idComunidad).then(posts => {
-                    resolve(posts.length === 0 ? [] : posts);
-                }).catch(error => {
-                    reject([]);
-                });
-                */
-                PostService.obtenerPostsFiltro().then(posts => {
+            if (this.idComunidad) {
+                PostService.obtenerResenasComunidad(this.idComunidad).then(posts => {
                     resolve(posts.length === 0 ? [] : posts);
                 }).catch(error => {
                     reject([]);
