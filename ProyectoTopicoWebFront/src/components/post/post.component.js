@@ -130,9 +130,9 @@ export class PostComponent extends HTMLElement {
 
     #toggleLike(shadow) {
         if (this.usuarioLikeo) {
-            this.#quitarLike();
+            this.#quitarLike(shadow);
         } else {
-            this.#darLike();
+            this.#darLike(shadow);
         }
         shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
         this.#colorearLike(shadow);

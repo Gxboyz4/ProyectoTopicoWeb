@@ -63,6 +63,19 @@ class ComunidadController {
             
         }
     }
-}
 
+    static async obtenerComunidadesPorEtiqueta(req, res, next) {
+    try{
+        const { etiqueta } = req.params;
+        if(!etiqueta){
+            return next(new AppError('Error, no hay etiqueta '+etiqueta,400));
+        }
+        const comunidades = await ComunidadDAO.obtenerComunidadesPorEtiqueta(etiqueta);
+        res.status(200).json(comunidades);
+    }catch(error){
+        console.log(error);
+        next(new AppError('Error al obtener comunidades por etiqueta', 500));
+    }
+}
+}
 module.exports = ComunidadController;

@@ -37,6 +37,14 @@ class ComunidadDAO {
         }
     }
 
+    async obtenerComunidadesPorEtiqueta(etiqueta){
+        try {
+            return await Comunidad.find({ etiquetas: { $regex: etiqueta, $options: 'i' } });
+        } catch (error) {
+            console.log(error);
+            throw new Error('Error al realizar la búsqueda de comunidades');
+        }
+    }
 }
 
 module.exports = new ComunidadDAO();

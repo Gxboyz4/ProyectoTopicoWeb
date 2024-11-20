@@ -8,5 +8,6 @@ router.post('/', validateJWT, ComunidadController.crearComunidad);
 router.get('/search', ComunidadController.obtenerComunidadesPorBusqueda);
 router.get('/query', ComunidadController.obtenerComunidadesFiltro);
 router.get('/:idComunidad', ComunidadController.obtenerComunidadPorId);
+router.get('/etiqueta/:etiqueta', ComunidadController.obtenerComunidadesPorEtiqueta);
 
 module.exports = router;

@@ -72,6 +72,17 @@ export class ComunidadService {
         return comunidadData.filter(comunidad => comunidad.genero === genero);
     }
 
+    static getComunidadesPorEtiqueta(etiqueta){
+        return fetch(`${API_URL}${URL_COMUNIDADES}etiqueta/${etiqueta}`, {
+            method: 'GET'
+        }).then(response => response.json())
+          .then(data => data)
+          .catch(error => {
+              console.log(error);
+              return [];
+          });
+    }
+
 
 
 }
