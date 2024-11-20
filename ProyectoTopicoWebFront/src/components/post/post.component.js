@@ -35,6 +35,7 @@ export class PostComponent extends HTMLElement {
                         this.comunidad = comunidad;
                         this.#addStyles(shadow);
                         this.#render(shadow);
+                        this.#colorearLike(shadow);
                         this.#attachEvents(shadow, this.post.comentarios);
                     });
                 });
