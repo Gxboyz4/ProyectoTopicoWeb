@@ -1,4 +1,4 @@
-
+import { Crypto } from '../../utils/Crypto.js';
 import { UsuarioService } from '../../services/usuario.service.js';
 import { ComunidadService } from '../../services/comunidad.service.js';
 import { ComentarioService } from '../../services/comentario.service.js';
@@ -32,7 +32,6 @@ export class PostComponent extends HTMLElement {
                         this.comunidad = comunidad;
                         this.#addStyles(shadow);
                         this.#render(shadow);
-                        this.#colorearLike(shadow);
                         this.#attachEvents(shadow, this.post.comentarios);
                     });
                 });
@@ -66,7 +65,7 @@ export class PostComponent extends HTMLElement {
                         </div>
 
                         <div class="buttons">
-                            <button class="buttonUnirse">Unirse</button>
+                            <app-unirse idComunidad="${this.post.idComunidad}"></app-unirse>
                             <span class="menuIconContainer">
                                 <img class="menuIcon"src="src/assets/icons/MoreIcon.svg" alt="Menu">
                                 <button class="buttonDelete">delete</button>
@@ -113,7 +112,13 @@ export class PostComponent extends HTMLElement {
         const groupName = shadow.querySelector('.groupName');
         groupName.addEventListener('click', (event) => {
             event.preventDefault();
-            page(`/comunidad`);
+            ComunidadService.obtenerComunidadPorId(this.post.idComunidad).then(comunidad => {
+                if (comunidad) {
+                  page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
+                } else {
+                  console.log('No se ha encontrado la comunidad');
+                }
+              });
 
             //page(`/comunidades/${this.comunidad.id}`);
         });
@@ -121,55 +126,16 @@ export class PostComponent extends HTMLElement {
 
     #toggleLike(shadow) {
         if (this.usuarioLikeo) {
-            this.#quitarLike(shadow);
+            this.#quitarLike();
         } else {
-            this.#darLike(shadow);
+            this.#darLike();
         }
-        
+        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+        this.#colorearLike(shadow);
     }
 
     #colorearLike(shadow) {
         shadow.querySelector('.likeItem').style.color = this.usuarioLikeo ? 'blue' : 'inherit';
-    }
-
-    async #verificarLike(post) {
-        if (!this.session) return false;
-        try {
-            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
-            console.log("LE HA DADO LIKE A " + likes);
-            return likes.includes(post.id);
-        } catch (error) {
-            console.error(error);
-            return false;
-        }
-    }
-    
-    async #darLike(shadow) {
-        if (!this.session) return;
-        try {
-            await PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token);
-            console.log("de dislike a like " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
-            this.usuarioLikeo = true;
-            this.post.cantidadLikes++;
-            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
-            shadow.querySelector('.likeItem').style.color = 'blue';
-        } catch (error) {
-            console.error(error);
-        }
-    }
-
-    async #quitarLike(shadow) {
-        if (!this.session) return;
-        try {
-            await PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token);
-            console.log("de like a dislike " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
-            this.usuarioLikeo = false;
-            this.post.cantidadLikes--;
-            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
-            shadow.querySelector('.likeItem').style.color = 'inherit';
-        } catch (error) {
-            console.error(error);
-        }
     }
 
     #toggleMenu(shadow) {
@@ -209,5 +175,32 @@ export class PostComponent extends HTMLElement {
         `;
     }
 
+    async #verificarLike(post) {
+        if (!this.session) return false;
+        try {
+            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
+            console.log("LE HA DADO LIKE A " + likes);
+            return likes.includes(post.id);
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
     
+
+    #darLike() {
+        if (!this.session) return;
+        PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
+            this.usuarioLikeo = true;
+            this.post.cantidadLikes++;
+        });
+    }
+
+    #quitarLike() {
+        if (!this.session) return;
+        PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
+            this.usuarioLikeo = false;
+            this.post.cantidadLikes--;
+        });
+    }
 }

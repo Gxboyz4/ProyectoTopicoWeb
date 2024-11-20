@@ -19,6 +19,7 @@ import { SettingsComponent } from "./src/components/settings/settings.component.
 import { SettingsPage } from "./src/pages/settings/settings.page.js";
 import { ModalCommunityComponent } from "./src/components/modalcommunity/modalcommunity.component.js";
 import { ModalMessage } from "./src/components/modalmessage/modalmessage.component.js";
+import { UnirseComponent } from "./src/components/unirse/unirse.component.js";
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
     page('/', () => showContent('app-home'));
@@ -66,6 +67,7 @@ window.customElements.define('app-postform', PostformComponent);
 window.customElements.define('app-settingscomp', SettingsComponent);
 window.customElements.define('app-modalcommunity', ModalCommunityComponent);
 window.customElements.define('modal-message', ModalMessage);
+window.customElements.define('app-unirse', UnirseComponent);
 
 //pages
 window.customElements.define('app-home', HomePage);

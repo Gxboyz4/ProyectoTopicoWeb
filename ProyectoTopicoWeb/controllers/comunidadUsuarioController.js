@@ -57,6 +57,19 @@ class ComunidadUsuarioController {
         }
     }
 
+    static async buscarUsuarioEnComunidad(req, res, next){
+        try {
+            const { idComunidad, idUsuario } = req.query;
+            const comunidadUsuario = await ComunidadUsuario.buscarUsuarioEnComunidad(idComunidad, idUsuario);
+            if(!comunidadUsuario){
+                return next(new AppError('El usuario no pertenece a la comunidad', 404));
+            }
+            res.status(200).json(comunidadUsuario);
+        } catch (error) {
+            next(new AppError('Error al buscar usuario en comunidad', 500));
+        }
+    }
+
 }
 
 module.exports = ComunidadUsuarioController;
