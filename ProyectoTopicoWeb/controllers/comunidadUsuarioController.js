@@ -2,6 +2,7 @@ const ComunidadUsuario = require('../dataAccess/ComunidadUsuarioDAO');
 const { AppError } = require('../utils/appError');
 const Usuario = require('../dataAccess/UsuarioDAO');
 const Comunidad = require('../dataAccess/ComunidadDAO');
+const Resena = require('../dataAccess/ResenaDAO');
 
 class ComunidadUsuarioController {
     static async agregarUsuarioAComunidad(req, res, next) {
@@ -57,7 +58,40 @@ class ComunidadUsuarioController {
         }
     }
 
-    static async buscarUsuarioEnComunidad(req, res, next){
+    static async obtenerPublicacionesComunidadesPorUsuario(req, res, next) {
+        try {
+            const { idUsuario } = req.params;
+            console.log(idUsuario);
+            const comunidades = await ComunidadUsuario.obtenerComunidadesPorUsuario(idUsuario);
+    
+            if (!comunidades || comunidades.length === 0) {
+                return res.status(404).json({ mensaje: 'El usuario no pertenece a ninguna comunidad.' });
+            }
+    
+            const todasLasPublicaciones = (
+                await Promise.all(
+                    comunidades.map(async (comunidad) => {
+                        return Resena.obtenerResenasDeComunidad(comunidad._id);
+                    })
+                )
+            ).flat(); 
+    
+            if (todasLasPublicaciones.length === 0) {
+                return res.status(404).json({ mensaje: 'No hay publicaciones en las comunidades de este usuario.' });
+            }
+    
+            const publicacionesMasRecientes = todasLasPublicaciones
+                .sort((a, b) => new Date(b.fecha_creacion) - new Date(a.fecha_creacion)) 
+                .slice(0, 5); 
+    
+            res.status(200).json({ publicaciones: publicacionesMasRecientes });
+        } catch (error) {
+            console.log(error.message);
+            next(new AppError('Error al obtener publicaciones de comunidades de usuario', 500));
+        }
+    }
+    
+     static async buscarUsuarioEnComunidad(req, res, next){
         try {
             const { idComunidad, idUsuario } = req.query;
             const comunidadUsuario = await ComunidadUsuario.buscarUsuarioEnComunidad(idComunidad, idUsuario);

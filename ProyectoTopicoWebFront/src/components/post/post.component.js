@@ -6,7 +6,6 @@ import { Post } from '../../models/post.js';
 import { PeliculaService } from '../../services/pelicula.service.js';
 import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
 import { PostService } from '../../services/post.service.js';
-
 export class PostComponent extends HTMLElement {
     constructor() {
         super();
@@ -19,9 +18,13 @@ export class PostComponent extends HTMLElement {
         this.post = this.#crearObjetoPost();
         this.comentarioAbierto = false;
         this.menuAbierto = false;
+        //Modal para mensajes
+        this.modal = document.createElement('modal-message');
+        document.body.appendChild(this.modal);
+
         this.#verificarLike(this.post).then(usuarioLikeo => {
             this.usuarioLikeo = usuarioLikeo;
-            console.log(this.usuarioLikeo, 'usuario likeo ' + this.post.id);
+            //console.log(this.usuarioLikeo, 'usuario likeo ' + this.post.id);
         });
         PeliculaService.getPeliculaPorId(this.post.idPelicula)
             .then(pelicula => {
@@ -48,6 +51,7 @@ export class PostComponent extends HTMLElement {
         const calificacion = this.getAttribute('calificacion');
         const contenido = this.getAttribute('contenido');
         const comentarios = this.hasAttribute('comentarios') ? JSON.parse(this.getAttribute('comentarios')) : [];
+        //console.log('comentariosd del post', comentarios);
         return new Post(id, idComunidad, idUsuario, idPelicula, cantidadLikes, calificacion, contenido, comentarios);
     }
 
@@ -138,6 +142,46 @@ export class PostComponent extends HTMLElement {
         shadow.querySelector('.likeItem').style.color = this.usuarioLikeo ? 'blue' : 'inherit';
     }
 
+    async #verificarLike(post) {
+        if (!this.session) return false;
+        try {
+            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
+            //console.log("LE HA DADO LIKE A " + likes);
+            return likes.includes(post.id);
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+    
+    async #darLike(shadow) {
+        if (!this.session) return;
+        try {
+            await PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token);
+            //console.log("de dislike a like " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
+            this.usuarioLikeo = true;
+            this.post.cantidadLikes++;
+            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+            shadow.querySelector('.likeItem').style.color = 'blue';
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async #quitarLike(shadow) {
+        if (!this.session) return;
+        try {
+            await PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token);
+            //console.log("de like a dislike " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
+            this.usuarioLikeo = false;
+            this.post.cantidadLikes--;
+            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+            shadow.querySelector('.likeItem').style.color = 'inherit';
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     #toggleMenu(shadow) {
         this.menuAbierto = !this.menuAbierto;
         shadow.querySelector('.buttonDelete').style.display = this.menuAbierto ? 'block' : 'none';
@@ -152,55 +196,66 @@ export class PostComponent extends HTMLElement {
 
     async #showComments(shadow, comentarios) {
         const comentariosContainer = shadow.querySelector('.commentsSpace');
+        const comentariosHTML = await Promise.all(
+            comentarios.map(async (comentario) => {
+                const usuario = await UsuarioService.obtenerUsuarioPorId(comentario.usuario);
+                return `
+                    <app-comment 
+                        id=${comentario._id}
+                        idUsuario=${comentario.usuario}
+                        contenido="${comentario.comentario}"
+                        fechaCreacion=${comentario.fecha_hora}
+                        nombreUsuario=${usuario.nombre}
+                        avatarUsuario=${usuario.avatar}
+                    ></app-comment>
+                `;
+            })
+        );
         comentariosContainer.innerHTML = `
             <div class="write">
-                <img src="path/to/PabloPelonImg" alt="" />
-                <input type="text" placeholder="Escribe un comentario..." />
-                <button>Comentar</button>
+                <img class="sessionUserComment" src="../src/assets/profileimages/${this.usuario.avatar}.png" alt="" />
+                <input id="comentario"type="text" placeholder="Escribe un comentario..." />
+                <button id="commentButton">Comentar</button>
             </div>
-            ${comentarios.map(comentario => this.#renderComment(comentario)).join('')}
+            ${comentariosHTML.join('')}
         `;
+        shadow.querySelector('#commentButton').addEventListener('click', () => {
+            const contenido = shadow.querySelector('#comentario').value.trim();
+            if (contenido) {
+                this.#crearComentario(shadow, contenido);
+            } else {
+                this.modal.title = 'Error';
+                this.modal.message = 'No puedes enviar un comentario vacío';
+                this.modal.open();
+            }
+        });
     }
 
-    #renderComment(comentario) {
-        console.log('el comentario es ', comentario);
-        return `
-            <app-comment 
-                id=${comentario.id}
-                idUsuario=${comentario.idUsuario}
-                contenido="${comentario.contenido}"
-                fechaCreacion=${comentario.fechaCreacion}
-            >
-            </app-comment>
-        `;
-    }
-
-    async #verificarLike(post) {
-        if (!this.session) return false;
-        try {
-            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
-            console.log("LE HA DADO LIKE A " + likes);
-            return likes.includes(post.id);
-        } catch (error) {
-            console.error(error);
-            return false;
-        }
-    }
+    #crearComentario(shadow, contenido) {
+        if (!this.session) return;
     
-
-    #darLike() {
-        if (!this.session) return;
-        PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
-            this.usuarioLikeo = true;
-            this.post.cantidadLikes++;
-        });
+        ComentarioService.crearComentario(contenido, this.session.token, this.post.id, this.session.usuario._id)
+            .then(async (comentario) => {
+                const comentarioTexto = comentario.comentario || contenido; 
+                const fechaCreacion = 'Ahora';
+                const usuario = await UsuarioService.obtenerUsuarioPorId(this.session.usuario._id);
+                const comentarioHTML = `
+                            <app-comment 
+                                id=${comentario._id}
+                                idUsuario=${comentario.usuario}
+                                contenido="${comentarioTexto}"
+                                fechaCreacion=${fechaCreacion}
+                                nombreUsuario=${usuario.nombre}
+                                avatarUsuario=${usuario.avatar}
+                            ></app-comment>
+                        `;
+                shadow.querySelector('.commentsSpace').insertAdjacentHTML('beforeend', comentarioHTML);
+                shadow.querySelector('#comentario').value = '';
+            })
+            .catch((error) => {
+                console.error(error);
+            });
     }
 
-    #quitarLike() {
-        if (!this.session) return;
-        PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
-            this.usuarioLikeo = false;
-            this.post.cantidadLikes--;
-        });
-    }
+ 
 }
