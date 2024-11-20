@@ -8,5 +8,6 @@ router.post  ('/', validateJWT,ComunidadUsuarioController.agregarUsuarioAComunid
 router.put  ('/query', validateJWT,ComunidadUsuarioController.cambiarRolUsuario);
 router.get   ('/:idComunidad', validateJWT,ComunidadUsuarioController.obtenerUsuariosDeComunidad);
 router.get   ('/usuario/:idUsuario', validateJWT,ComunidadUsuarioController.obtenerComunidadesPorUsuario);
+router.get  ('/publicacionesComunidad/:idUsuario',validateJWT,ComunidadUsuarioController.obtenerPublicacionesComunidadesPorUsuario);
 
 module.exports = router;

@@ -1,25 +1,5 @@
-
-
-.rightBar {
-    flex: 3;
-    position: sticky;
-    top: 70px;
-    height: calc(100vh - 70px);
-    overflow: scroll;
-    align-items: center;
-    background-color: var(--background-color); 
-    border-left: 1px solid   var(--secondary-color); 
-}
-
-.rightBar::-webkit-scrollbar {
-    display: none;
-}
-
-.rightBar .container {
-    padding: 20px;
-}
-
-.rightBar .container .item {
+.rightBar .container .item,
+.rightBar .container .itemReciente {
     -webkit-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
     -moz-box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
     box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.09);
@@ -28,36 +8,39 @@
     background-color: var(--black-color); 
 }
 
-.rightBar .container .item span {
+.rightBar .container .item span,
+.rightBar .container .itemReciente span {
     color: rgb(255, 255, 255);
 }
 
-.rightBar .container .item p {
-    color: rgb(255, 255, 255);
-}
-
-.rightBar .container .item .comunidad {
+.rightBar .container .item .comunidad,
+.rightBar .container .itemReciente .comunidadInfo {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     margin: 20px 0px;
 }
 
-.rightBar .container .item .comunidad .comunidadInfo {
+.rightBar .container .item .comunidad,
+.rightBar .container .itemReciente .comunidad .comunidadInfo {
     display: flex;
+    flex-direction: row; 
     align-items: center;
-    gap: 20px;
-    position: relative;
+    gap: 10px; 
+    margin-bottom: 10px; 
 }
 
-.rightBar .container .item .comunidad .comunidadInfo img {
+.rightBar .container .item .comunidad img,
+.rightBar .container .itemReciente .comunidad .comunidadInfo img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
 }
 
-.rightBar .container .item .comunidad .comunidadInfo .online {
+.rightBar .container .item .comunidad .online,
+.rightBar .container .itemReciente .comunidad .comunidadInfo .online {
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -67,36 +50,42 @@
     left: 30px;
 }
 
-.rightBar .container .item .comunidad .comunidadInfo p {
+.rightBar .container .item .comunidad,
+.rightBar .container .itemReciente .comunidad .comunidadInfo p {
     color: rgb(208, 239, 255);
 }
 
-.rightBar .container .item .comunidad .comunidadInfo span {
+.rightBar .container .item .comunidad,
+.rightBar .container .itemReciente .comunidad .comunidadInfo span {
     font-weight: 500;
     color: rgb(144, 218, 255);
-
 }
 
-.rightBar .container .item .comunidad .buttons {
+.rightBar .container .item .comunidad .buttons,
+.rightBar .container .itemReciente .comunidad .buttons {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.rightBar .container .item .comunidad .buttons button {
+.rightBar .container .item .comunidad .buttons button,
+.rightBar .container .itemReciente .comunidad .buttons button {
     border: none;
     padding: 5px;
     color: white;
     cursor: pointer;
 }
 
-.rightBar .container .item .comunidad .buttons button:first-child {
+.rightBar .container .item .comunidad .buttons button:first-child,
+.rightBar .container .itemReciente .comunidad .buttons button:first-child {
     background-color: #5271ff;
 }
 
-.rightBar .container .item .comunidad .buttons button:last-child {
+.rightBar .container .item .comunidad .buttons button:last-child,
+.rightBar .container .itemReciente .comunidad .buttons button:last-child {
     background-color: #f0544f;
 }
+
 .comunidad-nombre {
     color: var(--primary-color);
     font-size: 1rem;
@@ -105,8 +94,16 @@
     transition: color 0.3s ease, text-decoration 0.3s ease;
 }
 
+.comunidadTitulo {
+    color: var(--primary-color);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+    margin-top: 10px; /* Espacio superior para separar el título de los elementos anteriores */
+}
+
 .comunidad-nombre:hover {
     color: var(--hover-color);
     text-decoration: underline;
 }
-
