@@ -15,6 +15,10 @@ export class HeaderComponent extends HTMLElement {
         this.#render(shadow);
         this.#renderSession(shadow);
         this.#addEventListeners(shadow);
+       
+        //Modal para mensajes 
+        this.modal = document.createElement('modal-message');
+        document.body.appendChild(this.modal);
     }
 
     #render(shadow) {
@@ -144,7 +148,13 @@ export class HeaderComponent extends HTMLElement {
 
         crearComunidad.addEventListener('click', () => {
             const modal = shadow.querySelector('app-modalcommunity');
-            modal.dispatchEvent(new CustomEvent('open-modal'));
+            if(this.session===null){
+                this.modal.title = 'Inicia sesión';
+                this.modal.message = 'Inicia sesión para crear una comunidad';
+                this.modal.open();
+            }else{
+                modal.dispatchEvent(new CustomEvent('open-modal'));
+            }
         });
 
         searchInput.addEventListener("input", (event) => {
