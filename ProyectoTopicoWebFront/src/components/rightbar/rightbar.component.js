@@ -4,6 +4,7 @@ import { ComunidadService } from "../../services/comunidad.service.js";
 import { ComunidadUsuarioService } from "../../services/comunidadusuario.service.js";
 import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
 import { Crypto } from "../../utils/Crypto.js";
+import { PeliculaService } from "../../services/pelicula.service.js";
 
 export class RightbarComponent extends HTMLElement {
   constructor() {
@@ -25,33 +26,82 @@ export class RightbarComponent extends HTMLElement {
     shadow.appendChild(link);
   }
 
-  #render(shadow) {
-    this.#cargarComunidades().then(comunidades => {
-      shadow.innerHTML += `
-        <div class="rightBar">
-            <div class="container">
-              <div class="item">
-                <span>Mis Comunidades</span>
-                ${this.#renderComunidades(comunidades)}
-              </div>
-              <div class="item">
-                <span>Actividad Reciente</span>
-                <div class="comunidad">
-                  <div class="comunidadInfo">
-                    <img src="https://images.pexels.com/photos/4881619/pexels-photo-4881619.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="" />
-                    <p>Nueva publicación en <span>AcciónLovers</span></p>
-                  </div>
-                  <span>56 min ago</span>
-                </div>
-
-              </div>
+  async #render(shadow) {
+    const comunidades = await this.#cargarComunidades();
+    const actividadReciente = await this.#renderActividadReciente();
+    shadow.innerHTML += `
+      <div class="rightBar">
+          <div class="container">
+            <div class="item">
+              <span>Mis Comunidades</span>
+              ${this.#renderComunidades(comunidades)}
+            </div>
+            <div class="itemReciente">
+              <span>Actividad Reciente</span>
+              <div class="comunidad">
+                  ${actividadReciente}
+                <span>56 min ago</span>
+            </div>
 
             </div>
+
           </div>
-        `;
-      this.#addEventListeners(shadow);
-    });
+        </div>
+      `;
+    this.#addEventListeners(shadow);
   }
+
+  async #renderActividadReciente() {
+    if (this.session) {
+      try {
+        const resenas = await ComunidadUsuarioService.obtenerResenasComunidadesUsuaario(this.session.usuario._id, this.session.token);
+        console.log(resenas);
+        if (resenas && resenas.publicaciones.length > 0) {
+          console.log(resenas);
+          const resenasHtml = await Promise.all(resenas.publicaciones.map(async resena => {
+            const urlPelicula = await this.obtenerUrlPelicula(resena.pelicula);
+            const tituloPelicula = await this.obtenerTituloPelicula(resena.pelicula);
+            return `
+            <div class="comunidadInfo">
+                <img src="${urlPelicula}" alt="Imagen comunidad"/>
+                <span class= "comunidadTitulo">${tituloPelicula}</span>
+                </div>
+            `;
+          }));
+          return resenasHtml.join('');
+        } else {
+          return '<p>No hay actividades recientes.</p>';
+        }
+      } catch (error) {
+        return `<p>Error al obtener las reseñas: ${error}</p>`;
+      }
+    } else {
+      console.log("No hay sesión");
+      return '<p>Inicia sesión para ver las actividades recientes</p>';
+    }
+  }
+  
+
+  async obtenerTituloPelicula(idPelicula) {
+    try {
+      const pelicula = await PeliculaService.getPeliculaPorId(idPelicula);
+      return pelicula.Title;
+    } catch (error) {
+      console.error("Error obteniendo el título de la película:", error);
+      return ''; 
+    }
+  }
+
+  async obtenerUrlPelicula(idPelicula) {
+    try {
+      const pelicula = await PeliculaService.getPeliculaPorId(idPelicula);
+      return pelicula.Poster;
+    } catch (error) {
+      console.error("Error obteniendo la URL de la película:", error);
+      return ''; 
+    }
+  }
+  
 
   #cargarComunidades() {
     return new Promise((resolve, reject) => {
@@ -88,7 +138,7 @@ export class RightbarComponent extends HTMLElement {
     return `
         ${comunidades ? comunidades.map(comunidad => `
             <div class="comunidad">
-                <div class="comunidadInfo">
+                <div class="comunidad">
                     <img src="${comunidad.imagen}" alt="Imagen comunidad"/>
                     <span class="comunidad-nombre" data-id="${comunidad._id}">${comunidad.nombre}</span>
                 </div>
@@ -133,6 +183,17 @@ export class RightbarComponent extends HTMLElement {
           <p>Inicia sesión para ver tus comunidades</p>
         `;
       
+      });
+
+      addEventListener('unirse-comunidad', () => {
+        this.#cargarComunidades().then(comunidades => {
+          const comunidadesContainer = shadow.querySelector('.item');
+          comunidadesContainer.innerHTML = `
+              <span>Mis Comunidades</span>
+              ${this.#renderComunidades(comunidades)}
+            `;
+          this.#addEventListeners(shadow);
+        });
       });
   }
 
