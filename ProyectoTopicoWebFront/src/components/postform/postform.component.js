@@ -2,19 +2,19 @@
 import { PeliculaService } from '../../services/pelicula.service.js';
 import { PostService } from '../../services/post.service.js';
 import { SessionStorageService } from '../../utils/sessionStorageService.service.js';
-import  Validador  from "../../utils/validador.js";
+import Validador from "../../utils/validador.js";
 
 export class PostformComponent extends HTMLElement {
     constructor() {
         super();
     }
-    
+
     async connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
         this.idComunidad = this.getAttribute('idComunidad');
         this.#addStyles(shadow);
         this.#render(shadow);
-         this.#addEventListeners(shadow);
+        this.#addEventListeners(shadow);
 
         //Modal para mensajes 
         this.modal = document.createElement('modal-message');
@@ -56,11 +56,16 @@ export class PostformComponent extends HTMLElement {
     }
 
     #addEventListeners(shadow) {
-    const postButton = shadow.querySelector("#post-button");
-    postButton.addEventListener("click", async () => {
-        //event.preventDefault();
-        this.#registrarPost();
-    });
+        const postButton = shadow.querySelector("#post-button");
+        postButton.addEventListener("click", async () => {
+            //event.preventDefault();
+            this.#registrarPost();
+        });
+        const formContainer = shadow.querySelector(".postform");
+        formContainer.style.display = SessionStorageService.getItem('session') ? "block" : "none";
+        addEventListener('cerrar-sesion', () => {
+            formContainer.style.display = "none";
+        });
     }
 
     #registrarPost() {
@@ -68,52 +73,52 @@ export class PostformComponent extends HTMLElement {
         const pelicula = this.shadowRoot.querySelector("#pelicula").value;
         const calificacion = this.shadowRoot.querySelector("#calificacion").value;
         const idUsuario = SessionStorageService.getItem('session').usuario._id;
-        if(Validador.validarDatosPost(critica,calificacion,pelicula)){
-        PeliculaService.getIdPeliculaPorNombre(pelicula).then((idPelicula) => {
-            if (idPelicula) {
-                const post = {
-                    usuario: idUsuario,
-                    pelicula: idPelicula,
-                    cantidad_likes: parseInt(0), 
-                    calificacion: calificacion,
-                    contenido: critica,
-                    comunidad: this.idComunidad,
-                    comentarios: []  
-                };
-                console.log(post);
-                PostService.crearPost(post, SessionStorageService.getItem('session').token)
-                    .then((respuesta) => {
-                        if (respuesta) {
-                            console.log('Reseña creada exitosamente:', respuesta);
-                            this.modal.title = '¡Éxito!';
-                            this.modal.message = 'Reseña creada exitosamente!';
-                            this.modal.open();
-                        } else {
+        if (Validador.validarDatosPost(critica, calificacion, pelicula)) {
+            PeliculaService.getIdPeliculaPorNombre(pelicula).then((idPelicula) => {
+                if (idPelicula) {
+                    const post = {
+                        usuario: idUsuario,
+                        pelicula: idPelicula,
+                        cantidad_likes: parseInt(0),
+                        calificacion: calificacion,
+                        contenido: critica,
+                        comunidad: this.idComunidad,
+                        comentarios: []
+                    };
+                    console.log(post);
+                    PostService.crearPost(post, SessionStorageService.getItem('session').token)
+                        .then((respuesta) => {
+                            if (respuesta) {
+                                console.log('Reseña creada exitosamente:', respuesta);
+                                this.modal.title = '¡Éxito!';
+                                this.modal.message = 'Reseña creada exitosamente!';
+                                this.modal.open();
+                            } else {
+                                this.modal.title = 'Error';
+                                this.modal.message = 'Error al crear la reseña. Inténtalo más tarde';
+                                this.modal.open();
+                            }
+                        })
+                        .catch((error) => {
                             this.modal.title = 'Error';
-                            this.modal.message = 'Error al crear la reseña. Inténtalo más tarde';
+                            this.modal.message = 'Error en la creación de la reseña. Inténtalo más tarde';
                             this.modal.open();
-                        }
-                    })
-                    .catch((error) => {
-                        this.modal.title = 'Error';
-                        this.modal.message = 'Error en la creación de la reseña. Inténtalo más tarde';
-                        this.modal.open();
-                    });
-            } else {
+                        });
+                } else {
+                    this.modal.title = 'Error';
+                    this.modal.message = 'No se pudo encontrar la película';
+                    this.modal.open();
+                }
+            }).catch((error) => {
                 this.modal.title = 'Error';
-                this.modal.message = 'No se pudo encontrar la película';
+                this.modal.message = 'Hubo un problema al obtener la información de la película';
                 this.modal.open();
-            }
-        }).catch((error) => {
+            });
+        } else {
             this.modal.title = 'Error';
-            this.modal.message = 'Hubo un problema al obtener la información de la película';
+            this.modal.message = 'Ingresa todos los datos.';
             this.modal.open();
-        });
-    }else{
-        this.modal.title = 'Error';
-        this.modal.message = 'Ingresa todos los datos.';
-        this.modal.open();
+        }
     }
-}
-    
+
 }

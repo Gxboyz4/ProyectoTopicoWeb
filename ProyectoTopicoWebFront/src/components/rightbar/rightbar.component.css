@@ -86,6 +86,10 @@
     background-color: #f0544f;
 }
 
+.rightBar .container{
+    color: var(--white-color);
+}
+
 .comunidad-nombre {
     color: var(--primary-color);
     font-size: 1rem;
@@ -100,7 +104,7 @@
     font-weight: bold;
     cursor: pointer;
     transition: color 0.3s ease, text-decoration 0.3s ease;
-    margin-top: 10px; /* Espacio superior para separar el título de los elementos anteriores */
+    margin-top: 10px; 
 }
 
 .comunidad-nombre:hover {

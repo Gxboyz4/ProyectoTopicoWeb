@@ -38,13 +38,10 @@ export class RightbarComponent extends HTMLElement {
             </div>
             <div class="itemReciente">
               <span>Actividad Reciente</span>
-              <div class="comunidad">
+              <div id=actividadReciente class="comunidad">
                   ${actividadReciente}
-                <span>56 min ago</span>
+              </div>
             </div>
-
-            </div>
-
           </div>
         </div>
       `;
@@ -55,9 +52,7 @@ export class RightbarComponent extends HTMLElement {
     if (this.session) {
       try {
         const resenas = await ComunidadUsuarioService.obtenerResenasComunidadesUsuaario(this.session.usuario._id, this.session.token);
-        console.log(resenas);
         if (resenas && resenas.publicaciones.length > 0) {
-          console.log(resenas);
           const resenasHtml = await Promise.all(resenas.publicaciones.map(async resena => {
             const urlPelicula = await this.obtenerUrlPelicula(resena.pelicula);
             const tituloPelicula = await this.obtenerTituloPelicula(resena.pelicula);
@@ -76,7 +71,6 @@ export class RightbarComponent extends HTMLElement {
         return `<p>Error al obtener las reseñas: ${error}</p>`;
       }
     } else {
-      console.log("No hay sesión");
       return '<p>Inicia sesión para ver las actividades recientes</p>';
     }
   }
@@ -153,7 +147,6 @@ export class RightbarComponent extends HTMLElement {
         const comunidadId = event.target.getAttribute('data-id');
         ComunidadService.obtenerComunidadPorId(comunidadId).then(comunidad => {
           if (comunidad) {
-            console.log("entró...")
             page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
           } else {
             alert('No se ha encontrado la comunidad');
@@ -176,13 +169,13 @@ export class RightbarComponent extends HTMLElement {
       });
 
       addEventListener('cerrar-sesion', () => {
-
         const comunidadesContainer = shadow.querySelector('.item');
         comunidadesContainer.innerHTML = `
           <span>Mis Comunidades</span>
           <p>Inicia sesión para ver tus comunidades</p>
         `;
-      
+        const actividadRecienteContainer = shadow.querySelector('#actividadReciente');
+        actividadRecienteContainer.innerHTML = '<p>Inicia sesión para ver las actividades recientes</p>';
       });
 
       addEventListener('unirse-comunidad', () => {
@@ -193,6 +186,10 @@ export class RightbarComponent extends HTMLElement {
               ${this.#renderComunidades(comunidades)}
             `;
           this.#addEventListeners(shadow);
+        });
+        const actividadRecienteContainer = shadow.querySelector('#actividadReciente');
+        this.#renderActividadReciente().then(actividadReciente => {
+          actividadRecienteContainer.innerHTML = actividadReciente;
         });
       });
   }
