@@ -1,4 +1,4 @@
-
+import { Crypto } from '../../utils/Crypto.js';
 import { UsuarioService } from '../../services/usuario.service.js';
 import { ComunidadService } from '../../services/comunidad.service.js';
 import { ComentarioService } from '../../services/comentario.service.js';
@@ -35,7 +35,6 @@ export class PostComponent extends HTMLElement {
                         this.comunidad = comunidad;
                         this.#addStyles(shadow);
                         this.#render(shadow);
-                        this.#colorearLike(shadow);
                         this.#attachEvents(shadow, this.post.comentarios);
                     });
                 });
@@ -70,7 +69,7 @@ export class PostComponent extends HTMLElement {
                         </div>
 
                         <div class="buttons">
-                            <button class="buttonUnirse">Unirse</button>
+                            <app-unirse idComunidad="${this.post.idComunidad}"></app-unirse>
                             <span class="menuIconContainer">
                                 <img class="menuIcon"src="src/assets/icons/MoreIcon.svg" alt="Menu">
                                 <button class="buttonDelete">delete</button>
@@ -117,7 +116,13 @@ export class PostComponent extends HTMLElement {
         const groupName = shadow.querySelector('.groupName');
         groupName.addEventListener('click', (event) => {
             event.preventDefault();
-            page(`/comunidad`);
+            ComunidadService.obtenerComunidadPorId(this.post.idComunidad).then(comunidad => {
+                if (comunidad) {
+                  page(`/comunidad?comunidad=${Crypto.encryptData(comunidad)}`);
+                } else {
+                  console.log('No se ha encontrado la comunidad');
+                }
+              });
 
             //page(`/comunidades/${this.comunidad.id}`);
         });
@@ -125,11 +130,12 @@ export class PostComponent extends HTMLElement {
 
     #toggleLike(shadow) {
         if (this.usuarioLikeo) {
-            this.#quitarLike(shadow);
+            this.#quitarLike();
         } else {
-            this.#darLike(shadow);
+            this.#darLike();
         }
-        
+        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+        this.#colorearLike(shadow);
     }
 
     #colorearLike(shadow) {
@@ -250,6 +256,6 @@ export class PostComponent extends HTMLElement {
                 console.error(error);
             });
     }
-    
-    
+
+ 
 }

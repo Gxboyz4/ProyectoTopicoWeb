@@ -1,18 +1,22 @@
+import { ComunidadUsuarioService } from "../../services/comunidadusuario.service.js";
+import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
 
 export class CardCommunityComponent extends HTMLElement {
     constructor() {
         super();
-        
+
     }
-    
+
     async connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.id = this.getAttribute('id');
         this.nombre = this.getAttribute('nombre');
         this.descripcion = this.getAttribute('descripcion');
         this.imagen = this.getAttribute('imagen');
+        this.session = SessionStorageService.getItem('session');
+        this.mostrarUnirse = false;
         this.#addStyles(shadow);
         this.#render(shadow);
-        console.log(this.descripcion)
     }
 
     #render(shadow) {
@@ -28,7 +32,7 @@ export class CardCommunityComponent extends HTMLElement {
                             </div>
                         </div>
                         <div class="buttons">
-                            <button class="buttonUnirse">Unirse</button>
+                            <app-unirse idComunidad="${this.id}"></app-unirse>
                         </div>
                     </div>
                 </div>
