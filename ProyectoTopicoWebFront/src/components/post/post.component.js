@@ -32,6 +32,7 @@ export class PostComponent extends HTMLElement {
                         this.comunidad = comunidad;
                         this.#addStyles(shadow);
                         this.#render(shadow);
+                        this.#colorearLike(shadow);
                         this.#attachEvents(shadow, this.post.comentarios);
                     });
                 });
@@ -120,16 +121,55 @@ export class PostComponent extends HTMLElement {
 
     #toggleLike(shadow) {
         if (this.usuarioLikeo) {
-            this.#quitarLike();
+            this.#quitarLike(shadow);
         } else {
-            this.#darLike();
+            this.#darLike(shadow);
         }
-        shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
-        this.#colorearLike(shadow);
+        
     }
 
     #colorearLike(shadow) {
         shadow.querySelector('.likeItem').style.color = this.usuarioLikeo ? 'blue' : 'inherit';
+    }
+
+    async #verificarLike(post) {
+        if (!this.session) return false;
+        try {
+            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
+            console.log("LE HA DADO LIKE A " + likes);
+            return likes.includes(post.id);
+        } catch (error) {
+            console.error(error);
+            return false;
+        }
+    }
+    
+    async #darLike(shadow) {
+        if (!this.session) return;
+        try {
+            await PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token);
+            console.log("de dislike a like " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
+            this.usuarioLikeo = true;
+            this.post.cantidadLikes++;
+            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+            shadow.querySelector('.likeItem').style.color = 'blue';
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    async #quitarLike(shadow) {
+        if (!this.session) return;
+        try {
+            await PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token);
+            console.log("de like a dislike " + this.usuarioLikeo + " --> " + !this.usuarioLikeo);
+            this.usuarioLikeo = false;
+            this.post.cantidadLikes--;
+            shadow.querySelector('.likeCount').textContent = `${this.post.cantidadLikes} Me gusta`;
+            shadow.querySelector('.likeItem').style.color = 'inherit';
+        } catch (error) {
+            console.error(error);
+        }
     }
 
     #toggleMenu(shadow) {
@@ -169,32 +209,5 @@ export class PostComponent extends HTMLElement {
         `;
     }
 
-    async #verificarLike(post) {
-        if (!this.session) return false;
-        try {
-            const likes = await UsuarioService.getLikes(this.session.usuario._id, this.session.token);
-            console.log("LE HA DADO LIKE A " + likes);
-            return likes.includes(post.id);
-        } catch (error) {
-            console.error(error);
-            return false;
-        }
-    }
     
-
-    #darLike() {
-        if (!this.session) return;
-        PostService.likeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
-            this.usuarioLikeo = true;
-            this.post.cantidadLikes++;
-        });
-    }
-
-    #quitarLike() {
-        if (!this.session) return;
-        PostService.dislikeResena(this.post.id, this.session.usuario._id, this.session.token).then(() => {
-            this.usuarioLikeo = false;
-            this.post.cantidadLikes--;
-        });
-    }
 }
