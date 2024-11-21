@@ -127,9 +127,10 @@ export class PostComponent extends HTMLElement {
 
             //page(`/comunidades/${this.comunidad.id}`);
         });
-
         addEventListener('cerrar-sesion', () => {
+            console.log("Se clickeo en cerrar sesión");
             const writeCommentSection = shadow.querySelector('.write');
+            this.session = null;
             if (writeCommentSection) {
             writeCommentSection.remove();
             }
@@ -220,9 +221,9 @@ export class PostComponent extends HTMLElement {
             })
         );
         
-      
+        console.log("Esto es antes del if del sessión, la sesión es: ", this.session);
         if(this.session){
-            comentariosContainer.innerHTML += `
+            comentariosContainer.innerHTML = `
             <div class="write">
                 <img class="sessionUserComment" src="../src/assets/profileimages/${this.usuario.avatar}.png" alt="" />
                 <input id="comentario"type="text" placeholder="Escribe un comentario..." />
@@ -230,10 +231,6 @@ export class PostComponent extends HTMLElement {
             </div>
             ${comentariosHTML.join('')}
         `;
-        }else{
-            comentariosContainer.innerHTML = `${comentariosHTML.join('')}`;
-        }
-
         shadow.querySelector('#commentButton').addEventListener('click', () => {
             const contenido = shadow.querySelector('#comentario').value.trim();
             if (contenido) {
@@ -244,6 +241,11 @@ export class PostComponent extends HTMLElement {
                 this.modal.open();
             }
         });
+        }else{
+            comentariosContainer.innerHTML = `${comentariosHTML.join('')}`;
+        }
+
+       
     }
 
     #crearComentario(shadow, contenido) {
