@@ -52,7 +52,8 @@ export class RightbarComponent extends HTMLElement {
     if (this.session) {
       try {
         const resenas = await ComunidadUsuarioService.obtenerResenasComunidadesUsuaario(this.session.usuario._id, this.session.token);
-        if (resenas && resenas.publicaciones.length > 0) {
+        console.log(resenas);
+        if (resenas && resenas.publicaciones && resenas.publicaciones.length > 0) {
           const resenasHtml = await Promise.all(resenas.publicaciones.map(async resena => {
             const urlPelicula = await this.obtenerUrlPelicula(resena.pelicula);
             const tituloPelicula = await this.obtenerTituloPelicula(resena.pelicula);
