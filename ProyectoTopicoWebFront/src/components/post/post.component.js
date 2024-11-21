@@ -41,6 +41,7 @@ export class PostComponent extends HTMLElement {
                 });
             }
             );
+            
     }
 
     #crearObjetoPost() {
@@ -134,6 +135,10 @@ export class PostComponent extends HTMLElement {
             if (writeCommentSection) {
             writeCommentSection.remove();
             }
+            this.#verificarLike(this.post).then(usuarioLikeo => {
+                this.usuarioLikeo = usuarioLikeo;
+                this.#colorearLike(shadow);
+            });
         });
     }
 
