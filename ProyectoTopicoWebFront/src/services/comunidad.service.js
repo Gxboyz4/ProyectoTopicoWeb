@@ -20,6 +20,8 @@ export class ComunidadService {
         return comunidadesRandom.slice(0, cantidad);
     }
 
+
+
     static getComunidadById(comunidadId){
         // HACER PETICION A LA API
         return comunidadData.find(comunidad => comunidad.id === Number(comunidadId));
@@ -42,8 +44,9 @@ export class ComunidadService {
     static obtenerComunidadPorId(comunidadId) {
         return fetch(`${API_URL}${URL_COMUNIDADES}${comunidadId}`, {
             method: 'GET'
-        }).then(response => response.json())
-          .then(data => data);
+        }).then(response => {
+            return response.ok ? response.json() : null;
+        });
     }
 
     static obtenerComunidadesFiltro(filtro) {
@@ -53,9 +56,31 @@ export class ComunidadService {
           .then(data => data);
     }
 
+    static getComunidadesPorBusqueda(busqueda) {
+        return fetch(`${API_URL}${URL_COMUNIDADES}search?busqueda=${busqueda}`, {
+            method: 'GET'
+        }).then(response => response.json())
+          .then(data => data)
+          .catch(error => {
+              console.log(error);
+              return [];
+          });
+    }
+
     static getComunidadesByGenero(genero){
         // HACER PETICION A LA API
         return comunidadData.filter(comunidad => comunidad.genero === genero);
+    }
+
+    static getComunidadesPorEtiqueta(etiqueta){
+        return fetch(`${API_URL}${URL_COMUNIDADES}etiqueta/${etiqueta}`, {
+            method: 'GET'
+        }).then(response => response.json())
+          .then(data => data)
+          .catch(error => {
+              console.log(error);
+              return [];
+          });
     }
 
 

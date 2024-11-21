@@ -38,6 +38,7 @@
 
 .infocommunity .community .communityInfo .details .groupName {
     font-weight: 500;
+    white-space: pre-wrap;
 }
 
 .infocommunity .community .buttons {
@@ -105,6 +106,9 @@
     margin: 0 auto;
 }
 
+.cargando{
+    color: var(--white-color);
+}
 @media (max-width: 768px) {
     .infocommunity {
         border: none;

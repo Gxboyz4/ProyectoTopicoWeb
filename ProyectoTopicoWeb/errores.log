@@ -39,3 +39,466 @@
 {"level":"error","message":"No se encontro la reseña"}
 {"level":"error","message":"Error al quitar like"}
 {"level":"error","message":"Error al quitar like"}
+{"level":"error","message":"Debe ingresar todos los campos"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"No se encontró la ruta / en el servidor web."}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"Falta llenar datos de la reseña"}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb79b08183800de167c0f/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/resenas/idComunidad=673bb73108183800de167c07/comunidad/query?limit=undefined&offset=undefined&sortBy=undefined&sortOrder=undefined en el servidor web."}
+{"level":"error","message":"Error al crear usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=d en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=l en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=l en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=l en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=d en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=d en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=l en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=c en el servidor web."}
+{"level":"error","message":"No se encontró la ruta /api/comunidades/?busqueda=l en el servidor web."}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidad por id"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones likeadas"}
+{"level":"error","message":"Error al obtener publicaciones likeadas"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones likeadas"}
+{"level":"error","message":"Error al obtener publicaciones likeadas"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al dar like"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al dar like"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al dar like"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al quitar like"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al obtener comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al obtener publicaciones de comunidades de usuario"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"El usuario no pertenece a la comunidad"}
+{"level":"error","message":"El usuario no pertenece a la comunidad"}
+{"level":"error","message":"El usuario no pertenece a la comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error, no hay etiqueta"}
+{"level":"error","message":"Error, no hay etiqueta"}
+{"level":"error","message":"Error, no hay etiqueta undefined"}
+{"level":"error","message":"Error, no hay etiqueta undefined"}
+{"level":"error","message":"Error, no hay etiqueta undefined"}
+{"level":"error","message":"Error, no hay etiqueta undefined"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"Error al buscar usuario en comunidad"}
+{"level":"error","message":"El usuario no pertenece a la comunidad"}
+{"level":"error","message":"El usuario no pertenece a la comunidad"}

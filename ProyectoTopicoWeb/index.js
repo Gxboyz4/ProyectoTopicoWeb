@@ -1,4 +1,5 @@
 const db = require('./config/db');
+const cors = require('cors');
 const UsuarioRouter = require('./routes/usuarioRouter');
 const ComunidadRouter = require('./routes/comunidadRouter');
 const ResenaRouter = require('./routes/resenaRouter');
@@ -16,6 +17,8 @@ async function main() {
         }).catch((error) => {
             console.error(error);
         });
+
+        app.use(cors());
 
         app.use(express.json());
         app.use(morgan('combined'));

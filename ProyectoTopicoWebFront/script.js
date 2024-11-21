@@ -18,12 +18,17 @@ import { PostformComponent } from "./src/components/postform/postform.component.
 import { SettingsComponent } from "./src/components/settings/settings.component.js";
 import { SettingsPage } from "./src/pages/settings/settings.page.js";
 import { ModalCommunityComponent } from "./src/components/modalcommunity/modalcommunity.component.js";
-
+import { ModalMessage } from "./src/components/modalmessage/modalmessage.component.js";
+import { UnirseComponent } from "./src/components/unirse/unirse.component.js";
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
     page('/', () => showContent('app-home'));
     //page('/', () => showContent('app-home'));
     page('/comunidad', () => showContent('app-comunidad'));
+    page('/comunidad/:id', (context) => {
+        const id = context.params.id;
+        showContent(`app-comunity id="${id}"`);
+    });
     page('/login', () => showContent('app-login'));
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
@@ -33,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         showContent(`app-comunidadtopics genero="${genero}"`);
     });
     page('*', () => {
-        showContent('app-login');
+        showContent('app-home');
     });
     //Inicializar nuestro router
     page();
@@ -61,7 +66,8 @@ window.customElements.define('app-cardcommunity', CardCommunityComponent);
 window.customElements.define('app-postform', PostformComponent);
 window.customElements.define('app-settingscomp', SettingsComponent);
 window.customElements.define('app-modalcommunity', ModalCommunityComponent);
-
+window.customElements.define('modal-message', ModalMessage);
+window.customElements.define('app-unirse', UnirseComponent);
 
 //pages
 window.customElements.define('app-home', HomePage);

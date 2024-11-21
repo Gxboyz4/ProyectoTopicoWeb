@@ -23,7 +23,20 @@ class ComunidadUsuarioDAO {
         }catch(error){
             throw error;
         }
-        
+    }
+
+    async obtenerComunidadesPorUsuario(idUsuario){
+        try{
+            const comunidadesUsuario = await ComunidadUsuarios.find({usuario: idUsuario})
+            .populate('comunidad');
+            if(!comunidadesUsuario || comunidadesUsuario.length === 0){
+                throw new Error('No hay comunidades para ese usuario');
+            }
+            const comunidades = comunidadesUsuario.map((comunidadUsuario) => comunidadUsuario.comunidad);
+            return comunidades;
+        }catch(error){
+            throw error;
+        }
     }
 
     async cambiarRolUsuario(idComunidad, idUsuario, nuevoRol){

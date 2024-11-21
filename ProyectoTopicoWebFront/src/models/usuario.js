@@ -1,7 +1,6 @@
 
 export class Usuario {
-    constructor(id, nombre, correo, contrasena, avatar, idResenasLikeadas){
-        this.id = id;
+    constructor(nombre, correo, contrasena, avatar, idResenasLikeadas){
         this.nombre = nombre;
         this.correo = correo;
         this.contrasena = contrasena;

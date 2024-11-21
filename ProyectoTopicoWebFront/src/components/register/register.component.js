@@ -1,7 +1,11 @@
+import Validador from "../../utils/validador.js";
+import { UsuarioService } from "../../services/usuario.service.js";
+import { Usuario } from "../../models/usuario.js";
+
 export class RegisterComponent extends HTMLElement {
     constructor() {
         super();
-        this.selectedAvatar = null; 
+        this.selectedAvatar = null;
     }
 
     connectedCallback() {
@@ -115,8 +119,30 @@ export class RegisterComponent extends HTMLElement {
         const registerButton = shadow.querySelector(".register-button");
         registerButton.addEventListener("click", (event) => {
             event.preventDefault();
-            page("/login");
+            this.#registrarUsuario(shadow);
         });
+    }
+
+    #registrarUsuario(shadow) {
+        const nombre = shadow.querySelector("#username").value;
+        const correo = shadow.querySelector("#email").value;
+        const contrasena = shadow.querySelector("#password").value;
+        const avatar = this.selectedAvatar;
+
+        const userData = new Usuario(nombre, correo, contrasena, avatar, []);
+
+        if (Validador.validarUsuario(userData)) {
+            UsuarioService.registrarUsuario(userData).then(() => {
+                if (userData) {
+                    alert('Usuario registrado correctamente');
+                    page("/login");
+                } else {
+                    alert('Error al registrar usuario');
+                }
+            });
+        } else {
+            alert('Ingrese todos los campos');
+        }
     }
 
 

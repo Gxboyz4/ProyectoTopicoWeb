@@ -1,0 +1,11 @@
+.buttonUnirse {
+    display: none;
+    border: none;
+    background-color: var(--boton-color-blue);
+    cursor: pointer;
+    color: white;
+    width: 70px;
+    height: 30px;
+    border-radius: 20px;
+    margin-right: 10px;
+}

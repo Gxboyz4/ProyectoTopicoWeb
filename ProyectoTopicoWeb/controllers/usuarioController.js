@@ -33,7 +33,7 @@ class UsuarioController {
                 username: usuario.correo,
                 role: 'admin'
             };
-            const token = jwt.sign(paylod, process.env.JWT_SECRET, { expiresIn: '1h' });
+            const token = jwt.sign(paylod, process.env.JWT_SECRET, { expiresIn: '4h' });
             res.status(200).json({usuario, token});
         } catch (error) {
             next(new AppError('Error al iniciar sesion', 500));
@@ -50,6 +50,22 @@ class UsuarioController {
             res.status(200).json(publicaciones);
         } catch (error) {
             next(new AppError('Error al obtener publicaciones likeadas', 500));
+        }
+    }
+
+    static async obtenerUsuarioPorId(req, res, next) {
+        try {
+            const idUsuario = req.params.id;
+            if (!idUsuario) {
+                return next(new AppError('Error, no hay ID', 400));
+            }
+            const usuario = await UsuarioDAO.buscarUsuarioPorId(idUsuario);
+            if (!usuario) {
+                return next(new AppError('Usuario no encontrado', 404));
+            }
+            res.status(200).json(usuario);
+        } catch (error) {
+            next(new AppError('Error al obtener el usuario', 500));
         }
     }
 }

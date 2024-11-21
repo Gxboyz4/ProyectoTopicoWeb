@@ -7,7 +7,7 @@ const URL_COMUNIDADES = 'api/resenas/';
 
 export class ComentarioService {
 
-    static crearComentario(comentario, token,idResena,usuario) {
+    static crearComentario(comentario,token,idResena,usuario) {
         return fetch(`${API_URL}${URL_COMUNIDADES}${idResena}/comentario`, {
             method: 'POST',
             headers: {

@@ -1,10 +1,9 @@
 
 export class Comunidad {
-    constructor(id, nombre, descripcion, fechaCreacion, etiquetas){
-        this.id = id;
+    constructor(nombre, descripcion, etiquetas, imagen){
         this.nombre = nombre;
         this.descripcion = descripcion;
-        this.fechaCreacion = fechaCreacion;
         this.etiquetas = etiquetas;
+        this.imagen = imagen;
     }
 }
