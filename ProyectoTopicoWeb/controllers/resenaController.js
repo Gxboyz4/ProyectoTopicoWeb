@@ -6,20 +6,20 @@ class ResenaController {
     constructor() { }
 
     static async crearResena(req, res, next) {
-                console.log("Crear resena");
+        console.log("Crear resena");
 
-        try{
+        try {
             //LA CANTIDAD DE CALIDAD SIEMPRE VA A SER 0, PERO POR CUESTIONES DE ESCALABILIDAD, SE DEJA ASI
-            const {usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad} = req.body;
-            if(!usuario || !pelicula || cantidad_likes<0 || !calificacion || !contenido || !comunidad){
+            const { usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad } = req.body;
+            if (!usuario || !pelicula || cantidad_likes < 0 || !calificacion || !contenido || !comunidad) {
                 console.log(req.body);
-                return next(new AppError('Falta llenar datos de la reseña',400));
+                return next(new AppError('Falta llenar datos de la reseña', 400));
             }
-            const resenaData = {usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad};
+            const resenaData = { usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad };
             const resena = await ResenaDAO.crearResena(resenaData);
             res.status(201).json(resena);
-        }catch(error){
-            next(new AppError('Error al crear reseña',500));
+        } catch (error) {
+            next(new AppError('Error al crear reseña', 500));
         }
     }
 
@@ -84,7 +84,7 @@ class ResenaController {
     static async obtenerResenasDePelicula(req, res, next) {
         try {
             const { idPelicula } = req.params;
-            const { limit, offset} = req.query;
+            const { limit, offset } = req.query;
             const resenas = await ResenaDAO.obtenerResenasDePelicula(
                 parseInt(limit) || 10,
                 parseInt(offset) || 0,
@@ -112,7 +112,7 @@ class ResenaController {
     static async obtenerResenasDeComunidad(req, res, next) {
         try {
             const { idComunidad } = req.params;
-            const {limit, offset, sortBy, sortOrder } = req.query;
+            const { limit, offset, sortBy, sortOrder } = req.query;
             const resenas = await ResenaDAO.obtenerResenasDeComunidad(
                 idComunidad,
                 parseInt(limit) || 10,
@@ -128,24 +128,24 @@ class ResenaController {
 
     static async darLikeResena(req, res, next) {
         try {
-            const { idResena , idUsuario} = req.params;
+            const { idResena, idUsuario } = req.params;
             if (!idResena || !idUsuario) {
                 return next(new AppError('Es necesario el id de la reseña y usuario para dar like', 400));
             }
-            const resena = await ResenaDAO.darLikeResena(idResena, idUsuario); 
+            const resena = await ResenaDAO.darLikeResena(idResena, idUsuario);
             res.status(200).json(resena);
         } catch (error) {
             next(new AppError('Error al dar like', 500));
         }
     }
-    
+
     static async quitarLikeResena(req, res, next) {
         try {
-            const { idResena , idUsuario} = req.params;
+            const { idResena, idUsuario } = req.params;
             if (!idResena || !idUsuario) {
                 return next(new AppError('Es necesario el id de la reseña y usuario para quitar like', 400));
             }
-            const resena = await ResenaDAO.quitarLikeResena(idResena, idUsuario); 
+            const resena = await ResenaDAO.quitarLikeResena(idResena, idUsuario);
             res.status(200).json(resena);
         } catch (error) {
             console.log(error);
@@ -166,19 +166,33 @@ class ResenaController {
         }
     }
 
+    /*
     static async obtenerResenasConMasLikes(req, res, next) {
-    console.log("Obtener resenas con mas likes");
-    try{
-        let {likes, limit, offset} = req.query;
-        const resenas = await ResenaDAO.obtenerResenasConMasLikes(
-            parseInt(likes) || 10, 
-            parseInt(limit) || 10, 
-            parseInt(offset) || 0);
-        res.status(200).json(resenas);
-    }catch(error){
-        next(new AppError('Error al obtener reseñas con mas likes', 500));
+        console.log("Obtener resenas con mas likes");
+        try {
+            let { likes, limit, offset } = req.query;
+            const resenas = await ResenaDAO.obtenerResenasConMasLikes(
+                parseInt(likes) || 10,
+                parseInt(limit) || 10,
+                parseInt(offset) || 0);
+            res.status(200).json(resenas);
+        } catch (error) {
+            console.log(error);
+            next(new AppError('Error al obtener reseñas con mas likes', 500));
+        }
     }
-    }   
+    */
+    static async obtenerResenasConMasLikes(req, res, next) {
+        try {
+            let {limit, offset } = req.query;
+            const resenas = await ResenaDAO.obtenerResenasConMasLikes(
+                parseInt(limit) || 10,
+                parseInt(offset) || 0);
+            res.status(200).json(resenas);
+        } catch (error) {
+            next(new AppError('Error al obtener reseñas con mas likes', 500));
+        }
+    }
 }
 
 module.exports = ResenaController;

@@ -82,7 +82,7 @@ export class LeftbarComponent extends HTMLElement {
         const popularItem = shadow.querySelector("#popularItem");
         popularItem.addEventListener("click", () => {
             popularItem.classList.add("active");
-            page("/");
+            page("/popular");
         });
     }
 

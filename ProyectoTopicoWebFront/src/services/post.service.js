@@ -92,6 +92,17 @@ export class PostService {
             return response.ok ? response.json() : [];
         });
     }
+    
+    static obtenerResenasMasLikes(limit = 10, offset = 0) {
+        return fetch(`${API_URL}${URL_RESENAS}popular?limit=${limit}&offset=${offset}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
+            return response.ok ? response.json() : [];
+        });
+    }
 
     static getPosts() {
         return Array.isArray(postsData) ? postsData : [];

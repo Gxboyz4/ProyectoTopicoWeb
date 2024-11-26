@@ -29,7 +29,7 @@ export class ComunityComponent extends HTMLElement {
                 <app-postform idComunidad=${this.comunidad._id}></app-postform>
                 <app-posts idComunidad=${this.comunidad._id}></app-posts>
             </div>
-        `;}, 5); 
+        `;}, 3); 
     }
 
 

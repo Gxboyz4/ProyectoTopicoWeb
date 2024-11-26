@@ -90,6 +90,7 @@ export class PostformComponent extends HTMLElement {
                         .then((respuesta) => {
                             if (respuesta) {
                                 console.log('Reseña creada exitosamente:', respuesta);
+                                document.dispatchEvent(new CustomEvent('post-creado', { bubbles: true, composed: true, detail: { respuesta } })); 
                                 this.modal.title = '¡Éxito!';
                                 this.modal.message = 'Reseña creada exitosamente!';
                                 this.modal.open();
