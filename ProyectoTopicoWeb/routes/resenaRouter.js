@@ -16,7 +16,7 @@ router.patch('/:idResena/dislike/:idUsuario',validateJWT, ResenaController.quita
 router.post('/:idResena/comentario',validateJWT, ResenaController.agregarComentarioAResena);
 router.delete('/:idResena/comentario/:idComentario',validateJWT, ResenaController.eliminarComentarioDeResena);
 router.get('/:idResena/comentario', ResenaController.obtenerComentariosDeResena);
-
+router.get('/popular', ResenaController.obtenerResenasConMasLikes);
 
 
 module.exports = router;

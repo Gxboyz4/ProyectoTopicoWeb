@@ -56,4 +56,16 @@ export class UsuarioService {
         }).then(response => response.json())
         .then(data => data);
     }
+
+    static actualizarUsuario(idUsuario, usuario, token){
+    return fetch(`${API_URL}/${idUsuario}`, {
+        method: 'PUT',
+        body: JSON.stringify(usuario),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`
+        }
+    }).then(response => response.json())
+    .then(data => data);
+    }
 }

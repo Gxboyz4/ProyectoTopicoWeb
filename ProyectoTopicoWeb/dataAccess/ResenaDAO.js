@@ -124,6 +124,17 @@ class ResenaDAO {
         return resena.comentarios;
     }
     
+    async obtenerResenasConMasLikes(likes,limit = 10, offset = 0){
+        const resenas = await Resena.find({cantidad_likes: {$gte: likes}})
+        .skip(offset)
+        .limit(limit);
+        if (!resenas) {
+            throw new Error('No se pudieron obtener las resenas con esa cantidad de likes.');
+        }
+        return resenas;
+    }
 }
+
+
 
 module.exports = new ResenaDAO();

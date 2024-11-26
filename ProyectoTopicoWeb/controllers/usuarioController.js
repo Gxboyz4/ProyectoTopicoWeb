@@ -68,6 +68,20 @@ class UsuarioController {
             next(new AppError('Error al obtener el usuario', 500));
         }
     }
+
+    static async actualizarUsuarioPorId(req, res, next) {
+    try{
+        const idUsuario = req.params.id;
+        const usuario = req.body;
+        if(!idUsuario){
+            return next(new AppError('Error, no hay ID', 400));
+        }
+        const usuarioActualizado = await UsuarioDAO.actualizarUsuarioPorId(idUsuario, usuario);
+        res.status(200).json(usuarioActualizado);
+    }catch(error){
+        next(new AppError('Error al actualizar usuario', 500));
+    }
+    }
 }
 
 module.exports = UsuarioController;

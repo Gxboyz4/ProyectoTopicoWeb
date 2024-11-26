@@ -1,4 +1,7 @@
-
+import { SessionStorageService } from "../../utils/sessionStorageService.service.js";
+import Validador from "../../utils/validador.js";
+import { UsuarioService } from "../../services/usuario.service.js";
+import { Usuario } from "../../models/usuario.js";
 
 export class SettingsComponent extends HTMLElement {
     constructor() {
@@ -8,6 +11,7 @@ export class SettingsComponent extends HTMLElement {
 
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
+        this.session = SessionStorageService.getItem('session');
         this.#addStyles(shadow);
         this.#render(shadow);
         this.#addEventListeners(shadow);
@@ -23,19 +27,19 @@ export class SettingsComponent extends HTMLElement {
                     
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <input id="username" type="text" placeholder="Nombre de usuario" class="input-field" value="UsuarioActual" />
+                            <input id="username" type="text" placeholder="Nombre de usuario" class="input-field" value="${this.session.usuario.nombre}" />
                         </div>
                     </div>
     
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <input id="email" type="email" placeholder="Correo" class="input-field" value="correo@ejemplo.com" disabled />
+                            <input id="email" type="email" placeholder="Correo" class="input-field" value="${this.session.usuario.correo}" disabled />
                         </div>
                     </div>
     
                     <div class="input-group">
                         <div class="input-wrapper">
-                            <input id="password" type="password" placeholder="Contraseña" class="password-input" value="password123" />
+                            <input id="password" type="password" placeholder="Nueva contraseña" class="password-input" value="" />
                             <img src="/src/assets/icons/ShowPassWordIcon.svg" alt="Mostrar contraseña" class="toggle-password" />
                         </div>
                     </div>
@@ -114,8 +118,44 @@ export class SettingsComponent extends HTMLElement {
         // Botón de guardar cambios
         const settingsButton = shadow.querySelector(".settings-button");
         settingsButton.addEventListener("click", (event) => {
-            event.preventDefault();
-            page("/");
+            this.#actualizarUsuario(shadow);
         });
+    }
+
+    #actualizarUsuario(shadow) {
+        const id = this.session.usuario._id;
+        const token = this.session.token;
+        const nombre = shadow.querySelector("#username").value;
+        const correo = shadow.querySelector("#email").value;
+        const contrasena = shadow.querySelector("#password").value; 
+        const avatar = this.selectedAvatar;
+        const likes = this.session.usuario.likes;
+    
+        const userData = {
+            nombre,
+            correo,
+            avatar,
+            likes
+        };
+    
+        if (contrasena) {
+            userData.contrasena = contrasena;
+        }
+    
+        if (Validador.validarUsuarioActualizar(userData)) {
+            UsuarioService.actualizarUsuario(id, userData, token).then(() => {
+                if (userData) {
+                    this.session.usuario.nombre = nombre;
+                    this.session.usuario.avatar = avatar;
+                    SessionStorageService.setItem("session", this.session);
+                    alert('Usuario actualizado correctamente');
+                    page("/");
+                } else {
+                    alert('Error al actualizar usuario');
+                }
+            });
+        } else {
+            alert('Ingrese todos los campos');
+        }
     }
 }

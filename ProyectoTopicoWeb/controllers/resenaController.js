@@ -6,6 +6,8 @@ class ResenaController {
     constructor() { }
 
     static async crearResena(req, res, next) {
+                console.log("Crear resena");
+
         try{
             //LA CANTIDAD DE CALIDAD SIEMPRE VA A SER 0, PERO POR CUESTIONES DE ESCALABILIDAD, SE DEJA ASI
             const {usuario, pelicula, cantidad_likes, calificacion, contenido, comunidad} = req.body;
@@ -164,6 +166,19 @@ class ResenaController {
         }
     }
 
+    static async obtenerResenasConMasLikes(req, res, next) {
+    console.log("Obtener resenas con mas likes");
+    try{
+        let {likes, limit, offset} = req.query;
+        const resenas = await ResenaDAO.obtenerResenasConMasLikes(
+            parseInt(likes) || 10, 
+            parseInt(limit) || 10, 
+            parseInt(offset) || 0);
+        res.status(200).json(resenas);
+    }catch(error){
+        next(new AppError('Error al obtener reseñas con mas likes', 500));
+    }
+    }   
 }
 
 module.exports = ResenaController;

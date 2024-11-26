@@ -204,7 +204,7 @@ export class HeaderComponent extends HTMLElement {
                 dropdownMenu.style.display = 'none';
             }
         });
-    
+        
         settingsLink.addEventListener('click', (event) => {
             event.preventDefault();  
             page('/settings');  
