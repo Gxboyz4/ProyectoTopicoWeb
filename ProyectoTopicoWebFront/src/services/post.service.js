@@ -82,6 +82,17 @@ export class PostService {
             .then(data => data);
     }
 
+    static obtenerResenasPopulares(likes,limit = 10, offset = 0) {
+        return fetch(`${API_URL}${URL_RESENAS}popular?likes=${likes}&limit=${limit}&offset=${offset}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        }).then(response => {
+            return response.ok ? response.json() : [];
+        });
+    }
+
     static getPosts() {
         return Array.isArray(postsData) ? postsData : [];
     }
@@ -90,6 +101,7 @@ export class PostService {
         // HACER PETICION A LA API
         return postsData.find(post => post.id === postId);
     }
+
 
 
 }

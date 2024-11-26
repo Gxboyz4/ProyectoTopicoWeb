@@ -52,6 +52,18 @@ class UsuarioDAO {
             throw error;
         }
     }
+    
+    async actualizarUsuarioPorId(idUsuario, usuario) {
+        try {
+            if (usuario.contrasena) {
+                const salt = await bcrypt.genSalt(10);
+                usuario.contrasena = await bcrypt.hash(usuario.contrasena, salt);
+            }
+            return await Usuario.findByIdAndUpdate(idUsuario, usuario, { new: true });
+        } catch (error) {
+            throw error;
+        }
+    }
 
 }
 

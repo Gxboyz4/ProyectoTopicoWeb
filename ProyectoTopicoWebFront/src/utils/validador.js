@@ -9,6 +9,11 @@ export default class Validador {
         return !(!nombre.trim() || !correo.trim() || !contrasena.trim() || !avatar || !avatar.trim());
     }
 
+    static validarUsuarioActualizar(usuario) {
+        const { nombre, correo, contrasena, avatar } = usuario;
+        return !(!nombre.trim() || !correo.trim() || !avatar || !avatar.trim());
+    }
+
     static validarDatosLogin(usuario) {
         const {correo, contrasena} = usuario;
         return !(!correo.trim() || !contrasena.trim());
