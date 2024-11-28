@@ -78,7 +78,7 @@
     color: #aaa;
 }
 
-.search-results {
+.center-section .search-results {
     position: absolute;
     top: calc(100%);
     display: none;
