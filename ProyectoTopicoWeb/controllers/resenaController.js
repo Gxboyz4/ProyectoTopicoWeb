@@ -61,8 +61,8 @@ class ResenaController {
                 return next(new AppError('Faltan datos del comentario', 400));
             }
             const comentarioData = { usuario, comentario };
-            const resenaActualizada = await ResenaDAO.agregarComentarioAResena(idResena, comentarioData);
-            res.status(200).json(resenaActualizada);
+            const comentarioAgregado = await ResenaDAO.agregarComentarioAResena(idResena, comentarioData);
+            res.status(200).json(comentarioAgregado); 
         } catch (error) {
             next(new AppError('Error al agregar comentario', 500));
         }

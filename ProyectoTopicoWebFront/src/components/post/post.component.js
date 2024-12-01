@@ -18,7 +18,7 @@ export class PostComponent extends HTMLElement {
         this.post = this.#crearObjetoPost();
         this.comentarioAbierto = false;
         this.menuAbierto = false;
-
+        this.numeroComentarios = this.post.comentarios.length;
         
         this.modalConfirmation = document.createElement('modal-confirmation');
         document.body.appendChild(this.modalConfirmation);
@@ -164,7 +164,6 @@ export class PostComponent extends HTMLElement {
                 this.#colorearLike(shadow);
             });
         });
-
        
     }
 
@@ -236,58 +235,65 @@ export class PostComponent extends HTMLElement {
 
     async #showComments(shadow, comentarios) {
         const comentariosContainer = shadow.querySelector('.commentsSpace');
-        const comentariosHTML = await Promise.all(
+        let comentariosHTML = await Promise.all(
             comentarios.map(async (comentario) => {
-                const usuario = await UsuarioService.obtenerUsuarioPorId(comentario.usuario);
-                return `
-                    <app-comment 
-                        id=${comentario._id}
-                        idUsuario=${comentario.usuario}
-                        contenido="${comentario.comentario}"
-                        fechaCreacion=${comentario.fecha_hora}
-                        nombreUsuario=${usuario.nombre}
-                        avatarUsuario=${usuario.avatar}
-                    ></app-comment>
-                `;
+                try {
+                    const usuario = await UsuarioService.obtenerUsuarioPorId(comentario.usuario);
+                    return `
+                        <app-comment 
+                            id=${comentario._id}
+                            idUsuario=${comentario.usuario}
+                            contenido="${comentario.comentario}"
+                            fechaCreacion=${comentario.fecha_hora}
+                            nombreUsuario=${usuario.nombre}
+                            avatarUsuario=${usuario.avatar}
+                        ></app-comment>
+                    `;
+                } catch (error) {
+                    return '<p>No se pudo cargar este comentario</p>';
+                }
             })
-        );
-        
-        console.log("Esto es antes del if del sessión, la sesión es: ", this.session);
-        if(this.session){
-            comentariosContainer.innerHTML = `
-            <div class="write">
-                <img class="sessionUserComment" src="../src/assets/profileimages/${this.usuario.avatar}.png" alt="" />
-                <input id="comentario"type="text" placeholder="Escribe un comentario..." />
-                <button id="commentButton">Comentar</button>
-            </div>
-            ${comentariosHTML.join('')}
-        `;
-        shadow.querySelector('#commentButton').addEventListener('click', () => {
-            const contenido = shadow.querySelector('#comentario').value.trim();
-            if (contenido) {
-                this.#crearComentario(shadow, contenido);
-            } else {
-                this.modal.title = 'Error';
-                this.modal.message = 'No puedes enviar un comentario vacío';
-                this.modal.open();
-            }
+        ).catch(error => {
+            console.error('Error cargando comentarios:', error);
+            return [];
         });
-        }else{
+    
+        if (!Array.isArray(comentariosHTML)) comentariosHTML = [];
+    
+        if (this.session) {
+            comentariosContainer.innerHTML = `
+                <div class="write">
+                    <img class="sessionUserComment" src="../src/assets/profileimages/${this.usuario.avatar}.png" alt="" />
+                    <input id="comentario" type="text" placeholder="Escribe un comentario..." />
+                    <button id="commentButton">Comentar</button>
+                </div>
+                ${comentariosHTML.join('')}
+            `;
+            shadow.querySelector('#commentButton').addEventListener('click', () => {
+                const contenido = shadow.querySelector('#comentario').value.trim();
+                if (contenido) {
+                    this.#crearComentario(shadow, contenido);
+                } else {
+                    this.modal.title = 'Error';
+                    this.modal.message = 'No puedes enviar un comentario vacío';
+                    this.modal.open();
+                }
+            });
+        } else {
             comentariosContainer.innerHTML = `${comentariosHTML.join('')}`;
         }
-
-       
     }
 
     #crearComentario(shadow, contenido) {
         if (!this.session) return;
     
         ComentarioService.crearComentario(contenido, this.session.token, this.post.id, this.session.usuario._id)
-            .then(async (comentario) => {
+            .then(comentario => {
                 const comentarioTexto = comentario.comentario || contenido; 
                 const fechaCreacion = 'Ahora';
-                const usuario = await UsuarioService.obtenerUsuarioPorId(this.session.usuario._id);
-                const comentarioHTML = `
+                UsuarioService.obtenerUsuarioPorId(this.session.usuario._id)
+                    .then(usuario => {
+                        const comentarioHTML = `
                             <app-comment 
                                 id=${comentario._id}
                                 idUsuario=${comentario.usuario}
@@ -297,13 +303,27 @@ export class PostComponent extends HTMLElement {
                                 avatarUsuario=${usuario.avatar}
                             ></app-comment>
                         `;
-                shadow.querySelector('.commentsSpace').insertAdjacentHTML('beforeend', comentarioHTML);
-                shadow.querySelector('#comentario').value = '';
+                        console.log('comentario a pushear', comentario);
+                        this.post.comentarios.push(comentario);
+                        this.#actualizarContadorComentarios(shadow);
+                        shadow.querySelector('.commentsSpace').insertAdjacentHTML('beforeend', comentarioHTML);
+                        shadow.querySelector('#comentario').value = '';
+                    })
+                    .catch(error => {
+                        console.error('Error al obtener el usuario:', error);
+                    });
             })
-            .catch((error) => {
-                console.error(error);
+            .catch(error => {
+                console.error('Error al crear el comentario:', error);
             });
     }
 
+    #actualizarContadorComentarios(shadow) {
+        this.numeroComentarios++;
+        shadow.querySelector('.commentItem').innerHTML = `
+            <img src="src/assets/icons/CommentIcon.svg" alt="Comentario">
+            ${this.numeroComentarios} Comentarios
+        `;
+    }
  
 }

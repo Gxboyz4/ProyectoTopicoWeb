@@ -26,13 +26,14 @@ class ResenaDAO {
         return await Resena.find({contenido: {$regex: filtroContenido, $options: 'i'}}).skip(offset).limit(limit);
     }
 
-    async agregarComentarioAResena(idResena, comentario){
+    async agregarComentarioAResena(idResena, comentario) {
         const resena = await Resena.findById(idResena);
-        if(!resena){
-            throw new Error('No existe una resena con ese id');
+        if (!resena) {
+            throw new Error('No existe una reseña con ese id');
         }
         resena.comentarios.push(comentario);
-        return await resena.save();
+        await resena.save();
+        return resena.comentarios[resena.comentarios.length - 1];
     }
 
     async eliminarComentarioDeResena(idResena, idComentario){
