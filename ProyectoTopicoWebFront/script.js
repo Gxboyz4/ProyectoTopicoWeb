@@ -22,6 +22,7 @@ import { ModalMessage } from "./src/components/modalmessage/modalmessage.compone
 import { UnirseComponent } from "./src/components/unirse/unirse.component.js";
 import { PopularPage } from "./src/pages/popular/popular.page.js";
 import { PopularComponent } from "./src/components/popular/popular.component.js";
+import { ModalConfirmation } from "./src/components/modalconfirmation/modalconfirmation.component.js";
 
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
@@ -73,6 +74,7 @@ window.customElements.define('app-modalcommunity', ModalCommunityComponent);
 window.customElements.define('modal-message', ModalMessage);
 window.customElements.define('app-unirse', UnirseComponent);
 window.customElements.define('app-popular', PopularComponent);
+window.customElements.define('modal-confirmation', ModalConfirmation);
 
 //pages
 window.customElements.define('app-home', HomePage);
