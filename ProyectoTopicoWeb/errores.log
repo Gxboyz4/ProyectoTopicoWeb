@@ -967,3 +967,5 @@
 {"level":"error","message":"Error al buscar usuario en comunidad"}
 {"level":"error","message":"Error al buscar usuario en comunidad"}
 {"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al iniciar sesion"}
+{"level":"error","message":"Error al eliminar reseña"}

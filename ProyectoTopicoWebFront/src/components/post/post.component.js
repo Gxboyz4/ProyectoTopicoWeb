@@ -18,6 +18,11 @@ export class PostComponent extends HTMLElement {
         this.post = this.#crearObjetoPost();
         this.comentarioAbierto = false;
         this.menuAbierto = false;
+
+        
+        this.modalConfirmation = document.createElement('modal-confirmation');
+        document.body.appendChild(this.modalConfirmation);
+
         //Modal para mensajes
         this.modal = document.createElement('modal-message');
         document.body.appendChild(this.modal);
@@ -69,16 +74,16 @@ export class PostComponent extends HTMLElement {
                                 <span class="userName">${this.usuario.nombre}</span>
                             </div>
                         </div>
-
+    
                         <div class="buttons">
                             <app-unirse idComunidad="${this.post.idComunidad}"></app-unirse>
                             <span class="menuIconContainer">
-                                <img class="menuIcon"src="src/assets/icons/MoreIcon.svg" alt="Menu">
-                                <button class="buttonDelete">delete</button>
+                                <img class="menuIcon" src="src/assets/icons/MoreIcon.svg" alt="Menu">
+                                <button class="buttonDelete">Eliminar</button>
                             </span>
                         </div>
                     </div>
-
+    
                     <div class="content">
                         <h3>${this.post.calificacion} / 10 | ${this.pelicula.Title}</h3>
                         <p class="description">${this.post.contenido}</p>
@@ -95,14 +100,15 @@ export class PostComponent extends HTMLElement {
                             ${this.post.comentarios.length} Comentarios 
                         </div>
                     </div>
-                    <div class="commentsSpace">
-                        <!-- AQUI SE RENDERIZAN LOS COMENTARIOS -->
-                    </div>
+                    <div class="commentsSpace"></div>
                 </div>
             </div>
         `;
-
+    
+       
+        
     }
+    
 
     #addStyles(shadow) {
         let link = document.createElement("link");
@@ -116,6 +122,24 @@ export class PostComponent extends HTMLElement {
         shadow.querySelector('.menuIcon').addEventListener('click', () => this.#toggleMenu(shadow));
         shadow.querySelector('.commentItem').addEventListener('click', () => this.#toggleComentarios(shadow, comentarios));
         const groupName = shadow.querySelector('.groupName');
+        const botonEliminar = shadow.querySelector('.buttonDelete');
+        botonEliminar.addEventListener('click', () => {
+            
+            if(this.session.usuario._id === this.post.idUsuario){
+                
+                this.#toggleMenu(shadow);
+                this.modalConfirmation.setAttribute('post-id', this.post.id); 
+                this.modalConfirmation.open();
+                
+            }
+        });
+
+        addEventListener('eliminar-post', (event) => {
+            if(event.detail === this.post.id){
+                this.remove();
+            }
+            
+        });
         groupName.addEventListener('click', (event) => {
             event.preventDefault();
             ComunidadService.obtenerComunidadPorId(this.post.idComunidad).then(comunidad => {
@@ -140,6 +164,8 @@ export class PostComponent extends HTMLElement {
                 this.#colorearLike(shadow);
             });
         });
+
+       
     }
 
     #toggleLike(shadow) {

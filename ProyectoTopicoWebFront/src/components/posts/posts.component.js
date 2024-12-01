@@ -24,6 +24,7 @@ export class PostsComponent extends HTMLElement {
             const postCreado = event.detail;
             this.#renderEvento(shadow, postCreado.respuesta);
         });
+
     }
 
     #cargarPosts() {
@@ -72,6 +73,9 @@ export class PostsComponent extends HTMLElement {
             </div>
         `;
     }
+
+    
+
 
     #renderPost(post){
         return `
