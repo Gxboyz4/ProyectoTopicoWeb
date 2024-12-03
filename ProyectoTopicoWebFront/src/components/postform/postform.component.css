@@ -80,6 +80,10 @@
     background-color: var(--boton-active-color);
 }
 
+.postform .pelicula {
+    position: relative;
+}
+
 .postform .pelicula,
 .postform .critica {
     width: 100%;
@@ -98,6 +102,31 @@
     resize: none;
     box-sizing: border-box;
     margin-top: 10px;
+}
+
+.postform .pelicula .peliculas-list{
+    position: absolute;
+    top: calc(100%);
+    display: none;
+    background-color: #1B1E1C;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    max-width: 500px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    z-index: 10;
+    color: white;
+}
+
+.postform .pelicula .peliculas-list li {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.postform .pelicula .peliculas-list li:hover {
+    background-color: #262626;
 }
 
 .postform .critica textarea {

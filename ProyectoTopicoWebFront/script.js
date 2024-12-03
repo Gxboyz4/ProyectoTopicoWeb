@@ -20,6 +20,10 @@ import { SettingsPage } from "./src/pages/settings/settings.page.js";
 import { ModalCommunityComponent } from "./src/components/modalcommunity/modalcommunity.component.js";
 import { ModalMessage } from "./src/components/modalmessage/modalmessage.component.js";
 import { UnirseComponent } from "./src/components/unirse/unirse.component.js";
+import { PopularPage } from "./src/pages/popular/popular.page.js";
+import { PopularComponent } from "./src/components/popular/popular.component.js";
+import { ModalConfirmation } from "./src/components/modalconfirmation/modalconfirmation.component.js";
+
 document.addEventListener('DOMContentLoaded', () => {
     //Configuracion de Rutas
     page('/', () => showContent('app-home'));
@@ -33,6 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     page('/register', () => showContent('app-register'));
     page('/comunidadtopics', () => showContent('app-comunidadtopics'));
     page('/settings', () => showContent('app-settings'));
+    page('/popular', () => showContent('app-popularpage'));
     page('/genero/:genero', (context) => {
         const genero = context.params.genero;
         showContent(`app-comunidadtopics genero="${genero}"`);
@@ -68,6 +73,8 @@ window.customElements.define('app-settingscomp', SettingsComponent);
 window.customElements.define('app-modalcommunity', ModalCommunityComponent);
 window.customElements.define('modal-message', ModalMessage);
 window.customElements.define('app-unirse', UnirseComponent);
+window.customElements.define('app-popular', PopularComponent);
+window.customElements.define('modal-confirmation', ModalConfirmation);
 
 //pages
 window.customElements.define('app-home', HomePage);
@@ -76,3 +83,4 @@ window.customElements.define('app-login', LoginPage);
 window.customElements.define('app-register', RegisterPage);
 window.customElements.define('app-comunidadtopics', CommunityTopics);
 window.customElements.define('app-settings', SettingsPage);
+window.customElements.define('app-popularpage', PopularPage);

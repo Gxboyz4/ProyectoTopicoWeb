@@ -1,0 +1,22 @@
+<div class="postform">
+    <div class="container">
+        <div class="post">
+            <h3 class="titulo">Comparte tu crítica</h3>
+            <div class="critica">
+                <textarea id="critica" placeholder="Escribe tu crítica aquí"></textarea>
+            </div>
+            <div class="pelicula">
+                <input type="text" id="pelicula" placeholder="Añadir película">
+                <ul id="peliculas-list"></ul>
+            <div class="publicar">
+                <img src="src/assets/icons/EstrellaIcon.svg" alt="icono-calificacion">
+                <div class="details">
+                    <label for="calificacion">Califica la película</label>
+                    <input type="number" id="calificacion" name="calificacion" min="0" max="10" placeholder="0-10" onkeydown="return false;">
+                    
+                    <button id="post-button">Publicar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

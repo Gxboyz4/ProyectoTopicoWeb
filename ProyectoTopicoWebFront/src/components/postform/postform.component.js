@@ -32,6 +32,7 @@ export class PostformComponent extends HTMLElement {
                         </div>
                         <div class="pelicula">
                             <input type="text" id="pelicula" placeholder="Añadir película">
+                            <ul id="peliculas-list" class="peliculas-list"></ul>
                         </div>
                         <div class="publicar">
                             <img src="src/assets/icons/EstrellaIcon.svg" alt="icono-calificacion">
@@ -57,6 +58,8 @@ export class PostformComponent extends HTMLElement {
 
     #addEventListeners(shadow) {
         const postButton = shadow.querySelector("#post-button");
+        const peliculaInput = shadow.querySelector("#pelicula");
+        const peliculaResults = shadow.querySelector("#peliculas-list");
         postButton.addEventListener("click", async () => {
             //event.preventDefault();
             this.#registrarPost();
@@ -65,6 +68,47 @@ export class PostformComponent extends HTMLElement {
         formContainer.style.display = SessionStorageService.getItem('session') ? "block" : "none";
         addEventListener('cerrar-sesion', () => {
             formContainer.style.display = "none";
+        });
+
+        peliculaInput.addEventListener("input", async (event) => {
+            
+            const query = event.target.value.trim().toLowerCase();
+            if (query.length > 0) {
+                PeliculaService.getPeliculasPorNombre(query)
+                    .then((peliculas) => {
+                        if (peliculas.length === 0) {
+                            peliculaResults.innerHTML = '';
+                            peliculaResults.display = 'none';
+                            return;
+                        } else {
+                            peliculaResults.innerHTML = "";
+                            peliculaResults.style.display = "block";
+                            this.#renderPeliculas(peliculas, shadow);
+                        }
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        peliculaResults.innerHTML = "";
+                        peliculaResults.style.display = "none";
+                    });
+            } else {
+                shadow.querySelector("#peliculas-list").innerHTML = "";
+            }
+
+        });
+
+        peliculaInput.addEventListener('focus', () => {
+            peliculaResults.style.display = 'block';
+        });
+
+        peliculaInput.addEventListener('click', (event) => {
+            event.stopPropagation(); 
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!peliculaResults.contains(event.target) && event.target !== peliculaInput) {
+                peliculaResults.style.display = 'none';
+            }
         });
     }
 
@@ -90,6 +134,7 @@ export class PostformComponent extends HTMLElement {
                         .then((respuesta) => {
                             if (respuesta) {
                                 console.log('Reseña creada exitosamente:', respuesta);
+                                document.dispatchEvent(new CustomEvent('post-creado', { bubbles: true, composed: true, detail: { respuesta } }));
                                 this.modal.title = '¡Éxito!';
                                 this.modal.message = 'Reseña creada exitosamente!';
                                 this.modal.open();
@@ -119,6 +164,21 @@ export class PostformComponent extends HTMLElement {
             this.modal.message = 'Ingresa todos los datos.';
             this.modal.open();
         }
+    }
+
+    #renderPeliculas(peliculas, shadow) {
+        const peliculasList = shadow.querySelector("#peliculas-list");
+        peliculasList.innerHTML = "";
+        peliculas.forEach((pelicula) => {
+            const li = document.createElement("li");
+            li.textContent = pelicula.Title;
+            li.addEventListener("click", () => {
+                shadow.querySelector("#pelicula").value = pelicula.Title;
+                peliculasList.innerHTML = "";
+                peliculasList.style.display = "none";
+            });
+            peliculasList.appendChild(li);
+        });
     }
 
 }

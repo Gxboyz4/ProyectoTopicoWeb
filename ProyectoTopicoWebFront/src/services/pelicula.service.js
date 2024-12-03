@@ -34,6 +34,22 @@ export class PeliculaService {
             });
     }
 
+    static getPeliculasPorNombre(nombre){
+        return fetch(`${API_URL}/?s=${nombre}&page=1&apikey=${config.API_KEY}`)
+            .then(response => response.json())
+            .then(data => {
+                if(data.Response === 'True'){
+                    return data.Search.slice(0, 5);
+                }else{
+                    return [];
+                }
+            })
+            .catch(error => {
+                console.log('Error al obtener peliculas por nombre:', error);
+                return [];
+            });
+    }
+
 }
 
 //CONSULTA POR ID

@@ -30,12 +30,18 @@
     display: flex;
     align-items: center;
     margin-right: 20px; 
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
 }
 
 .left-section .logo-image {
     width: 40px; 
     height: auto;
     margin-right: 8px;
+}
+.left-section .logo:hover{
+    background-color: #262626;
+    cursor: pointer;
 }
 
 .left-section .site-name {
@@ -78,7 +84,7 @@
     color: #aaa;
 }
 
-.search-results {
+.center-section .search-results {
     position: absolute;
     top: calc(100%);
     display: none;
@@ -156,6 +162,13 @@
 .right-section .user-info {
     display: flex;
     align-items: center;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+}
+
+.right-section .user-info:hover {
+    background-color: #262626;
+    cursor: pointer;
 }
 
 .right-section .user-image {

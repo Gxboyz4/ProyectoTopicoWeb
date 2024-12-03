@@ -6,6 +6,7 @@
     padding: 20px;
     margin-bottom: 20px;
     background-color: var(--black-color); 
+    user-select: none;
 }
 
 .rightBar .container .item span,

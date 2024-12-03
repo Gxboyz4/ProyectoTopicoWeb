@@ -26,13 +26,14 @@ class ResenaDAO {
         return await Resena.find({contenido: {$regex: filtroContenido, $options: 'i'}}).skip(offset).limit(limit);
     }
 
-    async agregarComentarioAResena(idResena, comentario){
+    async agregarComentarioAResena(idResena, comentario) {
         const resena = await Resena.findById(idResena);
-        if(!resena){
-            throw new Error('No existe una resena con ese id');
+        if (!resena) {
+            throw new Error('No existe una reseña con ese id');
         }
         resena.comentarios.push(comentario);
-        return await resena.save();
+        await resena.save();
+        return resena.comentarios[resena.comentarios.length - 1];
     }
 
     async eliminarComentarioDeResena(idResena, idComentario){
@@ -124,6 +125,29 @@ class ResenaDAO {
         return resena.comentarios;
     }
     
+    async obtenerResenasConMasLikes(limit = 10, offset = 0) {
+        const resenas = await Resena.find()
+            .sort({ cantidad_likes: -1 })
+            .skip(offset)
+            .limit(limit);
+        if (!resenas) {
+            throw new Error('No se pudieron obtener las resenas con mas likes.');
+        }
+        return resenas;
+    }
+    /*
+    async obtenerResenasConMasLikes(likes,limit = 10, offset = 0){
+        const resenas = await Resena.find({cantidad_likes: {$gte: likes}})
+        .skip(offset)
+        .limit(limit);
+        if (!resenas) {
+            throw new Error('No se pudieron obtener las resenas con esa cantidad de likes.');
+        }
+        return resenas;
+    }
+    */
 }
+
+
 
 module.exports = new ResenaDAO();

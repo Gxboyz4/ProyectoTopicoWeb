@@ -10,11 +10,21 @@ export class PostsComponent extends HTMLElement {
     connectedCallback() {
         const shadow = this.attachShadow({ mode: 'open' });
         this.idComunidad = this.getAttribute('idComunidad');
+        this.orderBy = this.getAttribute('orderBy');
         this.#addStyles(shadow);
+        this.#addEventListener(shadow);
         this.#cargarPosts().then(posts => {
             this.postsCargados = posts;
             this.#render(shadow);
         });
+    }
+
+    #addEventListener(shadow){
+        addEventListener('post-creado', (event) => {
+            const postCreado = event.detail;
+            this.#renderEvento(shadow, postCreado.respuesta);
+        });
+
     }
 
     #cargarPosts() {
@@ -25,13 +35,19 @@ export class PostsComponent extends HTMLElement {
                 }).catch(error => {
                     reject([]);
                 });
+            } else if(this.orderBy && this.orderBy === 'popular'){
+                PostService.obtenerResenasMasLikes().then(posts => {
+                    resolve(posts.length === 0 ? [] : posts);
+                }).catch(error => {
+                    reject([]);
+                });
             } else {
                 PostService.obtenerPostsFiltro().then(posts => {
                     resolve(posts.length === 0 ? [] : posts);
                 }).catch(error => {
                     reject([]);
                 });
-            }
+            }  
         });
     }
     
@@ -49,7 +65,18 @@ export class PostsComponent extends HTMLElement {
             </div>
         `;
     }
+
+    #renderEvento(shadow, post) {
+        shadow.innerHTML += `
+            <div class="posts">
+                ${this.#renderPost(post)}
+            </div>
+        `;
+    }
+
     
+
+
     #renderPost(post){
         return `
             <app-post 

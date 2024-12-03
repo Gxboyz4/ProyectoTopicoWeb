@@ -48,7 +48,6 @@ export class HeaderComponent extends HTMLElement {
                     <div class="user-info">
                         <div class="dropdown-menu">
                             <a href="/settings">Configuración</a>
-                            <a href="/login">Salir</a>
                         </div>
                     </div>
                 </div>
@@ -93,7 +92,6 @@ export class HeaderComponent extends HTMLElement {
             userInfo.innerHTML = `
             <div class="dropdown-menu">
                 <a href="/settings">Configuración</a>
-                <a href="/login">Salir</a>
             </div>
             `;
         }
@@ -145,6 +143,11 @@ export class HeaderComponent extends HTMLElement {
         const searchResults = shadow.querySelector("#search-results");
         const crearComunidad = shadow.querySelector('.crear-comunidad');
         const login = shadow.querySelector('.login');
+        const logo = shadow.querySelector('.logo');
+
+        logo.addEventListener('click', () => {
+            page('/');
+        });
 
         crearComunidad.addEventListener('click', () => {
             const modal = shadow.querySelector('app-modalcommunity');
@@ -204,7 +207,7 @@ export class HeaderComponent extends HTMLElement {
                 dropdownMenu.style.display = 'none';
             }
         });
-    
+        
         settingsLink.addEventListener('click', (event) => {
             event.preventDefault();  
             page('/settings');  
