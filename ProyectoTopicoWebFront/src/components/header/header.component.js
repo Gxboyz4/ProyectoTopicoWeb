@@ -138,7 +138,6 @@ export class HeaderComponent extends HTMLElement {
         const userInfo = shadow.querySelector('.user-info');
         const dropdownMenu = shadow.querySelector('.dropdown-menu');
         const settingsLink = shadow.querySelector('a[href="/settings"]');
-        const loginLink = shadow.querySelector('a[href="/login"]');
         const searchInput = shadow.querySelector("#search-input");
         const searchResults = shadow.querySelector("#search-results");
         const crearComunidad = shadow.querySelector('.crear-comunidad');
@@ -213,10 +212,6 @@ export class HeaderComponent extends HTMLElement {
             page('/settings');  
         });
     
-        loginLink.addEventListener('click', (event) => {
-            event.preventDefault();  
-            page('/login');  
-        });
     }
     
 }
