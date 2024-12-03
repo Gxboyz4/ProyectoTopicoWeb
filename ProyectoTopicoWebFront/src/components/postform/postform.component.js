@@ -17,8 +17,7 @@ export class PostformComponent extends HTMLElement {
         this.#addEventListeners(shadow);
 
         //Modal para mensajes 
-        this.modal = document.createElement('modal-message');
-        document.body.appendChild(this.modal);
+        this.modal = document.querySelector('modal-message');
     }
 
     #render(shadow) {

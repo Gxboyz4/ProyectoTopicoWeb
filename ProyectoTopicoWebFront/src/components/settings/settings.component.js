@@ -15,6 +15,7 @@ export class SettingsComponent extends HTMLElement {
         this.#addStyles(shadow);
         this.#render(shadow);
         this.#addEventListeners(shadow);
+        this.modal = document.querySelector('modal-message');
     }
     /*Los avatars se cargaran */
     #render(shadow) {
@@ -148,14 +149,20 @@ export class SettingsComponent extends HTMLElement {
                     this.session.usuario.nombre = nombre;
                     this.session.usuario.avatar = avatar;
                     SessionStorageService.setItem("session", this.session);
-                    alert('Usuario actualizado correctamente');
+                    this.modal.title = 'Usuario actualizado';
+                    this.modal.message = 'Ha actualizado sus datos correctamente';
+                    this.modal.open();
                     page("/");
                 } else {
-                    alert('Error al actualizar usuario');
+                    this.modal.title = 'Error';
+                    this.modal.message = 'Error al actualizar usuario';
+                    this.modal.open();
                 }
             });
         } else {
-            alert('Ingrese todos los campos');
+            this.modal.title = 'Campos faltantes';
+            this.modal.message = 'Rellene correctamente los campos';
+            this.modal.open();
         }
     }
 }

@@ -13,6 +13,7 @@ export class RegisterComponent extends HTMLElement {
         this.#addStyles(shadow);
         this.#render(shadow);
         this.#addEventListeners(shadow);
+        this.modal = document.querySelector("modal-message");
     }
 
     #render(shadow) {
@@ -134,14 +135,20 @@ export class RegisterComponent extends HTMLElement {
         if (Validador.validarUsuario(userData)) {
             UsuarioService.registrarUsuario(userData).then(() => {
                 if (userData) {
-                    alert('Usuario registrado correctamente');
+                    this.modal.title = 'Registrado';
+                    this.modal.message = 'Se ha registrado correctamente';
+                    this.modal.open();
                     page("/login");
                 } else {
-                    alert('Error al registrar usuario');
+                    this.modal.title = 'Error';
+                    this.modal.message = 'Error al registrar usuario';
+                    this.modal.open();
                 }
             });
         } else {
-            alert('Ingrese todos los campos');
+            this.modal.title = 'Campos faltantes';
+            this.modal.message = 'Debe completar todos los campos';
+            this.modal.open();
         }
     }
 
