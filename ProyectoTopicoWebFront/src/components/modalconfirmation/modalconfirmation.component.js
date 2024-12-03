@@ -30,7 +30,7 @@ export class ModalConfirmation extends HTMLElement {
         shadow.innerHTML += `
             <dialog id="confirmation">
                 <h2>Confirmación</h2>
-                <p>¿Estas seguro que deseas elimanar la reseña?</p>
+                <p>¿Estás seguro que deseas eliminar la reseña?</p>
                 <button id="confirm" >Confirmar</button>
                 <button id="cancel" >Cancelar</button>
                 <button id="close-dialog" aria-label="close" class="x">❌</button>

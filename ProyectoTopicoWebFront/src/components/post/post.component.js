@@ -20,12 +20,10 @@ export class PostComponent extends HTMLElement {
         this.menuAbierto = false;
         this.numeroComentarios = this.post.comentarios.length;
         
-        this.modalConfirmation = document.createElement('modal-confirmation');
-        document.body.appendChild(this.modalConfirmation);
+        this.modalConfirmation = document.querySelector('modal-confirmation');
 
         //Modal para mensajes
-        this.modal = document.createElement('modal-message');
-        document.body.appendChild(this.modal);
+        this.modal = document.querySelector('modal-message');
 
         this.#verificarLike(this.post).then(usuarioLikeo => {
             this.usuarioLikeo = usuarioLikeo;

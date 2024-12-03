@@ -7,6 +7,8 @@ export class HomePage extends HTMLElement {
         const shadow = this.attachShadow({ mode: 'open' });
         this.#addStyles(shadow);
         this.#render(shadow);
+        //Crear modal para mensajes de la aplicación
+        this.modal = document.querySelector('modal-message');
     }
 
     #addStyles(shadow) {
